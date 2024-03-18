@@ -14,9 +14,10 @@ include $path . '/apps/edu/ui/layouts/nav.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['insert'])) {
     // Retrieve form data
     $from_email = $_POST['from_email'];
-    //$title = $_POST['title'];
+    $subject = $_POST['title'];
+    $to_email = $_POST['to_email'];
    // $content = $_POST['content'];
-    $blog->send_email($from_email);
+    $blog->send_email($to_email, $subject);
 
     // Your email content
     //$email_content = "Title: $title <br> Content: $content";
@@ -55,7 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['insert'])) {
                                 <label for="from_email" class="form-label">From</label>
                                 <input type="email" class="form-control" name="from_email" placeholder="From" required>
                             </div>
-                            <!--
+                            
                             <div class="mb-3">
                                 <label for="from_email" class="form-label">To</label>
                                 <input type="email" class="form-control" name="to_email" placeholder="To" required>
@@ -64,6 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['insert'])) {
                                 <label for="title" class="form-label">Subject</label>
                                 <input type="text" class="form-control" name="title" placeholder="Enter the title" required>
                             </div>
+                            <!--
                             <div class="mb-3">
                                 <label for="content" class="form-label">Message</label>
                                 <textarea class="form-control" name="content" rows="15" cols="5" required></textarea>
