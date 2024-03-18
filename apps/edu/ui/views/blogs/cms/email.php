@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['insert'])) {
     $subject = $_POST['title'];
     $to_email = $_POST['to_email'];
     $message = $_POST['content'];
-    $blog->send_email($to_email,$message);
+    $blog->send_email($to_email,$message,$subject);
    
 
     // Your email content
