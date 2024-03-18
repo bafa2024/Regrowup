@@ -803,7 +803,7 @@ class Controller extends Database
 
         // More headers
         $headers .= 'From: <baays@wheeleder.com>' . "\r\n";
-        $headers .= 'Cc: contact@wheeleder.com' . "\r\n";
+       // $headers .= 'Cc: contact@wheeleder.com' . "\r\n";
 
         mail($to, $subject, $message, $headers);
 
