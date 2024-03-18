@@ -777,10 +777,11 @@ class Controller extends Database
 
     }
     */
-    public function send_email($to_email,$subject)
+    public function send_email($to_email)
     {
 
         $to = "$to_email";
+        $subject="Test Message";
        
 
         $message = "
@@ -805,7 +806,7 @@ class Controller extends Database
 
 
         // More headers
-        $headers .= 'From: <baays@mail.com>' . "\r\n";
+        $headers .= 'From: <baays@wheeleder.com>' . "\r\n";
         $headers .= 'Cc: mail@mail.com' . "\r\n";
 
         mail($to, $subject, $message, $headers);
