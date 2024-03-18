@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['insert'])) {
     // Send email
 
 
-    $res=$blog->sending_email($to_email, $from_emai,$content,$subject);
+    $res=$blog->sending_email($to_email, $from_email,$content,$subject);
     if($res){
         $blog->alert_redirect('Message sent successfully.', '/email');
     }
@@ -55,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['insert'])) {
                             </div>
                             <div class="mb-3">
                                 <label for="from_email" class="form-label">To</label>
-                                <input type="email" class="form-control" name="to_email" placeholder="From" required>
+                                <input type="email" class="form-control" name="to_email" placeholder="To" required>
                             </div>
                             <div class="mb-3">
                                 <label for="title" class="form-label">Subject</label>
