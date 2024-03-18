@@ -781,8 +781,7 @@ class Controller extends Database
     {
 
         $to = "$to_email";
-        $subject="Test Message";
-       
+        $subject = "Verify Email";
 
         $message = "
                    <html>
@@ -792,7 +791,7 @@ class Controller extends Database
                    <body>
                    <h3>Hello There,</h3>
                    <p>Please verify your account and email by using the following code:</p>
-                 
+              
                    <br>
                    Thanks,<br>
                    Wheeleder Team
@@ -806,8 +805,8 @@ class Controller extends Database
 
 
         // More headers
-        $headers .= 'From: <baays@wheeleder.com>' . "\r\n";
-        $headers .= 'Cc: mail@mail.com' . "\r\n";
+        $headers .= 'From: <system@wheeleder.com>' . "\r\n";
+        $headers .= 'Cc: app@wheeleder.com' . "\r\n";
 
         mail($to, $subject, $message, $headers);
 
