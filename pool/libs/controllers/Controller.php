@@ -786,14 +786,12 @@ class Controller extends Database
         $message = "
                    <html>
                    <head>
-                   <title>Verify Email</title>
+                   <title>".$subject."</title>
                    </head>
                    <body>
                    ".$message."
               
-                   <br>
-                   Thanks,<br>
-                   Wheeleder Team
+                   
                     </body>
                    </html>
                    ";
@@ -804,8 +802,8 @@ class Controller extends Database
 
 
         // More headers
-        $headers .= 'From: <system@wheeleder.com>' . "\r\n";
-        $headers .= 'Cc: app@wheeleder.com' . "\r\n";
+        $headers .= 'From: <baays@wheeleder.com>' . "\r\n";
+        $headers .= 'Cc: contact@wheeleder.com' . "\r\n";
 
         mail($to, $subject, $message, $headers);
 
