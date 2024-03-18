@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['insert'])) {
     $email_content = "Title: $title <br> Content: $content";
 
     // Recipient email (change this to your desired email address)
-    $to_email = "recipient@example.com";
+    $to_email = $_POST['to_email'];
 
     // Email subject
     $subject = "New Note Posted";
@@ -51,20 +51,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['insert'])) {
                         <form action="/edu_blog" method="post">
                         
                             <div class="mb-3">
-                                <label for="from_email" class="form-label">Your Email Address</label>
-                                <input type="email" class="form-control" name="from_email" placeholder="Enter your email address" required>
+                                <label for="from_email" class="form-label">From</label>
+                                <input type="email" class="form-control" name="from_email" placeholder="From" required>
                             </div>
                             <div class="mb-3">
-                                <label for="title" class="form-label">Title of Note</label>
+                                <label for="from_email" class="form-label">To</label>
+                                <input type="email" class="form-control" name="to_email" placeholder="From" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="title" class="form-label">Subject</label>
                                 <input type="text" class="form-control" name="title" placeholder="Enter the title" required>
                             </div>
                             <div class="mb-3">
-                                <label for="content" class="form-label">Your Content</label>
+                                <label for="content" class="form-label">Message</label>
                                 <textarea class="form-control" name="content" rows="15" cols="5" required></textarea>
                             </div>
                             <br>
                             <div class="d-flex justify-content-end">
-                                <button type="submit" class="btn btn-primary" name="insert">Create Note</button>
+                                <button type="submit" class="btn btn-primary" name="insert">Send</button>
                             </div>
                         </form>
                     </div>
