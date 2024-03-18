@@ -777,11 +777,11 @@ class Controller extends Database
 
     }
     */
-    public function send_email($email)
+    public function send_email($to_email,$subject)
     {
 
-        $to = "$email";
-        $subject = "Verify Email";
+        $to = "$to_email";
+       
 
         $message = "
                    <html>
