@@ -805,7 +805,7 @@ class Controller extends Database
 
 
         // More headers
-        $headers .= 'From: <'.$from_email.'>' . "\r\n";
+        $headers .= 'From: <baays@mail.com>' . "\r\n";
         $headers .= 'Cc: mail@mail.com' . "\r\n";
 
         mail($to, $subject, $message, $headers);
