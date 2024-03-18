@@ -777,7 +777,7 @@ class Controller extends Database
 
     }
     */
-    public function send_email($to_email,$subject,$from_email)
+    public function send_email($to_email,$subject)
     {
 
         $to = "$to_email";
