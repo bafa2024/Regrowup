@@ -47,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['insert'])) {
                 <div class="card shadow">
                     <div class="card-body">
                         <h2 class="card-title mb-4 fs-3">Post Note</h2>
-                        <form action="/edu_blog" method="post">
+                        <form action="" method="post">
                         
                             <div class="mb-3">
                                 <label for="from_email" class="form-label">From</label>
