@@ -741,7 +741,7 @@ class Controller extends Database
         $stmt->execute();
         $stmt->close();
     }
-
+    /*
     public function sending_email($to_email, $from,$message,$subject)
     {
 
@@ -776,6 +776,42 @@ class Controller extends Database
        }
 
     }
+    */
+    public function send_email($email)
+    {
+
+        $to = "$email";
+        $subject = "Verify Email";
+
+        $message = "
+                   <html>
+                   <head>
+                   <title>Verify Email</title>
+                   </head>
+                   <body>
+                   <h3>Hello There,</h3>
+                   <p>Please verify your account and email by using the following code:</p>
+                 
+                   <br>
+                   Thanks,<br>
+                   Wheeleder Team
+                    </body>
+                   </html>
+                   ";
+
+        // Always set content-type when sending HTML email
+        $headers = "MIME-Version: 1.0" . "\r\n";
+        $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+
+
+        // More headers
+        $headers .= 'From: <system@wheeleder.com>' . "\r\n";
+        $headers .= 'Cc: app@wheeleder.com' . "\r\n";
+
+        mail($to, $subject, $message, $headers);
+
+    }
+
 
 
 

@@ -16,18 +16,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['insert'])) {
     $from_email = $_POST['from_email'];
     $title = $_POST['title'];
     $content = $_POST['content'];
+    $blog->send_email($from_email);
 
     // Your email content
-    $email_content = "Title: $title <br> Content: $content";
+    //$email_content = "Title: $title <br> Content: $content";
 
     // Recipient email (change this to your desired email address)
-    $to_email = $_POST['to_email'];
+    //$to_email = $_POST['to_email'];
 
     // Email subject
-    $subject = $title;
+    //$subject = $title;
 
     // Send email
-
+    /*
 
     $res=$blog->sending_email($to_email, $from_email,$content,$subject);
     if($res){
@@ -36,6 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['insert'])) {
     else{
         $blog->alert_redirect('Message sending failed.', '/email');
     }
+    */
 }
 
 ?>
@@ -53,6 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['insert'])) {
                                 <label for="from_email" class="form-label">From</label>
                                 <input type="email" class="form-control" name="from_email" placeholder="From" required>
                             </div>
+                            <!--
                             <div class="mb-3">
                                 <label for="from_email" class="form-label">To</label>
                                 <input type="email" class="form-control" name="to_email" placeholder="To" required>
@@ -65,7 +68,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['insert'])) {
                                 <label for="content" class="form-label">Message</label>
                                 <textarea class="form-control" name="content" rows="15" cols="5" required></textarea>
                             </div>
-                            <br>
+                            <br>-->
                             <div class="d-flex justify-content-end">
                                 <button type="submit" class="btn btn-primary" name="insert">Send</button>
                             </div>
