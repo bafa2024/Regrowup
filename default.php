@@ -79,35 +79,21 @@
 </head>
 
 <body>
-    <video class="bg-video" autoplay loop muted>
-        <source src="storage/website/img/bkk.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
+    
 
 
 
     <div class="content">
         <div class="header text-center">
-            <h1>Welcome to Wheeleder</h1>
-            <p>Where challenges become Innovations</p>
+            <h1>Wheeleder</h1>
+          
             <img src="storage/website/logo/mainlogo_512x512.png" alt="Innovation Lab Logo" class="img-fluid"
                 style="max-width: 400px; height: auto;">
             
         </div>
         <br></br>
 
-        <h2>Wheeleder</h2>
-        <p>Can be defined as the Cradle of Imagination, a Forge of Creativity, a Vanguard of Innovation, and a Launchpad
-            for Emerging Technologies and Beyond...</p>
-
-        <h3>The Works...</h3>
-        <p>While we journey through the realms of thought, creation, and innovation, each ripe idea is meticulously
-            crafted into a tangible offering.
-            Behold these digital alchemies, born in the crucible of our Digital Lab, meticulously designed to simplify
-            and enhance the tapestry of human life...</p>
-        
-        <p>More things are coming up...</p>
-
+    
         
     </div>
 
