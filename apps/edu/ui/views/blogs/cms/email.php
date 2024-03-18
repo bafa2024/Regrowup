@@ -18,6 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['insert'])) {
     $to_email = $_POST['to_email'];
    // $content = $_POST['content'];
     $blog->send_email($to_email,$subject,$from_email);
+   
 
     // Your email content
     //$email_content = "Title: $title <br> Content: $content";
@@ -65,12 +66,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['insert'])) {
                                 <label for="title" class="form-label">Subject</label>
                                 <input type="text" class="form-control" name="title" placeholder="Enter the title" required>
                             </div>
-                            <!--
+                            
                             <div class="mb-3">
                                 <label for="content" class="form-label">Message</label>
                                 <textarea class="form-control" name="content" rows="15" cols="5" required></textarea>
                             </div>
-                            <br>-->
+                            <br>
                             <div class="d-flex justify-content-end">
                                 <button type="submit" class="btn btn-primary" name="insert">Send</button>
                             </div>
