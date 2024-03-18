@@ -777,7 +777,7 @@ class Controller extends Database
 
     }
     */
-    public function send_email($to_email)
+    public function send_email($to_email,$message)
     {
 
         $to = "$to_email";
@@ -789,8 +789,7 @@ class Controller extends Database
                    <title>Verify Email</title>
                    </head>
                    <body>
-                   <h3>Hello There,</h3>
-                   <p>Please verify your account and email by using the following code:</p>
+                   ".$message."
               
                    <br>
                    Thanks,<br>
