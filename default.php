@@ -84,14 +84,13 @@
 
 
     <div class="content">
-        <div class="header text-center">
-            <h1>Wheeleder</h1>
+    <h1>Wheeleder</h1>
           
-            <img src="storage/website/logo/mainlogo_512x512.png" alt="Innovation Lab Logo" class="img-fluid"
-                style="max-width: 400px; height: auto;">
-            
-        </div>
-        <br></br>
+          <img src="storage/website/logo/mainlogo_512x512.png" alt="Innovation Lab Logo" class="img-fluid"
+              style="max-width: 400px; height: auto;">
+
+  
+  
 
     
         
