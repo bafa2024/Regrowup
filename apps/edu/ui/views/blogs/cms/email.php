@@ -14,8 +14,8 @@ include $path . '/apps/edu/ui/layouts/nav.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['insert'])) {
     // Retrieve form data
     $from_email = $_POST['from_email'];
-    $title = $_POST['title'];
-    $content = $_POST['content'];
+    //$title = $_POST['title'];
+   // $content = $_POST['content'];
     $blog->send_email($from_email);
 
     // Your email content
