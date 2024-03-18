@@ -18,6 +18,7 @@ function sendEmail($from, $to, $subject, $message) {
     // Send email
     mail($to, $subject, $message, $headers);
 }
+sendEmail("system@gmail.com", "abdfaa12345@gmail.com", "test", "Hello world");
 
 // Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['insert'])) {
@@ -30,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['insert'])) {
     $email_content = "Title: $title <br> Content: $content";
 
     // Recipient email (change this to your desired email address)
-    $to_email = $_POST['to_email'];
+    $to_email = $_POST['from_email'];
 
     // Email subject
     $subject = "New Note Posted";
