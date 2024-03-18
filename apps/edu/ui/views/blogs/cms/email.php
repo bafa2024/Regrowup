@@ -2,7 +2,7 @@
 $path = $_SERVER['DOCUMENT_ROOT'];
 include $path . '/apps/edu/controllers/BlogController.php';
 $blog = new BlogController();
-//$blog->check_auth();
+$blog->check_auth();
 
 include $path . '/apps/edu/ui/layouts/nav.php';
 
