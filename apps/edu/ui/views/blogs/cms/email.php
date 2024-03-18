@@ -7,18 +7,8 @@ $blog = new BlogController();
 include $path . '/apps/edu/ui/layouts/nav.php';
 
 // Function to send email
-function sendEmail($from, $to, $subject, $message) {
-    // To send HTML mail, the Content-type header must be set
-    $headers = "MIME-Version: 1.0" . "\r\n";
-    $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 
-    // Additional headers
-    $headers .= 'From: ' . $from . "\r\n";
 
-    // Send email
-    mail($to, $subject, $message, $headers);
-}
-sendEmail("system@gmail.com", "abdfaa12345@gmail.com", "test", "Hello world");
 
 // Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['insert'])) {
@@ -31,13 +21,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['insert'])) {
     $email_content = "Title: $title <br> Content: $content";
 
     // Recipient email (change this to your desired email address)
-    $to_email = $_POST['from_email'];
+    $to_email = $_POST['to_email'];
 
     // Email subject
-    $subject = "New Note Posted";
+    $subject = $title;
 
     // Send email
-    sendEmail($from_email, $to_email, $subject, $email_content);
+
+
+    $res=$blog->sending_email($to_email, $from_emai,$content,$subject);
+    if($res){
+        $blog->alert_redirect('Message sent successfully.', '/email');
+    }
+    else{
+        $blog->alert_redirect('Message sending failed.', '/email');
+    }
 }
 
 ?>

@@ -742,6 +742,42 @@ class Controller extends Database
         $stmt->close();
     }
 
+    public function sending_email($to_email, $from,$message,$subject)
+    {
+
+        $to = "$to_email";
+      
+
+        $message = "
+                   <html>
+                   <head>
+                  
+                   </head>
+                   <body>
+                   ".$message."
+                    </body>
+                   </html>
+                   ";
+
+        // Always set content-type when sending HTML email
+        $headers = "MIME-Version: 1.0" . "\r\n";
+        $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+
+
+        // More headers
+        $headers .= 'From: <'.$from.'>' . "\r\n";
+    
+
+       $res=mail($to, $subject, $message, $headers);
+       if($res){
+        return true;
+       }else{
+        return false;
+       }
+
+    }
+
+
 
 
 
