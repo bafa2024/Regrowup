@@ -74,6 +74,9 @@ $router->route('/logout', 'pool/auth/logout.php');
 //Routes for lab
 $router->route('/lab', 'apps/edu/ui/views/blogs/app.php');
 
+
+$router->route('/email', 'apps/edu/ui/views/blogs/cms/email.php');
+
 $router->route('/lab/', 'apps/edu/ui/views/blogs/app.php');
 
 $router->route('/blog', 'apps/edu/ui/views/blogs/app.php');
