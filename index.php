@@ -5,11 +5,13 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 // Get project folder dynamically
-$projectFolder = basename(dirname(__DIR__));
+//$projectFolder = basename(dirname(__DIR__));
+
+$projectFolder="https://wheelederapps.azurewebsites.net";
 
 $basePath =  $projectFolder;
 
-echo $basePath;
+//echo $basePath;
 
 // Debugging: Print basePath
 // Remove this in production
