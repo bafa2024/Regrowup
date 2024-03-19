@@ -9,6 +9,8 @@ $projectFolder = basename(dirname(__DIR__));
 
 $basePath =  $projectFolder;
 
+echo $basePath;
+
 // Debugging: Print basePath
 // Remove this in production
 //echo 'Base Path: ' . $basePath;
