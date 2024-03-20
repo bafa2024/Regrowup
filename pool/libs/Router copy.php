@@ -1,4 +1,9 @@
 <?php
+// Enable error reporting for debugging
+// Remove these lines in production
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 class Router {
     private $routes = [];
     private $basePath = '';
@@ -19,7 +24,7 @@ class Router {
         if ($handler !== null) {
             $this->callHandler($handler['handler'], $handler['params']);
         } else {
-            $this->redirectTo('/404.html'); // Redirect to a 404 page
+            $this->redirectTo('/'); // Default to a 404 page
         }
     }
 
@@ -44,7 +49,7 @@ class Router {
         if (is_callable($handler)) {
             call_user_func($handler, $params);
         } elseif (is_string($handler)) {
-            $filePath = $_SERVER['DOCUMENT_ROOT'] . '/' . ltrim($handler, '/');
+            $filePath = __DIR__ . '/../../' . ltrim($handler, '/');
             if (file_exists($filePath)) {
                 include $filePath;
             } else {
@@ -73,6 +78,7 @@ class Router {
         }
         return $defaultApp;
     }
+
 
     public function redirectTo($url) {
         header("Location: $url");
