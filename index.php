@@ -24,12 +24,12 @@
         }
 
         .content {
-            margin: 50px;
+            margin: 30px;
             background-color: rgba(255, 255, 255, 0.7);
             border: 1px solid #ddd;
             border-radius: 10px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-            padding: 20px;
+            padding: 10px;
             text-align: center;
         }
 
@@ -83,7 +83,7 @@
 
 
 
-    <div class="content">
+    <div class="">
     <h1>Wheeleder</h1>
           
           <img src="storage/website/logo/mainlogo_512x512.png" alt="Innovation Lab Logo" class="img-fluid"
