@@ -3,7 +3,7 @@ $path = $_SERVER['DOCUMENT_ROOT'];
 include $path . '/apps/edu/controllers/BlogController.php';
 $blog = new BlogController();
 
-$blog->checkSessionAndRedirect();
+//$blog->checkSessionAndRedirect();
 
 $ip = $_SERVER['REMOTE_ADDR'];
 
