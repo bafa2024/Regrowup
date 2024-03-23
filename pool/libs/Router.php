@@ -60,6 +60,7 @@ class Router {
         }
     }
 
+    // Added a method to set a default application based on a parameter
     public function return_defaultApp($dApp)
     {
         switch ($dApp) {
@@ -78,7 +79,6 @@ class Router {
         }
         return $defaultApp;
     }
-
 
     public function redirectTo($url) {
         header("Location: $url");

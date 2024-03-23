@@ -1,8 +1,8 @@
 <?php
 // Enable error reporting for debugging
 // Remove these lines in production
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+//error_reporting(E_ALL);
+//ini_set('display_errors', 1);
 
 class Router {
     private $routes = [];
