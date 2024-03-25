@@ -89,7 +89,7 @@
           <img src="storage/website/logo/mainlogo_512x512.png" alt="Innovation Lab Logo" class="img-fluid"
               style="max-width: 400px; height: auto;"><br>
               
-              <h2>...</h2>
+              <h2>Website Underconstruction</h2>
     </div>
 
 
