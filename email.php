@@ -50,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['insert'])) {
             <div class="col-12 col-lg-8 mx-auto">
                 <div class="card shadow">
                     <div class="card-body">
-                        <h2 class="card-title mb-4 fs-3">Post Note</h2>
+                        <h2 class="card-title mb-4 fs-3">Send Email</h2>
                         <form action="" method="post">
                         
                             <div class="mb-3">
