@@ -21,6 +21,9 @@ $router->route('/', function() use ($dApp) {
         require 'default.php';
     }
 });
+$router->route('/', function() {
+    require 'landing.php';
+});
 
 $router->route('/login', function() {
     require 'pool/auth/login.php';
