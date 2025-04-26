@@ -29,7 +29,7 @@ class Bidding
         "amount": ' . $charges . ',
         "period": ' . $this->duration . ',
         "milestone_percentage": 100,
-        "description": "Hi, I am a professional web developer and I can do this project ' . $title . ', I have 5 years of experience in web development. I have done many projects like this. I can do this job for you. I can start right now. Please contact me. Thanks"
+        "description": "Hello, ' . $title . ' is easy project for us, we can do it on time. with 10+ years of experience in development we can start now, please come to chat, to discuss more. Thanks"
          }';
 
         $resp = $this->api_call($url, 'POST', $data);
