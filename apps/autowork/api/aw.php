@@ -10,4 +10,6 @@ $fr = new Bidding();
 //$fr->fetchNewProjects();
 //$fr->list_elites(" ", 20);
 
-$fr->multibids();
+if(isset($_GET['t']=="mb")){
+    $fr->multibids();
+}
