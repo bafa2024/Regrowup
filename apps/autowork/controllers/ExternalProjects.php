@@ -1,15 +1,12 @@
 <?php
-/*
+
 $path=$_SERVER['DOCUMENT_ROOT'];
-include $path.'/pool/libs/controllers/Controller.php';
+//include $path.'/pool/libs/controllers/Controller.php';
 include 'Discovery.php';
-*/
-namespace Apps\Work\Controllers;
 
-use Pool\Libs\Controllers\Controller;
-use Pool\Libs\Traits\Discovery;
 
-class Bidding  extends Controller
+
+class Bidding  
 {
 
     use Discovery;

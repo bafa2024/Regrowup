@@ -1,15 +1,7 @@
 <?php
-//$path = realpath($_SERVER['DOCUMENT_ROOT'] . '/apps/work/controllers/ExternalProjects.php');
-$path = realpath($_SERVER['DOCUMENT_ROOT'] . '/apps/work/controllers/Bidding.php');
 
-if ($path && file_exists($path)) {
-    require_once $path;
-} else {
-    error_log("ExternalProjects.php not found at: $path");
-    // Optionally handle the error
-}
-
-
+//require_once $_SERVER['DOCUMENT_ROOT'] . '/wheeleder/apps/work/controllers/ExternalProjects.php';
+use Apps\Work\Controllers\Bidding;
 
 $fr = new Bidding();
 
