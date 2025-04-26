@@ -198,7 +198,9 @@ $router->route('/atw', function() {
     require 'apps/autowork/api/aw.php';
 });
 
-
+$router->route('/aw/home', function() {
+    require 'apps/autowork/views/home/home.php';
+});
 
 $router->route('/aw', function() {
     require 'apps/autowork/api/autowork.php';

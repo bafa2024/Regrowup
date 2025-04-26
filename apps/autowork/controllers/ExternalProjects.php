@@ -41,10 +41,7 @@ class Bidding
         }
     }
 
-    
-
     // Function to fetch and display projects based on the provided query and limit
-
     public function feeder_home($query, $limit)
     {
         // Construct API URL with query and limit parameters
@@ -127,10 +124,7 @@ class Bidding
             echo "External System is Down, Please try after sometime";
         }
 
-
-
     }
-
 
     //List the Elite Projects
     public function list_elites($query, $limit)
@@ -219,8 +213,6 @@ class Bidding
 
 
     }
-
-
 
     // Function to check if a bid has been proposed for the given project
     public function proposed_checkup($projectId)
@@ -318,46 +310,52 @@ class Bidding
           return $tag;
     }
     
-
     public function multibids($limit = 100){
 
-        // List of queries to search for
-        $queries = [
-            // Programming Languages and Frameworks
-            "PHP", "Javascript", "Reactjs", "Vuejs", "Python", "Java", "Nodejs", "Expressjs", "Django", "Flask",
-            "Nextjs", "Nuxtjs", "Spring", "Springboot", "Springmvc", "Graphql", "Restfulapi", "Restapi",
-            "Kotlin", "Swift", "C#", "C++", "ASP.NET", "Laravel", "Symfony", "CodeIgniter",
-            "GoLang", "Ruby on Rails", "Perl",
-        
-            // Mobile App Development
-            "Android", "iOS", "Flutter", "React Native", "SwiftUI", "Objective-C", "Xamarin",
-        
-            // Cloud and DevOps
-            "AWS", "Azure", "Google Cloud", "Firebase", "Docker", "Kubernetes", "CI/CD Pipelines", "Serverless",
-        
-            // Artificial Intelligence and Data Science
-            "ChatGPT", "OpenAI", "Machine Learning", "Deep Learning", "NLP", "Tensorflow", "Pytorch", "Data Analysis",
-        
-            // Blockchain and Web3
-            "Blockchain", "Ethereum", "Smart Contracts", "Solidity", "NFT Development", "Web3.js",
-        
-            // UI/UX and Frontend Technologies
-            "TailwindCSS", "Bootstrap", "SASS", "Figma", "Adobe XD", "UI/UX Design",
-        
-            // Digital Marketing
-            "Digital Marketing", "Social Media Marketing", "Facebook Marketing", "Instagram Marketing",
-            "SEO", "SEM", "Content Marketing", "Email Marketing", "Affiliate Marketing",
-            "YouTube Marketing", "LinkedIn Marketing", "Pinterest Marketing",
-        
-            // Content Creation
-            "Blog Writing", "Copywriting", "Technical Writing", "Video Editing", "Podcast Editing", "Graphics Design",
-        
-            // E-commerce
-            "Shopify Development", "WooCommerce", "Magento", "BigCommerce",
-        
-            // Cybersecurity
-            "Penetration Testing", "Vulnerability Assessment", "Security Audits"
-        ];
+       // List of queries to search for
+$queries = [
+    // Programming Languages and Frameworks
+    "PHP", "Javascript", "Reactjs", "Vuejs", "Python", "Java", "Nodejs", "Expressjs", "Django", "Flask",
+    "Nextjs", "Nuxtjs", "Spring", "Springboot", "Springmvc", "Graphql", "Restfulapi", "Restapi",
+    "Kotlin", "Swift", "C#", "C++", "ASP.NET", "Laravel", "Symfony", "CodeIgniter",
+    "GoLang", "Ruby on Rails", "Perl",
+
+    // Mobile App Development
+    "Android", "iOS", "Flutter", "React Native", "SwiftUI", "Objective-C", "Xamarin",
+
+    // Cloud and DevOps
+    "AWS", "Azure", "Google Cloud", "Firebase", "Docker", "Kubernetes", "CI/CD Pipelines", "Serverless",
+
+    // Artificial Intelligence and Data Science
+    "ChatGPT", "OpenAI", "Machine Learning", "Deep Learning", "NLP", "Tensorflow", "Pytorch", "Data Analysis",
+
+    // Blockchain and Web3
+    "Blockchain", "Ethereum", "Smart Contracts", "Solidity", "NFT Development", "Web3.js",
+
+    // UI/UX and Frontend Technologies
+    "TailwindCSS", "Bootstrap", "SASS", "Figma", "Adobe XD", "UI/UX Design",
+
+    // Digital Marketing
+    "Digital Marketing", "Social Media Marketing", "Facebook Marketing", "Instagram Marketing",
+    "SEO", "SEM", "Content Marketing", "Email Marketing", "Affiliate Marketing",
+    "YouTube Marketing", "LinkedIn Marketing", "Pinterest Marketing",
+
+    // Content Creation
+    "Blog Writing", "Copywriting", "Technical Writing", "Video Editing", "Podcast Editing", "Graphics Design",
+
+    // E-commerce
+    "Shopify Development", "WooCommerce", "Magento", "BigCommerce",
+
+    // Cybersecurity
+    "Penetration Testing", "Vulnerability Assessment", "Security Audits",
+    "Security Consulting", "Application Security", "Cloud Security", "Network Security",
+    "Security Operations Center (SOC)", "Threat Intelligence", "Endpoint Protection",
+    "Identity and Access Management (IAM)", "Data Loss Prevention (DLP)",
+    "SIEM (Security Information and Event Management)", "Compliance Audits (GDPR, HIPAA, PCI DSS)",
+    "Phishing Protection", "Ransomware Protection", "Incident Response", "Risk Assessment",
+    "Zero Trust Architecture", "Firewall Management", "Intrusion Detection and Prevention Systems (IDS/IPS)"
+];
+
         // Loop over each query
         foreach ($queries as $query) {
     
