@@ -1,5 +1,5 @@
 <?php
-include 'Controller.php';
+//include 'Controller.php';
 include 'Discovery.php';
 
 class Bidding 

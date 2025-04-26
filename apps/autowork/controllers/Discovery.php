@@ -5,12 +5,12 @@
 trait Discovery
 {
 
-    public $msg = "Hello There, It is easy, I can do it on time.  
-   I have 7 years of experience in development(websites, web applications, mobile apps, desktop applications UI/UX), using PHP, WordPress, Java, 
-   Python, JavaScript, ReactJs, Bootstrap, I can start now, please come to chat, to discuss more.";
+    public $msg = "Hello There, It is easy, we can do it on time.  
+   with 10+ years of experience in development(websites, web applications, mobile apps, desktop applications UI/UX), using PHP, WordPress, Java, 
+   Python, JavaScript, ReactJs, Bootstrap, we can start now, please come to chat, to discuss more.";
     public $working_samples = "
    Working samples:
-   https://github.com/abdulfakhri
+   https://github.com/Regrowup
    https://ratemypoliticians.org
    http://apihub.cloud
    https://aidispatchsys.net
