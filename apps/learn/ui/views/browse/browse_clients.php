@@ -1,13 +1,13 @@
 <?php
 session_start();
 $path = $_SERVER['DOCUMENT_ROOT'];
-include $path . '/work/controllers/ContractController.php';
+include $path . '/apps/work/controllers/ContractController.php';
 
 $contract = new ContractController();
 
 $contract->authCheck();
 
-include $path . '/work/ui/layouts/nav.php';
+include $path . '/apps/work/ui/layouts/nav.php';
 
 $role = $_SESSION['role'];
 
@@ -85,7 +85,7 @@ if ($role == 'freelancer' || $role == 'Freelancer') {
                                     <label for="" class="text-white fs-14 text-uppercase mb-2 d-none d-md-block">s</label>
                                     <div class="row">
                                         <div class="col-6">
-                                            <a href="/work/ui/views/browse/browse_contracts.php" class="clear-btn float-md-end">
+                                            <a href="/apps/work/ui/views/browse/browse_contracts.php" class="clear-btn float-md-end">
                                                 Clear
                                             </a>
                                         </div>
@@ -136,7 +136,7 @@ if ($role == 'freelancer' || $role == 'Freelancer') {
 
 
 <?php
-include $path . '/work/ui/layouts/footer.php';
+include $path . '/apps/work/ui/layouts/footer.php';
 
 
 ?>

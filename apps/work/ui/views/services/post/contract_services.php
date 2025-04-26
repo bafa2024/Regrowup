@@ -1,7 +1,7 @@
 <?php
 session_start();
 $path=$_SERVER['DOCUMENT_ROOT'];
-include $path.'/work/controllers/HomeController.php';
+include $path.'/apps/work/controllers/HomeController.php';
 
 $home=new HomeController();
 
@@ -12,7 +12,7 @@ $home->authCheck();
 $user_type=$_SESSION['user_type'];
 
 
-  include $path.'/work/ui/layouts/nav.php';
+  include $path.'/apps/work/ui/layouts/nav.php';
 ?>
 <style>
 .freelancerprofile {
@@ -94,7 +94,7 @@ input[type=number] {
                             </a>
                         </div>
                         <div class="col-md-3">
-                            <a href="/work/ui/views/jobs/local_jobs.php" class="d-block text-center ser-icon-box p-4 rounded-3">
+                            <a href="/apps/work/ui/views/jobs/local_jobs.php" class="d-block text-center ser-icon-box p-4 rounded-3">
                                 <div class="mx-auto w-70 fulw mb-3">
                                     <img src="/ui//assets/images/icon-ser3.png" alt="image" />
                                     <img src="/ui//assets/images/icon-white3.png" alt="image" />
@@ -541,7 +541,7 @@ input[type=number] {
     </div>
 </div>
 <?php
-include $path.'/work/ui/layouts/footer.php';
+include $path.'/apps/work/ui/layouts/footer.php';
 
 
 ?>

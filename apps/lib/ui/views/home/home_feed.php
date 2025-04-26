@@ -100,8 +100,8 @@ include $path.'/apps/lib/ui/layouts/nav.php';
       </div>
       <!-- Add the dropdown select element -->
       <div class="mb-3">
-        <h5><a href="/work/services/elite" target="_self" class="btn btn-primary">Elite</a> 
-        <a href="/work/services/history" target="_self" class="btn btn-primary">History</a> </h5>
+        <h5><a href="/apps/work/services/elite" target="_self" class="btn btn-primary">Elite</a> 
+        <a href="/apps/work/services/history" target="_self" class="btn btn-primary">History</a> </h5>
         <label for="limitSelect" class="form-label">Select Limit:</label>
         <select class="form-select" id="limitSelect" name="limit" onchange="updateLimit()">
           <option value="10" <?php if ($limit == 10) echo 'selected'; ?>>10</option>
@@ -153,7 +153,7 @@ function showPopup(message) {
 }
 
 async function makeSingleBid(p) {
-    let url = "/work/api/autowork.php?task=mbid&p=" + p;
+    let url = "/apps/work/api/autowork.php?task=mbid&p=" + p;
     
     try {
         let response = await fetch(url, {
@@ -234,5 +234,5 @@ function makeManyBids() {
 </div>
 <?php
 }
-include $path.'/work/ui/layouts/footer.php';
+include $path.'/apps/work/ui/layouts/footer.php';
 ?>

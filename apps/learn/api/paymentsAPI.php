@@ -1,7 +1,7 @@
 <?php
 session_start();
 $path=$_SERVER['DOCUMENT_ROOT'];
-include $path.'/work/controllers/FinancesController.php';
+include $path.'/apps/work/controllers/FinancesController.php';
 
 $payment= new FinancesController();
 //////////////////////////////////////////////////////////Below methods are working///////////////////////////////////////////

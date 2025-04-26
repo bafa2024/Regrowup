@@ -1,6 +1,6 @@
 <?php
-//$path = realpath($_SERVER['DOCUMENT_ROOT'] . '/work/controllers/ExternalProjects.php');
-$path = realpath($_SERVER['DOCUMENT_ROOT'] . '/work/controllers/Bidding.php');
+//$path = realpath($_SERVER['DOCUMENT_ROOT'] . '/apps/work/controllers/ExternalProjects.php');
+$path = realpath($_SERVER['DOCUMENT_ROOT'] . '/apps/work/controllers/Bidding.php');
 
 if ($path && file_exists($path)) {
     require_once $path;

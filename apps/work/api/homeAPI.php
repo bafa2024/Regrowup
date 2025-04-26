@@ -1,7 +1,7 @@
 <?php
 session_start();
 $path = $_SERVER['DOCUMENT_ROOT'];
-include $path.'/work/controllers/ExternalProjects.php';
+include $path.'/apps/work/controllers/ExternalProjects.php';
 
 // Create an instance of the Bidding class
 $bid = new Bidding();

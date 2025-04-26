@@ -1,7 +1,7 @@
 <?php
 session_start();
 $path = $_SERVER['DOCUMENT_ROOT'];
-include $path . '/work/controllers/GigsController.php';
+include $path . '/apps/work/controllers/GigsController.php';
 
 $gig = new GigsController();
 
@@ -9,7 +9,7 @@ $gig->authCheck();
 
 $role = $_SESSION['role'];
 
-include $path . '/work/ui/layouts/nav.php';
+include $path . '/apps/work/ui/layouts/nav.php';
 ?>
 
 
@@ -115,7 +115,7 @@ include $path . '/work/ui/layouts/nav.php';
                                 <label for="" class="text-white fs-14 text-uppercase mb-2 d-none d-md-block">s</label>
                                 <div class="row">
                                     <div class="col-6">
-                                        <a href="/work/ui/views/browse/browse_gigs.php" class="clear-btn float-md-end">
+                                        <a href="/apps/work/ui/views/browse/browse_gigs.php" class="clear-btn float-md-end">
                                             Clear
                                         </a>
                                     </div>
@@ -177,7 +177,7 @@ include $path . '/work/ui/layouts/nav.php';
 </section>
 
 <?php
-include $path . '/work/ui/layouts/footer.php';
+include $path . '/apps/work/ui/layouts/footer.php';
 
 
 ?>

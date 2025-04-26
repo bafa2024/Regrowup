@@ -128,9 +128,9 @@ class JobController extends Controller{
                     </div>
                     <div class="flex-shrink-0">
                         <div class="d-flex gap-3">
-                            <a href="/work/ui/views/applications/apply_job.php?jo='.$row['id'].'&cl='.$row['user_id'].'" class="apply-btn">Apply Now</a>                            
+                            <a href="/apps/work/ui/views/applications/apply_job.php?jo='.$row['id'].'&cl='.$row['user_id'].'" class="apply-btn">Apply Now</a>                            
                             </a>
-                            <a href="/work/ui/views/applications/apply_job.php?jo='.$row['id'].'&cl='.$row['user_id'].'&act=save" class="apply-btn">Save Job</a>                            
+                            <a href="/apps/work/ui/views/applications/apply_job.php?jo='.$row['id'].'&cl='.$row['user_id'].'&act=save" class="apply-btn">Save Job</a>                            
                             </a>
                         </div>
                     </div>
@@ -190,7 +190,7 @@ class JobController extends Controller{
                     </div>
                     <div class="flex-shrink-0">
                         <div class="d-flex gap-3">
-                        <a href="/work/ui/views/manage/view_job.php?jo='.$row['id'].'&cl='.$row['user_id'].'" class="apply-btn">Manage Job</a>
+                        <a href="/apps/work/ui/views/manage/view_job.php?jo='.$row['id'].'&cl='.$row['user_id'].'" class="apply-btn">Manage Job</a>
                         </div>
                     </div>
                 </div>
@@ -250,7 +250,7 @@ class JobController extends Controller{
                         </div>
                         <div class="flex-shrink-0">
                             <div class="d-flex gap-3">
-                                <a href="/work/ui/views/manage/view_job.php?jo='.$row['id'].'&cl='.$row['user_id'].'" class="apply-btn">View Job</a>
+                                <a href="/apps/work/ui/views/manage/view_job.php?jo='.$row['id'].'&cl='.$row['user_id'].'" class="apply-btn">View Job</a>
                             </div>
                         </div>
                     </div>
@@ -307,7 +307,7 @@ class JobController extends Controller{
                     </div>
                     <div class="flex-shrink-0">
                         <div class="d-flex gap-3">
-                            <a href="/work/ui/views/manage/view_job.php?jo='.$row['id'].'&cl='.$row['user_id'].'" class="apply-btn">View Job</a>
+                            <a href="/apps/work/ui/views/manage/view_job.php?jo='.$row['id'].'&cl='.$row['user_id'].'" class="apply-btn">View Job</a>
                         </div>
                     </div>
                 </div>
@@ -470,7 +470,7 @@ public function search_applied_jobs($uid,$search) {
                     </div>
                     <div class="flex-shrink-0">
                         <div class="d-flex gap-3">
-                            <a href="/work/ui/views/manage/view_job.php?jo='.$row['id'].'&cl='.$row['user_id'].'" class="apply-btn">Manage Job</a>
+                            <a href="/apps/work/ui/views/manage/view_job.php?jo='.$row['id'].'&cl='.$row['user_id'].'" class="apply-btn">Manage Job</a>
                         </div>
                     </div>
                 </div>
@@ -531,7 +531,7 @@ public function search_applied_jobs($uid,$search) {
                     </div>
                     <div class="flex-shrink-0">
                         <div class="d-flex gap-3">
-                            <a href="/work/ui/views/manage/view_job.php?jo='.$row['id'].'&cl='.$row['user_id'].'" class="apply-btn">Manage Job</a>
+                            <a href="/apps/work/ui/views/manage/view_job.php?jo='.$row['id'].'&cl='.$row['user_id'].'" class="apply-btn">Manage Job</a>
                         </div>
                     </div>
                 </div>
@@ -594,7 +594,7 @@ public function search_applied_jobs($uid,$search) {
                     </div>
                     <div class="flex-shrink-0">
                         <div class="d-flex gap-3">
-                            <a href="/work/ui/views/manage/view_job.php?jo='.$row['id'].'&cl='.$row['user_id'].'" class="apply-btn">Manage Job</a>
+                            <a href="/apps/work/ui/views/manage/view_job.php?jo='.$row['id'].'&cl='.$row['user_id'].'" class="apply-btn">Manage Job</a>
                         </div>
                     </div>
                 </div>
@@ -656,7 +656,7 @@ public function search_applied_jobs($uid,$search) {
                     </div>
                     <div class="flex-shrink-0">
                         <div class="d-flex gap-3">
-                            <a href="/work/ui/views/manage/view_job.php?jo='.$row['id'].'&cl='.$row['user_id'].'" class="apply-btn">Manage Job</a>
+                            <a href="/apps/work/ui/views/manage/view_job.php?jo='.$row['id'].'&cl='.$row['user_id'].'" class="apply-btn">Manage Job</a>
                         </div>
                     </div>
                 </div>
@@ -725,7 +725,7 @@ public function search_applied_jobs($uid,$search) {
                     </div>
                     <div class="flex-shrink-0">
                         <div class="d-flex gap-3">
-                            <a href="/work/ui/views/manage/view_job.php?ct='.$row['id'].'&cl='.$row['user_id'].'" class="apply-btn">Manage Contract</a>
+                            <a href="/apps/work/ui/views/manage/view_job.php?ct='.$row['id'].'&cl='.$row['user_id'].'" class="apply-btn">Manage Contract</a>
                         </div>
                     </div>
                 </div>
@@ -778,7 +778,7 @@ public function search_applied_jobs($uid,$search) {
                     </div>
                     <div class="flex-shrink-0">
                         <div class="d-flex gap-3">
-                            <a href="/work/ui/views/manage/view_job.php?ct='.$row['id'].'&cl='.$row['user_id'].'" class="apply-btn">Manage Contract</a>
+                            <a href="/apps/work/ui/views/manage/view_job.php?ct='.$row['id'].'&cl='.$row['user_id'].'" class="apply-btn">Manage Contract</a>
                         </div>
                     </div>
                 </div>
@@ -843,9 +843,9 @@ public function search_applied_jobs($uid,$search) {
             </div>
             <div class="flex-shrink-0">
                 <div class="d-flex gap-3">
-                    <a href="/work/ui/views/services/apply.php" class="apply-btn">Apply Now</a>
+                    <a href="/apps/work/ui/views/services/apply.php" class="apply-btn">Apply Now</a>
                     
-                        <a href="/work/ui/views/services/apply.php"
+                        <a href="/apps/work/ui/views/services/apply.php"
                         class="mytext-black fs-14 border-0 bg-transparent">
                         <i class="fal fa-bookmark"></i>
                     </a>
@@ -909,7 +909,7 @@ public function search_applied_jobs($uid,$search) {
                     </div>
                     <div class="flex-shrink-0">
                         <div class="d-flex gap-3">
-                            <a href="/work/ui/views/applications/apply_job.php?jo='.$row['id'].'" class="apply-btn">Apply Now</a>                            
+                            <a href="/apps/work/ui/views/applications/apply_job.php?jo='.$row['id'].'" class="apply-btn">Apply Now</a>                            
                             </a>
                         </div>
                     </div>
@@ -973,7 +973,7 @@ public function search_applied_jobs($uid,$search) {
                     </div>
                     <div class="flex-shrink-0">
                         <div class="d-flex gap-3">
-                            <a href="/work/ui/views/applications/apply_job.php?jo='.$row['id'].'" class="apply-btn">Apply Now</a>                            
+                            <a href="/apps/work/ui/views/applications/apply_job.php?jo='.$row['id'].'" class="apply-btn">Apply Now</a>                            
                             </a>
                         </div>
                     </div>
@@ -1037,7 +1037,7 @@ public function search_applied_jobs($uid,$search) {
                     </div>
                     <div class="flex-shrink-0">
                         <div class="d-flex gap-3">
-                            <a href="/work/ui/views/applications/apply_job.php?jo='.$row['id'].'" class="apply-btn">Apply Now</a>                            
+                            <a href="/apps/work/ui/views/applications/apply_job.php?jo='.$row['id'].'" class="apply-btn">Apply Now</a>                            
                             </a>
                         </div>
                     </div>

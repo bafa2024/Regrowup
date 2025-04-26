@@ -1,10 +1,10 @@
 <?php
 session_start();
 $path=$_SERVER['DOCUMENT_ROOT'];
-include $path.'/work/controllers/BlogController.php';
+include $path.'/apps/work/controllers/BlogController.php';
 $blog=new BlogController();
 
-include $path.'/work/ui/layouts/nav.php';
+include $path.'/apps/work/ui/layouts/nav.php';
 
 ?>
   <style>
@@ -29,5 +29,5 @@ include $path.'/work/ui/layouts/nav.php';
     </section>
 
 <?php
-include $path.'/work/ui/layouts/footer.php';
+include $path.'/apps/work/ui/layouts/footer.php';
 ?>

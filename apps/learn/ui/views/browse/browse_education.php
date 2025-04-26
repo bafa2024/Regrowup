@@ -1,12 +1,12 @@
 <?php
 session_start();
 $path = $_SERVER['DOCUMENT_ROOT'];
-include $path . '/work/controllers/CoursesController.php';
+include $path . '/apps/work/controllers/CoursesController.php';
 $courses = new CoursesController();
 
 $courses->authCheck();
 
-include $path . '/work/ui/layouts/nav.php';
+include $path . '/apps/work/ui/layouts/nav.php';
 ?>
     
     <style>
@@ -363,7 +363,7 @@ include $path . '/work/ui/layouts/nav.php';
                                 <label for="" class="text-white fs-14 text-uppercase mb-2 d-none d-md-block">s</label>
                                 <div class="row">
                                     <div class="col-6">
-                                        <a href="/work/ui/views/browse/browse_education.php" class="clear-btn float-md-end">
+                                        <a href="/apps/work/ui/views/browse/browse_education.php" class="clear-btn float-md-end">
                                             Clear
                                         </a>
                                     </div>
@@ -437,7 +437,7 @@ include $path . '/work/ui/layouts/nav.php';
     </div>
 </section>
 <?php
-include $path . '/work/ui/layouts/footer.php';
+include $path . '/apps/work/ui/layouts/footer.php';
 
 
 ?>

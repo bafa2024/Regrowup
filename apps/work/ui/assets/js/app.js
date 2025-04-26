@@ -271,7 +271,7 @@ function logout() {
         .then((txt) => {
             if (txt == "NO") {
                 sessionStorage.removeItem("session");
-                location.href = "/work/ui/views/auth/login.php";
+                location.href = "/apps/work/ui/views/auth/login.php";
             }
         });
     return false;

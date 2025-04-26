@@ -1,13 +1,13 @@
 <?php
 session_start();
 $path = $_SERVER['DOCUMENT_ROOT'];
-include $path . '/work/controllers/ContractController.php';
+include $path . '/apps/work/controllers/ContractController.php';
 
 $contract = new ContractController();
 
 $contract->authCheck();
 
-include $path . '/work/ui/layouts/nav.php';
+include $path . '/apps/work/ui/layouts/nav.php';
 
 $role = $_SESSION['role'];
 
@@ -234,5 +234,5 @@ $contract->ongoing_contracts_fr($_SESSION['id']);
 }
 
 
-include $path . '/work/ui/layouts/footer.php';
+include $path . '/apps/work/ui/layouts/footer.php';
 ?>

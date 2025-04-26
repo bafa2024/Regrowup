@@ -160,11 +160,11 @@ $router->route('/finance', 'apps/fincycle/index.php');
 
 //$router->route('/pricing', 'pool/auth/pricing.php');
 
-$router->route('/work/services/elite', 'work/ui/views/services/home/elite.php');
+$router->route('/apps/work/services/elite', 'work/ui/views/services/home/elite.php');
 
-$router->route('/work/services/history', 'work/ui/views/services/home/bids.php');
+$router->route('/apps/work/services/history', 'work/ui/views/services/home/bids.php');
 
-$router->route('/work/services/home', 'work/ui/views/services/home/home.php');
+$router->route('/apps/work/services/home', 'work/ui/views/services/home/home.php');
 
 $router->route('/work', 'work/ui/views/services/home/home.php');
 

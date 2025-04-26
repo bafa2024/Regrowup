@@ -1,7 +1,7 @@
 <?php
 session_start();
 $path = $_SERVER['DOCUMENT_ROOT'];
-include $path . '/work/controllers/FinancesController.php';
+include $path . '/apps/work/controllers/FinancesController.php';
 $profile = new FinancesController();
 $user_id = $_SESSION['user_id'];
 $details=$profile->view($user_id);
@@ -23,7 +23,7 @@ $role=$profile->sanitize($details['role']);
 
 $role = $_SESSION['role'];
 
-include $path . '/work/ui/layouts/nav.php';
+include $path . '/apps/work/ui/layouts/nav.php';
 ?>
 <style>
     body{
@@ -128,7 +128,7 @@ include $path . '/work/ui/layouts/nav.php';
 </div>
 
   <?php
-  include $path . '/work/ui/layouts/footer.php';
+  include $path . '/apps/work/ui/layouts/footer.php';
 
 
   ?>

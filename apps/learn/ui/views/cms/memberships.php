@@ -1,8 +1,8 @@
 <?php
 session_start();
 $path=$_SERVER['DOCUMENT_ROOT'];
-include $path.'/work/controllers/AdminController.php';
-include $path.'/work/ui/layouts/nav_admin.php';
+include $path.'/apps/work/controllers/AdminController.php';
+include $path.'/apps/work/ui/layouts/nav_admin.php';
 $admin=new AdminController();
 
 $admin->authCheck();

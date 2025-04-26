@@ -1,7 +1,7 @@
 <?php
 session_start();
 $path = $_SERVER['DOCUMENT_ROOT'];
-include $path.'/work/controllers/JobController.php';
+include $path.'/apps/work/controllers/JobController.php';
 
 $job = new JobController();
 
@@ -27,7 +27,7 @@ $experience_requirements = $job_details['experience_requirements'];
 $job_description = $job_details['job_description'];
 
 
-include $path.'/work/ui/layouts/nav.php';
+include $path.'/apps/work/ui/layouts/nav.php';
 ?>
 
 <style>
@@ -197,7 +197,7 @@ if($role=="Client" || $role=="client"){
                                     class="btn-primary btn-lg border-0 bg-lblue text-white fw-600 px-4 py-2" name="delete_job">Delete Job</button>
                             </div>
                             <div class="col-md-4">
-                                <a href="/work/ui/views/manage/manage_jobs.php" class="btn-primary btn-lg border-0 bg-lblue text-white fw-600 px-4 py-2"
+                                <a href="/apps/work/ui/views/manage/manage_jobs.php" class="btn-primary btn-lg border-0 bg-lblue text-white fw-600 px-4 py-2"
                                 >Back</a>
                             </div>
                         </div>
@@ -345,7 +345,7 @@ if($role=="Client" || $role=="client"){
                         <div class="row">
                             
                             <div class="col-md-4">
-                                <a href="/work/ui/views/manage/manage_jobs.php" class="btn-primary btn-lg border-0 bg-lblue text-white fw-600 px-4 py-2"
+                                <a href="/apps/work/ui/views/manage/manage_jobs.php" class="btn-primary btn-lg border-0 bg-lblue text-white fw-600 px-4 py-2"
                                 >Back</a>
                             </div>
                         </div>
@@ -359,7 +359,7 @@ if($role=="Client" || $role=="client"){
 }
 ?>
 <?php
-include $path.'/work/ui/layouts/footer.php';
+include $path.'/apps/work/ui/layouts/footer.php';
 ?>
 
 

@@ -126,10 +126,6 @@ $router->route('/blog/cms/delete', function() {
     require 'apps/edu/ui/views/blogs/cms/delete.php';
 });
 
-$router->route('/stolen_ideas', function() {
-    require 'apps/edu/ui/views/blogs/app.php';
-});
-
 $router->route('/issues', function() {
     require 'apps/edu/ui/views/blogs/app.php';
 });
@@ -202,15 +198,15 @@ $router->route('/finance', function() {
     require 'apps/fincycle/index.php';
 });
 
-$router->route('/work/services/elite', function() {
+$router->route('/apps/work/services/elite', function() {
     require 'work/ui/views/services/home/elite.php';
 });
 
-$router->route('/work/services/history', function() {
+$router->route('/apps/work/services/history', function() {
     require 'work/ui/views/services/home/bids.php';
 });
 
-$router->route('/work/services/home', function() {
+$router->route('/apps/work/services/home', function() {
     require 'work/ui/views/services/home/home.php';
 });
 

@@ -1,7 +1,7 @@
 <?php
 session_start();
 $path = $_SERVER['DOCUMENT_ROOT'];
-include $path . '/work/controllers/ChatController.php';
+include $path . '/apps/work/controllers/ChatController.php';
 
 // Instantiate the ChatController
 $chatController = new ChatController();

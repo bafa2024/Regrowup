@@ -1,8 +1,8 @@
 <?php
 session_start();
 $path = $_SERVER['DOCUMENT_ROOT'];
-include $path . '/work/controllers/SearchController.php';
-include $path.'/work/ui/layouts/nav.php';
+include $path . '/apps/work/controllers/SearchController.php';
+include $path.'/apps/work/ui/layouts/nav.php';
 
 // Instantiate the SearchController
 $searchController = new SearchController();
@@ -42,7 +42,7 @@ if (isset($_GET['searchTerm'])) {
                             <div class="col-md-9">
                                 <div class="card-body">
                                     <h5 class="card-title">
-                                        <a href="/work/ui/views/profile/profile.php?ui=<?php echo $result['id']; ?>">
+                                        <a href="/apps/work/ui/views/profile/profile.php?ui=<?php echo $result['id']; ?>">
                                             <?php echo $result['first_name'] . ' ' . $result['last_name']; ?>
                                         </a>
                                     </h5>

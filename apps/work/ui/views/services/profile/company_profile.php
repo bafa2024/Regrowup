@@ -1,7 +1,7 @@
 <?php
 session_start();
 $path = $_SERVER['DOCUMENT_ROOT'];
-include $path . '/work/controllers/ProfileController.php';
+include $path . '/apps/work/controllers/ProfileController.php';
 $profile = new ProfileController();
 $user_id = $_SESSION['user_id'];
 $details=$profile->view($user_id);
@@ -34,14 +34,14 @@ if (isset($_POST['update_profile'])) {
 
     $res = $profile->update_profile($photo_name, $photo_tmp, $photo_size, $name, $phone, $email, $state, $city, $zip_code, $address, $user_id);
     if ($res) {
-        header("Location: /work/ui/views/profile/profile.php");
+        header("Location: /apps/work/ui/views/profile/profile.php");
     } else {
         echo "Error";
     }
 
 }
 
-include $path . '/work/ui/layouts/nav.php';
+include $path . '/apps/work/ui/layouts/nav.php';
 
 ?>
 
@@ -141,6 +141,6 @@ include $path . '/work/ui/layouts/nav.php';
 </section>
 
 <?php
-include $path . '/work/ui/layouts/footer.php';
+include $path . '/apps/work/ui/layouts/footer.php';
 
 ?>

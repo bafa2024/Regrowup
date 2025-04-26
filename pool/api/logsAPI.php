@@ -294,9 +294,9 @@ if (isset($_POST['act'])) {
     session_destroy();
     header("Location: /index.php");
   } else if ($act == "login") {
-    header("Location: /work/ui/views/auth/login.php");
+    header("Location: /apps/work/ui/views/auth/login.php");
   } else if ($act == "signup") {
-    header("Location: /work/ui/views/auth/signup.php");
+    header("Location: /apps/work/ui/views/auth/signup.php");
   }
 
 
@@ -381,7 +381,7 @@ if (isset($_POST['complete_profile'])) {
   $res = $settings->complete_profile();
 
   if ($res) {
-    //  $settings->alert_redirect("Profile Completed Successfully","/work/ui/views/home/home.php");
+    //  $settings->alert_redirect("Profile Completed Successfully","/apps/work/ui/views/home/home.php");
     $settings->re_log($user_id);
 
   } else {

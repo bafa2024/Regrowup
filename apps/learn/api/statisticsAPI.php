@@ -1,7 +1,7 @@
 <?php
 session_start();
 $path = $_SERVER['DOCUMENT_ROOT'];
-include $path.'/work/controllers/StatisticsController.php';
+include $path.'/apps/work/controllers/StatisticsController.php';
 
 $statistics = new StatisticsController();
 $statistics->authCheck();

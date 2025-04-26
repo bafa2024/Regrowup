@@ -1,7 +1,7 @@
 <?php
 session_start();
 $path = $_SERVER['DOCUMENT_ROOT'];
-include $path . '/work/controllers/FinancesController.php';
+include $path . '/apps/work/controllers/FinancesController.php';
 $finances = new FinancesController();
 $settings = $finances;
 
@@ -40,9 +40,9 @@ if(isset($_POST['withdraw'])){
 
   $res = $finances->payout($destination,$amount,$currency);
   if($res){
-    $finances->alert_redirect("Withdrawal Successful","/work/ui/views/finance/finances.php");
+    $finances->alert_redirect("Withdrawal Successful","/apps/work/ui/views/finance/finances.php");
   }else{
-    $finances->alert_redirect("Withdrawal Failed","/work/ui/views/finance/finances.php");
+    $finances->alert_redirect("Withdrawal Failed","/apps/work/ui/views/finance/finances.php");
   }
 
 }
@@ -62,9 +62,9 @@ if(isset($_POST['contract_deposit'])){
 
   $dp=$finances->make_deposit();
   if($dp){
-    $finances->alert_redirect("Deposit Successful","/work/ui/views/manage/manage_contracts.php");
+    $finances->alert_redirect("Deposit Successful","/apps/work/ui/views/manage/manage_contracts.php");
   }else{
-    $finances->alert_redirect("Deposit Failed","/work/ui/views/finance/deposit.php?am=$amount");
+    $finances->alert_redirect("Deposit Failed","/apps/work/ui/views/finance/deposit.php?am=$amount");
   }
 
 }
@@ -73,9 +73,9 @@ if(isset($_POST['add_card'])){
   
 
 if ($finances->add_payment_methods()){
-  $finances->alert_redirect("Card Added","/work/ui/views/finance/finances.php");
+  $finances->alert_redirect("Card Added","/apps/work/ui/views/finance/finances.php");
 }else{
-  $finances->alert_redirect("Card Failed","/work/ui/views/finance/finances.php");
+  $finances->alert_redirect("Card Failed","/apps/work/ui/views/finance/finances.php");
 }
 
 
@@ -129,7 +129,7 @@ $fp_ch=$finances->fp_check($user_id);
 if($fp_ch){
 
 
-    $finances->alert_redirect("Financial Profile Already Existed","/work/ui/views/finance/finances.php?form=fp_profile");
+    $finances->alert_redirect("Financial Profile Already Existed","/apps/work/ui/views/finance/finances.php?form=fp_profile");
 
   }else{
   
@@ -154,9 +154,9 @@ if($fp_ch){
         $fp=$finances->user_fp($user_id,$email,$stripe_connect_id,$stripe_customer_id,$source_id,$card_token);
 
         if($fp){
-          $finances->alert_redirect("Financial Profile Created","/work/ui/views/finance/finances.php?form=fp_profile");
+          $finances->alert_redirect("Financial Profile Created","/apps/work/ui/views/finance/finances.php?form=fp_profile");
         }else{
-          $finances->alert_redirect("Financial Profile Creation Failed","/work/ui/views/finance/finances.php?form=fp_profile");
+          $finances->alert_redirect("Financial Profile Creation Failed","/apps/work/ui/views/finance/finances.php?form=fp_profile");
         }
 
         

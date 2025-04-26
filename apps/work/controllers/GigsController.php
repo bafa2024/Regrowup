@@ -210,7 +210,7 @@ class GigsController extends Controller{
                     </div>
                     <div class="flex-shrink-0">
                         <div class="d-flex gap-3">
-                            <a href="/work/ui/views/purchases/pur_gig.php?gig='.$row['id'].'&u='.$row['user_id'].'" class="apply-btn">Buy Now</a>                            
+                            <a href="/apps/work/ui/views/purchases/pur_gig.php?gig='.$row['id'].'&u='.$row['user_id'].'" class="apply-btn">Buy Now</a>                            
                             </a>
                         </div>
                     </div>

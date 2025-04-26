@@ -1,13 +1,13 @@
 <?php
 session_start();
 $path=$_SERVER['DOCUMENT_ROOT'];
-include $path.'/work/controllers/HomeController.php';
+include $path.'/apps/work/controllers/HomeController.php';
 
 $home=new HomeController();
 
 $home->authCheck();
 
-include $path.'/work/ui/layouts/nav.php';
+include $path.'/apps/work/ui/layouts/nav.php';
 
 ?>
 <style>
@@ -131,7 +131,7 @@ input[type=number] {
 
 
 <?php
-include $path.'/work/ui/layouts/footer.php';
+include $path.'/apps/work/ui/layouts/footer.php';
 ?>
 <script>
 function freelancerserverice() {

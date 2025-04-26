@@ -1,8 +1,8 @@
 <header class="p-1 mb-2 border-bottom shadow ">
     <div class="container">
       <div class="d-flex  align-items-center justify-content-center justify-content-lg-start">
-        <a href="/work/ui/views/home/home.php" class="d-flex align-left mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
-          <img class="bi me-2" width="80" height="60" role="img"  src="/work/ui/assets/images/logo.png" alt="logo" aria-label="Bootstrap"/>
+        <a href="/apps/work/ui/views/home/home.php" class="d-flex align-left mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
+          <img class="bi me-2" width="80" height="60" role="img"  src="/apps/work/ui/assets/images/logo.png" alt="logo" aria-label="Bootstrap"/>
         </a>
       
         <?php
@@ -15,9 +15,9 @@
           POST
           </a>
           <ul class="dropdown-menu text-small">
-          <li><a class="dropdown-item" href="/work/ui/views/post/post_gig.php"> Post a Gig</a></li>
+          <li><a class="dropdown-item" href="/apps/work/ui/views/post/post_gig.php"> Post a Gig</a></li>
                             
-                                    <li><a class="dropdown-item" href="/work/ui/views/post/post_services.php"> Post Local Service </a></li>      
+                                    <li><a class="dropdown-item" href="/apps/work/ui/views/post/post_services.php"> Post Local Service </a></li>      
           </ul>
         </div>
         <div class="dropdown text-end p-1">
@@ -25,9 +25,9 @@
           CREATE
           </a>
           <ul class="dropdown-menu text-small">
-          <li><a class="dropdown-item" href="/work/ui/views/create/create_cv.php"> Create CV</a></li>
-                                    <li><a class="dropdown-item" href="/work/ui/views/create/create_blog.php"> Blog Post</a></li>
-                                    <li><a class="dropdown-item" href="/work/ui/views/create/create_course.php"> Create a Course </a></li>
+          <li><a class="dropdown-item" href="/apps/work/ui/views/create/create_cv.php"> Create CV</a></li>
+                                    <li><a class="dropdown-item" href="/apps/work/ui/views/create/create_blog.php"> Blog Post</a></li>
+                                    <li><a class="dropdown-item" href="/apps/work/ui/views/create/create_course.php"> Create a Course </a></li>
           </ul>
         </div>
         <div class="dropdown text-end p-1">
@@ -36,9 +36,9 @@
           </a>
           <ul class="dropdown-menu text-small">
         
-          <li><a class="dropdown-item" href="/work/ui/views/browse/browse_blogs.php"> Blogs</a></li>
-          <li><a class="dropdown-item" href="/work/ui/views/browse/browse_contracts.php"> Contracts</a></li>            
-                            <li><a class="dropdown-item" href="/work/ui/views/browse/browse_jobs.php"> Jobs
+          <li><a class="dropdown-item" href="/apps/work/ui/views/browse/browse_blogs.php"> Blogs</a></li>
+          <li><a class="dropdown-item" href="/apps/work/ui/views/browse/browse_contracts.php"> Contracts</a></li>            
+                            <li><a class="dropdown-item" href="/apps/work/ui/views/browse/browse_jobs.php"> Jobs
 
                             </a>
                            </li>
@@ -49,14 +49,14 @@
           MANAGE
           </a>
           <ul class="dropdown-menu text-small">
-          <li><a class="dropdown-item" href="/work/ui/views/manage/manage_jobs.php"> Employment</a></li>
+          <li><a class="dropdown-item" href="/apps/work/ui/views/manage/manage_jobs.php"> Employment</a></li>
                             
-                                    <li><a class="dropdown-item" href="/work/ui/views/manage/manage_gigs.php"> Gigs</a></li>    
-                                    <li><a class="dropdown-item" href="/work/ui/views/manage/manage_blogs.php"> Blogs</a></li> 
-                                    <li><a class="dropdown-item" href="/work/ui/views/manage/manage_contracts.php"> Freelance Contracts</a></li>    
+                                    <li><a class="dropdown-item" href="/apps/work/ui/views/manage/manage_gigs.php"> Gigs</a></li>    
+                                    <li><a class="dropdown-item" href="/apps/work/ui/views/manage/manage_blogs.php"> Blogs</a></li> 
+                                    <li><a class="dropdown-item" href="/apps/work/ui/views/manage/manage_contracts.php"> Freelance Contracts</a></li>    
                                     
-                                    <li><a class="dropdown-item" href="/work/ui/views/manage/manage_services.php"> Local Services</a></li> 
-                                    <li><a class="dropdown-item" href="/work/ui/views/manage/manage_courses.php"> Education</a></li>    
+                                    <li><a class="dropdown-item" href="/apps/work/ui/views/manage/manage_services.php"> Local Services</a></li> 
+                                    <li><a class="dropdown-item" href="/apps/work/ui/views/manage/manage_courses.php"> Education</a></li>    
           </ul>
         </div>
         <div class="dropdown text-end p-1">
@@ -72,7 +72,7 @@
           </ul>
         </div>
         <div class="text-end p-1 ">
-          <a href="/work/ui/views/chat/chat.php" class="d-block link-body-emphasis text-decoration-none " >
+          <a href="/apps/work/ui/views/chat/chat.php" class="d-block link-body-emphasis text-decoration-none " >
         
           <i class="fa fa-envelope"></i>
           </a>
@@ -92,15 +92,15 @@
     
           <ul class="dropdown-menu text-small">
           
-            <li><a class="dropdown-item" href="/work/ui/views/profile/profile.php?ui=<?php echo $_SESSION['id']; ?>"><span class="fs-14 text-black flex-grow"><?php echo $_SESSION['full_name']; ?></span></a><span></span> </li>
+            <li><a class="dropdown-item" href="/apps/work/ui/views/profile/profile.php?ui=<?php echo $_SESSION['id']; ?>"><span class="fs-14 text-black flex-grow"><?php echo $_SESSION['full_name']; ?></span></a><span></span> </li>
             <li><hr class="dropdown-divider"></li>
 
-            <li><a class="dropdown-item" href="/work/ui/views/settings/settings.php?form=profile">Settings</a></li>
-            <li><a class="dropdown-item" href="/work/ui/views/home/statistics.php">Statistics</a></li>
-            <li><a class="dropdown-item" href="/work/ui/views/finance/finances.php">Finances</a></li>
-            <li><a class="dropdown-item" href="/work/ui/views/profile/users_reviews.php">Reviews</a></li>
-            <li><a class="dropdown-item" href="/work/ui/views/auth/invite.php">Invite&Earn</a></li>
-            <li><a class="dropdown-item" href="/work/ui/views/finance/finances.php">Help desk</a></li>
+            <li><a class="dropdown-item" href="/apps/work/ui/views/settings/settings.php?form=profile">Settings</a></li>
+            <li><a class="dropdown-item" href="/apps/work/ui/views/home/statistics.php">Statistics</a></li>
+            <li><a class="dropdown-item" href="/apps/work/ui/views/finance/finances.php">Finances</a></li>
+            <li><a class="dropdown-item" href="/apps/work/ui/views/profile/users_reviews.php">Reviews</a></li>
+            <li><a class="dropdown-item" href="/apps/work/ui/views/auth/invite.php">Invite&Earn</a></li>
+            <li><a class="dropdown-item" href="/apps/work/ui/views/finance/finances.php">Help desk</a></li>
             <li><a class="dropdown-item" href="/logout">Logout</a></li>
           
 
@@ -146,9 +146,9 @@
           POST
           </a>
           <ul class="dropdown-menu text-small">
-          <li><a class="dropdown-item" href="/work/ui/views/post/post_job.php"> Post Jobs</a></li>
+          <li><a class="dropdown-item" href="/apps/work/ui/views/post/post_job.php"> Post Jobs</a></li>
                         
-          <li><a class="dropdown-item" href="/work/ui/views/post/post_contract.php"> Post  Contracts </a></li>
+          <li><a class="dropdown-item" href="/apps/work/ui/views/post/post_contract.php"> Post  Contracts </a></li>
 
           </ul>
         </div>
@@ -157,7 +157,7 @@
           CREATE
           </a>
           <ul class="dropdown-menu text-small">
-          <li><a class="dropdown-item" href="/work/ui/views/create/create_blog.php"> Blog Post</a></li>
+          <li><a class="dropdown-item" href="/apps/work/ui/views/create/create_blog.php"> Blog Post</a></li>
           </ul>
         </div>
         <div class="dropdown text-end p-1">
@@ -165,13 +165,13 @@
           BROWSE
           </a>
           <ul class="dropdown-menu text-small">
-          <li><a class="dropdown-item" href="/work/ui/views/browse/browse_blogs.php"> Blogs</a></li>
+          <li><a class="dropdown-item" href="/apps/work/ui/views/browse/browse_blogs.php"> Blogs</a></li>
                             
                                 
-                            <li><a class="dropdown-item" href="/work/ui/views/browse/browse_freelancers.php"> Freelancers</a></li>
-                            <li><a class="dropdown-item" href="/work/ui/views/browse/browse_gigs.php"> Gigs </a></li>
-                            <li><a class="dropdown-item" href="/work/ui/views/browse/browse_education.php"> Courses</a></li>
-                            <li><a class="dropdown-item" href="/work/ui/views/browse/browse_services.php"> Local Services </a></li>
+                            <li><a class="dropdown-item" href="/apps/work/ui/views/browse/browse_freelancers.php"> Freelancers</a></li>
+                            <li><a class="dropdown-item" href="/apps/work/ui/views/browse/browse_gigs.php"> Gigs </a></li>
+                            <li><a class="dropdown-item" href="/apps/work/ui/views/browse/browse_education.php"> Courses</a></li>
+                            <li><a class="dropdown-item" href="/apps/work/ui/views/browse/browse_services.php"> Local Services </a></li>
           </ul>
         </div>
         <div class="dropdown text-end p-1">
@@ -179,16 +179,16 @@
           MANAGE
           </a>
           <ul class="dropdown-menu text-small">
-          <li><a class="dropdown-item" href="/work/ui/views/manage/manage_jobs.php"> Jobs</a></li>
+          <li><a class="dropdown-item" href="/apps/work/ui/views/manage/manage_jobs.php"> Jobs</a></li>
                             
         
                             
-                            <li><a class="dropdown-item" href="/work/ui/views/manage/manage_gigs.php"> Gigs</a></li>    
-                            <li><a class="dropdown-item" href="/work/ui/views/manage/manage_blogs.php"> Blogs</a></li> 
-                            <li><a class="dropdown-item" href="/work/ui/views/manage/manage_contracts.php"> Contracts</a></li>    
+                            <li><a class="dropdown-item" href="/apps/work/ui/views/manage/manage_gigs.php"> Gigs</a></li>    
+                            <li><a class="dropdown-item" href="/apps/work/ui/views/manage/manage_blogs.php"> Blogs</a></li> 
+                            <li><a class="dropdown-item" href="/apps/work/ui/views/manage/manage_contracts.php"> Contracts</a></li>    
                     
-                            <li><a class="dropdown-item" href="/work/ui/views/manage/manage_courses.php"> Education</a></li> 
-                            <li><a class="dropdown-item" href="/work/ui/views/manage/manage_services.php"> Local Services</a></li>  
+                            <li><a class="dropdown-item" href="/apps/work/ui/views/manage/manage_courses.php"> Education</a></li> 
+                            <li><a class="dropdown-item" href="/apps/work/ui/views/manage/manage_services.php"> Local Services</a></li>  
           </ul>
         </div>
         <div class="dropdown text-end p-1">
@@ -204,7 +204,7 @@
           </ul>
         </div>
         <div class="text-end p-1 ">
-          <a href="/work/ui/views/chat/chat.php" class="d-block link-body-emphasis text-decoration-none " >
+          <a href="/apps/work/ui/views/chat/chat.php" class="d-block link-body-emphasis text-decoration-none " >
         
           <i class="fa fa-envelope"></i>
           </a>
@@ -223,14 +223,14 @@
       
     
           <ul class="dropdown-menu text-small">
-          <li><a class="dropdown-item" href="/work/ui/views/profile/profile.php?ui=<?php echo $_SESSION['id']; ?>"><span class="fs-14 text-black flex-grow"><?php echo $_SESSION['full_name']; ?></span></a><span></span> </li>
+          <li><a class="dropdown-item" href="/apps/work/ui/views/profile/profile.php?ui=<?php echo $_SESSION['id']; ?>"><span class="fs-14 text-black flex-grow"><?php echo $_SESSION['full_name']; ?></span></a><span></span> </li>
             <li><hr class="dropdown-divider"></li>
 
             <li><a class="dropdown-item" href="/settings">Settings</a></li>
-            <li><a class="dropdown-item" href="/work/ui/views/home/statistics.php">Statistics</a></li>
-            <li><a class="dropdown-item" href="/work/ui/views/finance/finances.php">Finances</a></li>
-            <li><a class="dropdown-item" href="/work/ui/views/auth/invite.php">Invite&Earn</a></li>
-            <li><a class="dropdown-item" href="/work/ui/views/management/">Help desk</a></li>
+            <li><a class="dropdown-item" href="/apps/work/ui/views/home/statistics.php">Statistics</a></li>
+            <li><a class="dropdown-item" href="/apps/work/ui/views/finance/finances.php">Finances</a></li>
+            <li><a class="dropdown-item" href="/apps/work/ui/views/auth/invite.php">Invite&Earn</a></li>
+            <li><a class="dropdown-item" href="/apps/work/ui/views/management/">Help desk</a></li>
           
             <li><a class="dropdown-item" href="/logout">Logout</a></li>
           

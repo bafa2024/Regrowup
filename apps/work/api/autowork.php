@@ -1,7 +1,7 @@
 <?php
 //session_start();
 $path=$_SERVER['DOCUMENT_ROOT'];
-include $path.'/work/controllers/ExternalProjects.php';
+include $path.'/apps/apps/work/controllers/ExternalProjects.php';
 
 
 $fr = new Bidding();
@@ -10,11 +10,11 @@ $fr = new Bidding();
 
 //wget -O /dev/null https://wheeleder.com/api/autobid.php?task=autobid
 
-//wget -O /dev/null https://wheeleder.com//work/api/autowork.php?task=manybids
+//wget -O /dev/null https://wheeleder.com//apps/work/api/autowork.php?task=manybids
 
 //Write a cron job to run this script every 5 minutes
 
-//wget -O /dev/null https://wheeleder.xyz/work/api/autowork.php?task=manybids
+//wget -O /dev/null https://wheeleder.xyz/apps/work/api/autowork.php?task=manybids
 
 //header('Content-Type: application/json'); // Set the header to return JSON
 

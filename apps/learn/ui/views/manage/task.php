@@ -1,7 +1,7 @@
 <?php
 session_start();
 $path = $_SERVER['DOCUMENT_ROOT'];
-include $path . '/work/controllers/ContractController.php';
+include $path . '/apps/work/controllers/ContractController.php';
 
 $contract = new ContractController();
 
@@ -9,7 +9,7 @@ $contract->authCheck();
 
 $task=$_GET['ts'];
 
-include $path . '/work/ui/layouts/nav.php';
+include $path . '/apps/work/ui/layouts/nav.php';
 
 $role = $_SESSION['role'];
 
@@ -61,5 +61,5 @@ if($role=="Client" || $role=="client"){
 
 <?php
 }
-include $path . '/work/ui/layouts/footer.php';
+include $path . '/apps/work/ui/layouts/footer.php';
 ?>

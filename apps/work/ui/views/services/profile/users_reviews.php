@@ -1,7 +1,7 @@
 <?php
 session_start();
 $path = $_SERVER['DOCUMENT_ROOT'];
-include $path . '/work/controllers/ProfileController.php';
+include $path . '/apps/work/controllers/ProfileController.php';
 $profile = new ProfileController();
 
 $reviewer = $profile->url_var($_GET['reviewer']);
@@ -12,7 +12,7 @@ $contract= $profile->url_var($_GET['ct']);
 
 
 
-include $path . '/work/ui/layouts/nav.php';
+include $path . '/apps/work/ui/layouts/nav.php';
 
 ?>
 
@@ -64,6 +64,6 @@ include $path . '/work/ui/layouts/nav.php';
 </section>
 
 <?php
-include $path . '/work/ui/layouts/footer.php';
+include $path . '/apps/work/ui/layouts/footer.php';
 
 ?>

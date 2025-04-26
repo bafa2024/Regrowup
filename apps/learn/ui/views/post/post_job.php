@@ -1,13 +1,13 @@
 <?php
 session_start();
 $path = $_SERVER['DOCUMENT_ROOT'];
-include $path.'/work/controllers/JobController.php';
+include $path.'/apps/work/controllers/JobController.php';
 
 $job = new JobController();
 
 $job->authCheck();
 
-include $path.'/work/ui/layouts/nav.php';
+include $path.'/apps/work/ui/layouts/nav.php';
 ?>
 
 <style>
@@ -161,7 +161,7 @@ include $path.'/work/ui/layouts/nav.php';
     </div>
 </section>
 <?php
-include $path.'/work/ui/layouts/footer.php';
+include $path.'/apps/work/ui/layouts/footer.php';
 ?>
 
 <script>

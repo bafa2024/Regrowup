@@ -1,7 +1,7 @@
 <?php
 session_start();
 $path=$_SERVER['DOCUMENT_ROOT'];
-include $path.'/work/controllers/HomeController.php';
+include $path.'/apps/work/controllers/HomeController.php';
 
 $home=new HomeController();
 
@@ -11,7 +11,7 @@ $home->authCheck();
 
 $user_type=$_SESSION['user_type'];
 
-  include $path.'/work/ui/layouts/nav.php';
+  include $path.'/apps/work/ui/layouts/nav.php';
 
 ?>
 
@@ -2986,7 +2986,7 @@ function removediv(id) {
 
 
 <?php
-include $path.'/work/ui/layouts/footer.php';
+include $path.'/apps/work/ui/layouts/footer.php';
 
 
 ?>

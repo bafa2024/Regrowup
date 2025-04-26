@@ -1,7 +1,7 @@
 <?php
 session_start();
 $path = $_SERVER['DOCUMENT_ROOT'];
-include $path.'/work/controllers/FilesController.php';
+include $path.'/apps/work/controllers/FilesController.php';
 $filesController = new FilesController();
 
 header("Access-Control-Allow-Origin: *");

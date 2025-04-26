@@ -51,7 +51,7 @@ class ContractController extends Controller
         <p class="card-text">Budget: '.$row['price'].' '.$row['currency'].'</p>
         <p class="card-text">Timeline: '.$row['duration'].'</p>
         
-        <a href="/work/ui/views/applications/apply_contract.php?ct='.$row['id'].'&cl='.$row['user_id'].'" class="apply-btn">Apply Now</a>    
+        <a href="/apps/work/ui/views/applications/apply_contract.php?ct='.$row['id'].'&cl='.$row['user_id'].'" class="apply-btn">Apply Now</a>    
         </div>
          </div>
         </div>
@@ -168,7 +168,7 @@ class ContractController extends Controller
             </div>
             <div class="flex-shrink-0">
                 <div class="d-flex gap-3">
-                    <a href="/work/ui/views/applications/apply_contract.php?ct='.$row['id'].'&cl='.$row['user_id'].'" class="apply-btn">Apply Now</a>
+                    <a href="/apps/work/ui/views/applications/apply_contract.php?ct='.$row['id'].'&cl='.$row['user_id'].'" class="apply-btn">Apply Now</a>
                     
                     
                     </div>
@@ -234,9 +234,9 @@ class ContractController extends Controller
                 </div>
                 <div class="flex-shrink-0">
                     <div class="d-flex gap-3">
-                        <a href="/work/ui/views/freelancing/hire.php" class="apply-btn">Hire Now</a>
+                        <a href="/apps/work/ui/views/freelancing/hire.php" class="apply-btn">Hire Now</a>
                         
-                            <a href="/work/ui/views/applications/apply_contract.php"
+                            <a href="/apps/work/ui/views/applications/apply_contract.php"
                             class="mytext-black fs-14 border-0 bg-transparent">
                             <i class="fal fa-bookmark"></i>
                         </a>
@@ -281,7 +281,7 @@ class ContractController extends Controller
 
         
         <p class="card-text">'.$row['country'].'</p>
-        <p class="card-text"><small class="text-muted"><a href="/work/ui/views/freelancing/hire.php?fr='.$row['id'].'" class="apply-btn">Hire Now</a></small></p>
+        <p class="card-text"><small class="text-muted"><a href="/apps/work/ui/views/freelancing/hire.php?fr='.$row['id'].'" class="apply-btn">Hire Now</a></small></p>
             </div>
          </div>
         </div>
@@ -390,8 +390,8 @@ class ContractController extends Controller
                 <div class="d-flex gap-3">
             
                 <div class="d-flex gap-3">
-                <a href="/work/ui/views/applications/apply_contract.php?ct='.$row['id'].'&cl='.$row['user_id'].'" class="apply-btn">Apply Now</a>
-                <a href="/work/ui/views/manage/view_contract.php?ct='.$row['id'].'&cl='.$row['user_id'].'" class="apply-btn">View Contract</a>
+                <a href="/apps/work/ui/views/applications/apply_contract.php?ct='.$row['id'].'&cl='.$row['user_id'].'" class="apply-btn">Apply Now</a>
+                <a href="/apps/work/ui/views/manage/view_contract.php?ct='.$row['id'].'&cl='.$row['user_id'].'" class="apply-btn">View Contract</a>
                 </div>
                 </div>
             </div>
@@ -434,7 +434,7 @@ class ContractController extends Controller
             
                 <div class="d-flex gap-3">
             
-                <a href="/work/ui/views/manage/view_contract.php?ct='.$row['id'].'&cl='.$row['user_id'].'" class="apply-btn">Manage Contract</a>
+                <a href="/apps/work/ui/views/manage/view_contract.php?ct='.$row['id'].'&cl='.$row['user_id'].'" class="apply-btn">Manage Contract</a>
                 </div>
                 </div>
             </div>
@@ -464,7 +464,7 @@ class ContractController extends Controller
                         <div class="row">
                             <div class="col-9">
                                 <div class="row">
-                                    <a href="/work/ui/views/manage/project.php?ct=' . $row['id'] . '&cl=' . $row['user_id'] . '" class="">
+                                    <a href="/apps/work/ui/views/manage/project.php?ct=' . $row['id'] . '&cl=' . $row['user_id'] . '" class="">
                                         <p class="">' . $row["title"] . '</p>
                                     </a>
                                 </div>
@@ -474,9 +474,9 @@ class ContractController extends Controller
                             </div>
                             <div class="col-2">
                             <div class="flex-shrink-0">
-                                <a href="/work/ui/views/manage/project.php?ct=' . $row['id'] . '&cl=' . $row['user_id'] . '" class="btn btn-primary">Manage</a>
+                                <a href="/apps/work/ui/views/manage/project.php?ct=' . $row['id'] . '&cl=' . $row['user_id'] . '" class="btn btn-primary">Manage</a>
                             </div>
-                          <a href="/work/ui/views/chat/chat.php?dest='.$row["user_id"].'&sender='.$row["awarded_to"].'" class="btn btn-primary">Chat</a>
+                          <a href="/apps/work/ui/views/chat/chat.php?dest='.$row["user_id"].'&sender='.$row["awarded_to"].'" class="btn btn-primary">Chat</a>
                           </div>
                         </div>
                     </div>
@@ -504,7 +504,7 @@ class ContractController extends Controller
                         <div class="row">
                             <div class="col-10">
                                 <div class="row">
-                                    <a href="/work/ui/views/manage/project.php?ct=' . $row['id'] . '&cl=' . $row['user_id'] . '" class="">
+                                    <a href="/apps/work/ui/views/manage/project.php?ct=' . $row['id'] . '&cl=' . $row['user_id'] . '" class="">
                                         <p class="">' . $row["title"] . '</p>
                                     </a>
                                 </div>
@@ -516,9 +516,9 @@ class ContractController extends Controller
                             </div>
                             <div class="col-2">
                             <div class="flex-shrink-0">
-                                <a href="/work/ui/views/manage/project.php?ct=' . $row['id'] . '&cl=' . $row['user_id'] . '" class="btn btn-primary">Manage</a>
+                                <a href="/apps/work/ui/views/manage/project.php?ct=' . $row['id'] . '&cl=' . $row['user_id'] . '" class="btn btn-primary">Manage</a>
                             </div>
-                          <a href="/work/ui/views/chat/chat.php?dest='.$row["user_id"].'&sender='.$row["awarded_to"].'" class="btn btn-primary">Chat</a>
+                          <a href="/apps/work/ui/views/chat/chat.php?dest='.$row["user_id"].'&sender='.$row["awarded_to"].'" class="btn btn-primary">Chat</a>
                           </div>
                         </div>
                     </div>
@@ -559,7 +559,7 @@ class ContractController extends Controller
             <div class="d-flex gap-3">
             
             <div class="d-flex gap-3">
-            <a href="/work/ui/views/profile/users_reviews.php?reviewer='.$row["user_id"].'&reviewee='.$row["awarded_to"].'&ct='.$row['id'].'" class="btn btn-primary">Feedback</a>
+            <a href="/apps/work/ui/views/profile/users_reviews.php?reviewer='.$row["user_id"].'&reviewee='.$row["awarded_to"].'&ct='.$row['id'].'" class="btn btn-primary">Feedback</a>
             
             </div>
             </div>
@@ -601,7 +601,7 @@ class ContractController extends Controller
             </div>
             <div class="flex-shrink-0">
             <div class="d-flex gap-3">
-            <a href="/work/ui/views/profile/users_reviews.php?reviewer='.$row["awarded_to"].'&reviewee='.$row["user_id"].'&ct='.$row['id'].'" class="btn btn-primary">Feedback</a>
+            <a href="/apps/work/ui/views/profile/users_reviews.php?reviewer='.$row["awarded_to"].'&reviewee='.$row["user_id"].'&ct='.$row['id'].'" class="btn btn-primary">Feedback</a>
             
             </div>
         </div>
@@ -643,7 +643,7 @@ class ContractController extends Controller
             
                 <div class="d-flex gap-3">
             
-                <a href="/work/ui/views/applications/view_application.php?app_id='.$row['id'].'&cl='.$row['client_id'].'" class="apply-btn">Manage</a>
+                <a href="/apps/work/ui/views/applications/view_application.php?app_id='.$row['id'].'&cl='.$row['client_id'].'" class="apply-btn">Manage</a>
                 </div>
                 </div>
             </div>
@@ -702,7 +702,7 @@ class ContractController extends Controller
             
             
             
-                <a href="/work/ui/views/chat/chat.php?dest='.$row["applicant_id"].'&sender='.$row["client_id"].'" class="btn btn-secondary">Chat</a>
+                <a href="/apps/work/ui/views/chat/chat.php?dest='.$row["applicant_id"].'&sender='.$row["client_id"].'" class="btn btn-secondary">Chat</a>
                 <form action="/api/contractAPI.php" method="post"  class="form-group">
                 <input type="hidden" name="contract_id" value="'.$row["contract_id"].'">
                 <input type="hidden" name="applicant_id" value="'.$row["applicant_id"].'">
@@ -742,7 +742,7 @@ class ContractController extends Controller
               <div class="flex-grow-1">
                 <div class="d-flex flex-column gap-1">
                 <h3 class="mtext-black text-uppercase fs-18 fw-800">
-                        <a href="/work/ui/views/profile/profile.php?ui='.$row["applicant_id"].'">Applicant Profile</a>
+                        <a href="/apps/work/ui/views/profile/profile.php?ui='.$row["applicant_id"].'">Applicant Profile</a>
                     </h3>
                     <h3 class="mtext-black text-uppercase fs-18 fw-800">
                         ' . $row["charges"] . '
@@ -758,7 +758,7 @@ class ContractController extends Controller
             </div>
             <div class="flex-shrink-0">
                 <div class="d-flex gap-3">
-                <a href="/work/ui/views/chat/chat.php?dest='.$row["applicant_id"].'&sender='.$row["client_id"].'" class="btn btn-secondary">Chat</a>
+                <a href="/apps/work/ui/views/chat/chat.php?dest='.$row["applicant_id"].'&sender='.$row["client_id"].'" class="btn btn-secondary">Chat</a>
                 <form action="/api/contractAPI.php" method="post">
                 <input type="hidden" name="contract_id" value="'.$row["contract_id"].'">
                 <input type="hidden" name="applicant_id" value="'.$row["applicant_id"].'">
@@ -812,7 +812,7 @@ class ContractController extends Controller
             </div>
             <div class="flex-shrink-0">
                 <div class="d-flex gap-3">
-                <a href="/work/ui/views/chat/chat.php?sender='.$row["awarded_to"].'&dest='.$row["user_id"].'" class="btn btn-sm">Chat</a>
+                <a href="/apps/work/ui/views/chat/chat.php?sender='.$row["awarded_to"].'&dest='.$row["user_id"].'" class="btn btn-sm">Chat</a>
                 <form action="/api/contractAPI.php" method="post">
                 <input type="hidden" name="contract_id" value="'.$row["id"].'">
                 <input type="hidden" name="applicant_id" value="'.$row["awarded_to"].'">
@@ -1039,7 +1039,7 @@ class ContractController extends Controller
                 '.$res["description"].'
               </div>
              
-              <a href="/work/ui/views/manage/task.php?ts='.$res["id"].'" class="btn btn-sm rounded border">Action</a>
+              <a href="/apps/work/ui/views/manage/task.php?ts='.$res["id"].'" class="btn btn-sm rounded border">Action</a>
             </li>
             
           ';
@@ -1180,7 +1180,7 @@ class ContractController extends Controller
     
             echo '
             <ul>
-            <li><a href="/work/ui/views/manage/milestone.php?ml='.$res["id"].'&ct='.$res['contract'].'&cl='.$res['client'].'"> <p class="card-title">'.$res["name"].'</p></a></li>
+            <li><a href="/apps/work/ui/views/manage/milestone.php?ml='.$res["id"].'&ct='.$res['contract'].'&cl='.$res['client'].'"> <p class="card-title">'.$res["name"].'</p></a></li>
             
 
             </ul>';

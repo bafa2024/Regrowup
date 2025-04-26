@@ -1,7 +1,7 @@
 <?php
 session_start();
 $path=$_SERVER['DOCUMENT_ROOT'];
-include $path.'/work/controllers/CoursesController.php';
+include $path.'/apps/work/controllers/CoursesController.php';
 
 $courses=new CoursesController();
 
@@ -20,14 +20,14 @@ if(isset($_POST['create_course'])){
     
     if($courses->store()){
 
-        $courses->alert_redirect("Course Created Successfully","/work/ui/views/create/create_course.php");
+        $courses->alert_redirect("Course Created Successfully","/apps/work/ui/views/create/create_course.php");
         
         
 
     }else{
 
         
-        $courses->alert_redirect("Course Creation Failed","/work/ui/views/create/create_course.php");
+        $courses->alert_redirect("Course Creation Failed","/apps/work/ui/views/create/create_course.php");
     }
     
 }

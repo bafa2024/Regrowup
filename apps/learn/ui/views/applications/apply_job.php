@@ -1,8 +1,8 @@
 <?php
 session_start();
 $path = $_SERVER['DOCUMENT_ROOT'];
-include $path.'/work/controllers/JobController.php';
-include $path.'/work/ui/layouts/nav.php';
+include $path.'/apps/work/controllers/JobController.php';
+include $path.'/apps/work/ui/layouts/nav.php';
 $job = new JobController();
 
 $job->authCheck();
@@ -11,7 +11,7 @@ $job_id = $job->url_var('jo');
 $client_id = $job->url_var('cl');
 $user_id = $_SESSION['user_id'];
 if($job->check_if_applied($job_id, $user_id)){
-    $job->alert_redirect("You have already applied for this job", "/work/ui/views/browse/browse_jobs.php");
+    $job->alert_redirect("You have already applied for this job", "/apps/work/ui/views/browse/browse_jobs.php");
 }
 
 $act= $job->url_var('act');
@@ -21,17 +21,17 @@ if($act == 'save'){
 
     if($job->check_if_saved($job_id,$user_id,$client_id)){
 
-        $job->alert_redirect("You have already saved this job", "/work/ui/views/browse/browse_jobs.php");
+        $job->alert_redirect("You have already saved this job", "/apps/work/ui/views/browse/browse_jobs.php");
 
     }else{
 
         if ($job->save_jobs($job_id,$user_id,$client_id)) {
 
-            $job->alert_redirect("Job  Saved successfully", "/work/ui/views/browse/browse_jobs.php");
+            $job->alert_redirect("Job  Saved successfully", "/apps/work/ui/views/browse/browse_jobs.php");
     
         } else {
             
-            $job->alert_redirect("Failed to Save", "/work/ui/views/browse/browse_jobs.php");
+            $job->alert_redirect("Failed to Save", "/apps/work/ui/views/browse/browse_jobs.php");
     
         }
 
@@ -133,5 +133,5 @@ if($act == 'save'){
 
 
 <?php
-include $path.'/work/ui/layouts/footer.php';
+include $path.'/apps/work/ui/layouts/footer.php';
 ?>

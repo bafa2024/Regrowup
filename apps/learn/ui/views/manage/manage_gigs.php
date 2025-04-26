@@ -1,13 +1,13 @@
 <?php
 session_start();
 $path = $_SERVER['DOCUMENT_ROOT'];
-include $path . '/work/controllers/GigsController.php';
+include $path . '/apps/work/controllers/GigsController.php';
 
 $gig = new GigsController();
 
 $gig ->authCheck();
 
-include $path . '/work/ui/layouts/nav.php';
+include $path . '/apps/work/ui/layouts/nav.php';
 
 
 $role = $_SESSION['role'];
@@ -36,7 +36,7 @@ if($role=="Client" || $role=="client"){
                                     class=" border border-seacondary border-opcity-25 bg-white px-2"><i
                                         class="fal fa-search mytext-black fs-16" aria-hidden="true"></i></button>
                                 
-                                <a href="/work/ui/views/manage/manage_gigs.php" class=" border border-seacondary border-opcity-25 bg-white px-2">Clear</a>
+                                <a href="/apps/work/ui/views/manage/manage_gigs.php" class=" border border-seacondary border-opcity-25 bg-white px-2">Clear</a>
                             </div>
                         </div>
                         </div>
@@ -139,7 +139,7 @@ if($role=="Client" || $role=="client"){
                                 <button type="submit"
                                     class=" border border-seacondary border-opcity-25 bg-white px-2"><i
                                         class="fal fa-search mytext-black fs-16" aria-hidden="true"></i></button>
-                                        <a href="/work/ui/views/manage/manage_gigs.php" class=" border border-seacondary border-opcity-25 bg-white px-2">Clear</a>
+                                        <a href="/apps/work/ui/views/manage/manage_gigs.php" class=" border border-seacondary border-opcity-25 bg-white px-2">Clear</a>
                             </div>
                         </div>
                         </div>
@@ -207,5 +207,5 @@ if($search){
 }
 
 
-include $path . '/work/ui/layouts/footer.php';
+include $path . '/apps/work/ui/layouts/footer.php';
 ?>

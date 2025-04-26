@@ -98,23 +98,23 @@ include $path.'/apps/edu/ui/layouts/nav.php';
                 </div>
 
                 <div class="list-group list-group-flush" role="tablist">
-                <a class="list-group-item list-group-item-action" data-toggle="list" href="/work/ui/views/settings/settings.php?form=app" role="tab">
+                <a class="list-group-item list-group-item-action" data-toggle="list" href="/apps/work/ui/views/settings/settings.php?form=app" role="tab">
                       App Settings
                     </a>
-                    <a class="list-group-item list-group-item-action" data-toggle="list" href="/work/ui/views/settings/settings.php?form=profile" role="tab">
+                    <a class="list-group-item list-group-item-action" data-toggle="list" href="/apps/work/ui/views/settings/settings.php?form=profile" role="tab">
                       Profile
                     </a>
-                    <a class="list-group-item list-group-item-action" data-toggle="list" href="/work/ui/views/settings/settings.php?form=security" role="tab">
+                    <a class="list-group-item list-group-item-action" data-toggle="list" href="/apps/work/ui/views/settings/settings.php?form=security" role="tab">
                       Password
                     </a>
-                    <a class="list-group-item list-group-item-action " data-toggle="list" href="/work/ui/views/settings/settings.php?form=company" role="tab">
+                    <a class="list-group-item list-group-item-action " data-toggle="list" href="/apps/work/ui/views/settings/settings.php?form=company" role="tab">
                       Company
                     </a>
                 
-                    <a class="list-group-item list-group-item-action " data-toggle="list" href="/work/ui/views/settings/settings.php?form=notifications" role="tab">
+                    <a class="list-group-item list-group-item-action " data-toggle="list" href="/apps/work/ui/views/settings/settings.php?form=notifications" role="tab">
                     Notifications
                     </a>
-                    <a class="list-group-item list-group-item-action " data-toggle="list" href="/work/ui/views/settings/settings.php?form=resume" role="tab">
+                    <a class="list-group-item list-group-item-action " data-toggle="list" href="/apps/work/ui/views/settings/settings.php?form=resume" role="tab">
                     My Resume/CV
                     </a>
                 </div>

@@ -3,13 +3,13 @@ session_start();
 $path = $_SERVER['DOCUMENT_ROOT'];
 
 // Get contract controller
-include $path.'/work/controllers/ContractController.php';
+include $path.'/apps/work/controllers/ContractController.php';
 
 $ct = new ContractController();
 
 $ct->authCheck();
 
-include $path.'/work/ui/layouts/nav.php'; // Separate navigation scripts
+include $path.'/apps/work/ui/layouts/nav.php'; // Separate navigation scripts
 
 ?>
 
@@ -177,5 +177,5 @@ include $path.'/work/ui/layouts/nav.php'; // Separate navigation scripts
 </script>
 
 <?php
-include $path.'/work/ui/layouts/footer.php';
+include $path.'/apps/work/ui/layouts/footer.php';
 ?>
