@@ -1,93 +1,72 @@
 <?php
-// Enable error reporting for debugging
-// Remove these lines in production
-//error_reporting(E_ALL);
-//ini_set('display_errors', 1);
 
-class Router {
-    
+class Router
+{
     private $routes = [];
     private $basePath = '';
 
-    public function __construct($basePath = '') {
-        $this->basePath = $basePath;
-    }
-
-    public function route($route, $handler) {
-        $this->routes[$route] = $handler;
-    }
-
-    public function handleRequest($url) {
-        $url = str_replace($this->basePath, '', $url);
-
-        $handler = $this->findMatchingRoute($url);
-
-        if ($handler !== null) {
-            $this->callHandler($handler['handler'], $handler['params']);
-        } else {
-            // Redirect to a 404 page or a custom error handler
-            $this->redirectTo('/404');
-        }
-    }
-
-    private function findMatchingRoute($url) {
-        foreach ($this->routes as $route => $handler) {
-            // Adjust the regex to allow optional trailing slashes
-            $pattern = str_replace('/', '\/', $route);
-            $pattern = "/^$pattern\/?$/"; // Match both with and without a trailing slash
-
-            if (preg_match($pattern, $url)) {
-                return [
-                    'handler' => $handler,
-                    'params' => []
-                ];
-            }
-        }
-
-        // Debugging: Log the failed match
-        error_log("Route not found for URL: $url");
-
-        return null;
-    }
-
-    private function callHandler($handler, $params)
+    public function __construct($basePath = '')
     {
-        if (is_callable($handler)) {
-            call_user_func($handler, $params);
-        } elseif (is_string($handler)) {
-            $filePath = __DIR__ . '/../../' . ltrim($handler, '/');
-            if (file_exists($filePath)) {
-                include $filePath;
+        if (empty($basePath)) {
+            $this->basePath = $this->detectBasePath();
+        } else {
+            $this->basePath = rtrim($basePath, '/');
+        }
+    }
+
+    private function detectBasePath()
+    {
+        $scriptName = $_SERVER['SCRIPT_NAME']; // Example: /wheeleder/index.php
+        $scriptDir = dirname($scriptName);     // Example: /wheeleder
+
+        // Return empty string if root, otherwise folder name
+        return $scriptDir === '/' ? '' : $scriptDir;
+    }
+
+    public function route($path, $handler)
+    {
+        $path = '/' . ltrim($path, '/'); // Normalize
+        $this->routes[$path] = $handler;
+    }
+
+    public function handleRequest($requestUri)
+    {
+        $requestPath = parse_url($requestUri, PHP_URL_PATH);
+
+        // Remove the base path dynamically
+        if (!empty($this->basePath) && strpos($requestPath, $this->basePath) === 0) {
+            $requestPath = substr($requestPath, strlen($this->basePath));
+        }
+
+        // Normalize slashes
+        $requestPath = '/' . trim($requestPath, '/');
+
+        if (isset($this->routes[$requestPath])) {
+            $handler = $this->routes[$requestPath];
+            if (is_callable($handler)) {
+                call_user_func($handler);
+            } elseif (is_string($handler)) {
+                $file = $_SERVER['DOCUMENT_ROOT'] . '/' . ltrim($handler, '/');
+                if (file_exists($file)) {
+                    include $file;
+                } else {
+                    echo "File not found: " . htmlspecialchars($file);
+                }
             } else {
-                echo "Sorry, File not found!";
+                echo "Invalid handler type.";
             }
         } else {
-            echo "Oops! Invalid path!";
+            $this->handleNotFound();
         }
     }
 
-    // Added a method to set a default application based on a parameter
-    public function return_defaultApp($dApp)
+    private function handleNotFound()
     {
-        switch ($dApp) {
-            case 1:
-                $defaultApp = 'edu';
-                break;
-            case 2:
-                $defaultApp = 'work';
-                break;
-            case 3:
-                $defaultApp = 'personal';
-                break;
-            default:
-                $defaultApp = null;
-                break;
+        http_response_code(404);
+        if (file_exists($_SERVER['DOCUMENT_ROOT'] . '/404.html')) {
+            include $_SERVER['DOCUMENT_ROOT'] . '/404.html';
+        } else {
+            echo "<h1>404 Not Found</h1>";
         }
-        return $defaultApp;
-    }
-
-    public function redirectTo($url) {
-        header("Location: $url");
-        exit;
     }
 }

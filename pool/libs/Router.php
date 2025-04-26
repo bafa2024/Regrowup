@@ -1,87 +1,53 @@
 <?php
-// Enable error reporting for debugging
-// Remove these lines in production
-//error_reporting(E_ALL);
-//ini_set('display_errors', 1);
 
-class Router {
+class Router
+{
     private $routes = [];
     private $basePath = '';
 
-    public function __construct($basePath = '') {
-        $this->basePath = $basePath;
-    }
-
-    public function route($route, $handler) {
-        $this->routes[$route] = $handler;
-    }
-
-    public function handleRequest($url) {
-        $url = str_replace($this->basePath, '', $url);
-
-        $handler = $this->findMatchingRoute($url);
-
-        if ($handler !== null) {
-            $this->callHandler($handler['handler'], $handler['params']);
-        } else {
-            $this->redirectTo('/'); // Default to a 404 page
-        }
-    }
-
-    private function findMatchingRoute($url) {
-        foreach ($this->routes as $route => $handler) {
-            $pattern = str_replace('/', '\/', $route);
-            $pattern = "/^$pattern$/";
-
-            if (preg_match($pattern, $url)) {
-                return [
-                    'handler' => $handler,
-                    'params' => []
-                ];
-            }
-        }
-
-        return null;
-    }
-
-    private function callHandler($handler, $params)
+    public function __construct($basePath = '')
     {
-        if (is_callable($handler)) {
-            call_user_func($handler, $params);
-        } elseif (is_string($handler)) {
-            $filePath = __DIR__ . '/../../' . ltrim($handler, '/');
-            if (file_exists($filePath)) {
-                include $filePath;
+        $this->basePath = rtrim($basePath, '/');
+    }
+
+    public function route($path, $handler)
+    {
+        $path = '/' . ltrim($path, '/'); // Always ensure leading slash
+        $this->routes[$path] = $handler;
+    }
+
+    public function handleRequest($requestUri)
+    {
+        // Remove query string (everything after ?)
+        $requestPath = parse_url($requestUri, PHP_URL_PATH);
+
+        // Remove base path (e.g., /wheeleder)
+        if (!empty($this->basePath) && strpos($requestPath, $this->basePath) === 0) {
+            $requestPath = substr($requestPath, strlen($this->basePath));
+        }
+
+        // Normalize
+        $requestPath = '/' . trim($requestPath, '/');
+
+        if (isset($this->routes[$requestPath])) {
+            $handler = $this->routes[$requestPath];
+            if (is_callable($handler)) {
+                call_user_func($handler);
             } else {
-                echo "Sorry, File not found!";
+                echo "Handler for route $requestPath is not callable.";
             }
         } else {
-            echo "OOPs Invalid path!";
+            $this->handleNotFound();
         }
     }
 
-    // Added a method to set a default application based on a parameter
-    public function return_defaultApp($dApp)
+    private function handleNotFound()
     {
-        switch ($dApp) {
-            case 1:
-                $defaultApp = 'edu';
-                break;
-            case 2:
-                $defaultApp = 'work';
-                break;
-            case 3:
-                $defaultApp = 'personal';
-                break;
-            default:
-                $defaultApp = null;
-                break;
+        http_response_code(404);
+        if (file_exists($_SERVER['DOCUMENT_ROOT'] . '/404.html')) {
+            include $_SERVER['DOCUMENT_ROOT'] . '/404.html';
+        } else {
+            echo "<h1>404 Not Found</h1>";
         }
-        return $defaultApp;
-    }
-
-    public function redirectTo($url) {
-        header("Location: $url");
-        exit;
     }
 }
