@@ -5,6 +5,6 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/apps/autowork/controllers/ExternalPro
 
 $fr = new Bidding();
 
-//$fr->feeder_home("Python", 20);
+$fr->feeder_home("Python", 20);
 
-$fr->fetchNewProjects();
+//$fr->fetchNewProjects();
