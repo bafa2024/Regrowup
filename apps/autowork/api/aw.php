@@ -1,7 +1,7 @@
 <?php
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/apps/autowork/controllers/ExternalProjects.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/apps/autowork/controllers/ExternalProjects.php';
+//require_once $_SERVER['DOCUMENT_ROOT'] . '/apps/autowork/controllers/ExternalProjects.php';
 
 $fr = new Bidding();
 

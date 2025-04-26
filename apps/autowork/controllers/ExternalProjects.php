@@ -319,7 +319,7 @@ class Bidding
     }
     
 
-    public function multibids($limit = 10){
+    public function multibids($limit = 100){
 
         // List of queries to search for
         $queries = ["Php", "Javascript", "Reactjs","Vuejs","Python","chatgpt","AWS","Java","Django","Flask",

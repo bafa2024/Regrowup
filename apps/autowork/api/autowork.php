@@ -18,7 +18,7 @@ $fr = new Bidding();
 
 //header('Content-Type: application/json'); // Set the header to return JSON
 
-if ($_GET['task'] == "mbid") {
+if ($_GET['t'] == "mbid") {
     $pid = $_GET['p'];
 
     if ($fr->bidOnProject($pid)) {

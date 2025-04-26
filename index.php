@@ -194,14 +194,14 @@ $router->route('/mbid', function() {
     require 'work/api/autowork.php';
 });
 
-$router->route('/at_t', function() {
-    require 'apps/autowork/api/aw_t.php';
+$router->route('/at', function() {
+    require 'apps/autowork/api/aw.php';
 });
 
 
 
 $router->route('/aw', function() {
-    require 'apps/autowork/';
+    require 'apps/autowork/api/autowork.php';
 });
 
 $router->route('/finance', function() {
