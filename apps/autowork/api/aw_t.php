@@ -8,4 +8,6 @@ $fr = new Bidding();
 //$fr->feeder_home("Python", 20);
 
 //$fr->fetchNewProjects();
-$fr->list_elites(" ", 20);
+//$fr->list_elites(" ", 20);
+
+$fr->multibids();
