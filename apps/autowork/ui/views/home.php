@@ -1,12 +1,34 @@
 <?php
 
+// Dynamic project folder detection
 $path = $_SERVER['DOCUMENT_ROOT'];
-include $path.'/apps/autowork/controllers/ExternalProjects.php';
+$scriptName = dirname($_SERVER['SCRIPT_NAME']);
+$scriptName = str_replace('\\', '/', $scriptName); // Normalize for Windows
+
+// Extract folder name if exists
+$folder = trim($scriptName, '/');
+
+// If we are on localhost and have a folder like 'wheeleder', include it
+if (strpos($_SERVER['HTTP_HOST'], 'localhost') !== false && !empty($folder)) {
+    $fullPath = $path . '/' . $folder . '/apps/autowork/controllers/ExternalProjects.php';
+} else {
+    // On live server (no extra folder needed)
+    $fullPath = $path . '/apps/autowork/controllers/ExternalProjects.php';
+}
+
+// Finally include the correct file
+if (file_exists($fullPath)) {
+    include_once $fullPath;
+} else {
+    die("Error: Cannot find ExternalProjects.php at $fullPath");
+}
+
+
 $bid = new Bidding();
 
-$bid->checkSessionAndRedirect();
+//$bid->checkSessionAndRedirect();
 
-include $path.'/apps/autowork/layouts/nav.php';
+//include $fullPath.'/apps/autowork/ui/layouts/nav.php';
 
 $role = $_SESSION['role'];
 ?>

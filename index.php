@@ -199,7 +199,7 @@ $router->route('/atw', function() {
 });
 
 $router->route('/aw/home', function() {
-    require 'apps/autowork/views/home/home.php';
+    require 'apps/autowork/ui/views/home.php';
 });
 
 $router->route('/aw', function() {
