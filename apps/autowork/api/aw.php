@@ -1,5 +1,5 @@
 <?php
-
+//wget -O /dev/null https://regrowup.site/atw
 require_once $_SERVER['DOCUMENT_ROOT'] . '/apps/autowork/controllers/ExternalProjects.php';
 //require_once $_SERVER['DOCUMENT_ROOT'] . '/apps/autowork/controllers/ExternalProjects.php';
 
@@ -10,6 +10,6 @@ $fr = new Bidding();
 //$fr->fetchNewProjects();
 //$fr->list_elites(" ", 20);
 
-if(isset($_GET['t']=="mb")){
+//if(isset($_GET['t']=="mb")){
     $fr->multibids();
-}
+//}
