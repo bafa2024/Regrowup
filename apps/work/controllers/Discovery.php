@@ -42,7 +42,7 @@ trait Discovery
     SpringMVC
     VueJS
     CodeIgniter";
-    public $github = "https://github.com/abdulfakhri";
+    public $github = "https://github.com/Regrowup";
     public $QA = "
     Defect reject ratio
     Defect rejection ratio is the ratio of total rejection to total production
@@ -51,9 +51,7 @@ trait Discovery
     (No. of defects rejected/ total no. of defects raised) X 100
     Defect leakage ratio: (No. of defect missed/total defects of software) X 100";
 
-    public $freelancer_personal_token = "3nsge8ql43OMPR2ggtRHfUtQAYYIR3";
-
-    //public $freelancer_personal_token = "3nsge8ql43OMPR2ggtRHfUtQAYYIR";
+    public $freelancer_personal_token = "vYIGz354Ag7m96L4A5zjaq9pQitBFf";
 
     public $freelancer_api_call_url = "https://www.freelancer.com/api/projects/0.1/projects/active/?query=";
 
