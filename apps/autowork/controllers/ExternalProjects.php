@@ -322,12 +322,42 @@ class Bidding
     public function multibids($limit = 100){
 
         // List of queries to search for
-        $queries = ["Php", "Javascript", "Reactjs","Vuejs","Python","chatgpt","AWS","Java","Django","Flask",
-        "Nodejs","Expressjs","Android","Ios","Flutter","ReactNative","Nextjs","Nuxtjs","Spring","Springboot",
-        "Springmvc","Restfulapi","Restapi","Graphql"];
-       
-         //$queries = ["Digital Marketing","Social Media Marketing","Facebook Marketing","Instagram Marketing"];
-
+        $queries = [
+            // Programming Languages and Frameworks
+            "PHP", "Javascript", "Reactjs", "Vuejs", "Python", "Java", "Nodejs", "Expressjs", "Django", "Flask",
+            "Nextjs", "Nuxtjs", "Spring", "Springboot", "Springmvc", "Graphql", "Restfulapi", "Restapi",
+            "Kotlin", "Swift", "C#", "C++", "ASP.NET", "Laravel", "Symfony", "CodeIgniter",
+            "GoLang", "Ruby on Rails", "Perl",
+        
+            // Mobile App Development
+            "Android", "iOS", "Flutter", "React Native", "SwiftUI", "Objective-C", "Xamarin",
+        
+            // Cloud and DevOps
+            "AWS", "Azure", "Google Cloud", "Firebase", "Docker", "Kubernetes", "CI/CD Pipelines", "Serverless",
+        
+            // Artificial Intelligence and Data Science
+            "ChatGPT", "OpenAI", "Machine Learning", "Deep Learning", "NLP", "Tensorflow", "Pytorch", "Data Analysis",
+        
+            // Blockchain and Web3
+            "Blockchain", "Ethereum", "Smart Contracts", "Solidity", "NFT Development", "Web3.js",
+        
+            // UI/UX and Frontend Technologies
+            "TailwindCSS", "Bootstrap", "SASS", "Figma", "Adobe XD", "UI/UX Design",
+        
+            // Digital Marketing
+            "Digital Marketing", "Social Media Marketing", "Facebook Marketing", "Instagram Marketing",
+            "SEO", "SEM", "Content Marketing", "Email Marketing", "Affiliate Marketing",
+            "YouTube Marketing", "LinkedIn Marketing", "Pinterest Marketing",
+        
+            // Content Creation
+            "Blog Writing", "Copywriting", "Technical Writing", "Video Editing", "Podcast Editing", "Graphics Design",
+        
+            // E-commerce
+            "Shopify Development", "WooCommerce", "Magento", "BigCommerce",
+        
+            // Cybersecurity
+            "Penetration Testing", "Vulnerability Assessment", "Security Audits"
+        ];
         // Loop over each query
         foreach ($queries as $query) {
     
