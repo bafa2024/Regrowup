@@ -1,7 +1,7 @@
 <?php
 session_start();
 $path=$_SERVER['DOCUMENT_ROOT'];
-include $path.'/apps/work/controllers/ResumesController.php';
+include $path.'/work/controllers/ResumesController.php';
 
 $resume=new ResumesController();
 
@@ -21,7 +21,7 @@ if(isset($_POST['create_resume'])){
     
     if($resume->store()){
         
-        header("Location: /apps/work/ui/views/services/services.php");
+        header("Location: /work/ui/views/services/services.php");
 
     }else{
         echo "Error";

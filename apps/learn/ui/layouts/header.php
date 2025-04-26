@@ -20,12 +20,12 @@
                     <img src="<?php echo $_SESSION['profile_image'] ?>" alt="pic" width="32" height="32" class="rounded-circle">
                 </a>
                 <ul class="dropdown-menu text-small">
-                    <li><a class="dropdown-item" href="/apps/work/ui/views/profile/profile.php?ui=<?php echo $_SESSION['id']; ?>">
+                    <li><a class="dropdown-item" href="/work/ui/views/profile/profile.php?ui=<?php echo $_SESSION['id']; ?>">
                         <span class="fs-14 text-black flex-grow"><?php echo $_SESSION['full_name']; ?></span></a>
                     </li>
                     <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="/apps/work/ui/views/settings/settings.php?form=profile">Settings</a></li>
-                    <li><a class="dropdown-item" href="/apps/work/ui/views/finance/finances.php">Help desk</a></li>
+                    <li><a class="dropdown-item" href="/work/ui/views/settings/settings.php?form=profile">Settings</a></li>
+                    <li><a class="dropdown-item" href="/work/ui/views/finance/finances.php">Help desk</a></li>
                     <li><a class="dropdown-item" href="/logout">Logout</a></li>
                 </ul>
             </div>

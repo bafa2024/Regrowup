@@ -1,7 +1,7 @@
 <?php
 session_start();
 $path = $_SERVER['DOCUMENT_ROOT'];
-include $path . '/apps/work/controllers/SettingsController.php';
+include $path . '/work/controllers/SettingsController.php';
 $settings = new SettingsController();
 $settings->authCheck();
 
@@ -21,7 +21,7 @@ if(isset($_POST['company_profile'])){
 
     
   if($settings->add_companyInfo()){
-    $settings->alert_redirect("Company profile updated successfully","/apps/work/ui/views/settings/settings.php");
+    $settings->alert_redirect("Company profile updated successfully","/work/ui/views/settings/settings.php");
   }
   else{
     echo '<script>alert("Try again")</script>';
@@ -33,7 +33,7 @@ if(isset($_POST['profile_setup'])){
 
   $res=$settings->update_profile();
   if($res){
-    $settings->alert_redirect("Profile updated successfully","/apps/work/ui/views/settings/settings.php");
+    $settings->alert_redirect("Profile updated successfully","/work/ui/views/settings/settings.php");
   }else{
     echo '<script>alert("Try again")</script>';
   }
@@ -88,7 +88,7 @@ if(isset($_POST['complete_profile'])){
   $res=$settings->complete_profile();
 
   if($res){
-  //  $settings->alert_redirect("Profile Completed Successfully","/apps/work/ui/views/home/home.php");
+  //  $settings->alert_redirect("Profile Completed Successfully","/work/ui/views/home/home.php");
     $settings->re_log($user_id);
     
   }else{

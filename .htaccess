@@ -1,8 +1,4 @@
 RewriteEngine On
-
-# Make sure to adapt the RewriteBase if your application is not in the root directory
-# RewriteBase /your_project_folder_here/
-
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
+RewriteRule ^(.*)$ index.php [QSA,L]

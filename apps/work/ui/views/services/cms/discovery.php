@@ -1,7 +1,7 @@
 <?php
 session_start();
 $path=$_SERVER['DOCUMENT_ROOT'];
-include $path.'/apps/work/controllers/ExternalProjectsController.php';
+include $path.'/work/controllers/ExternalProjectsController.php';
 $discover=new Bidding();
 
 $discover->authCheck();
@@ -14,7 +14,7 @@ $pl=$discover->url_var('pl');
 
 
 if($user_type == 'Professional'){
-  include $path.'/apps/work/ui/layouts/nav.php';
+  include $path.'/work/ui/layouts/nav.php';
 ?>
 
 <link href=".../assets/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -177,13 +177,13 @@ if($user_type == 'Professional'){
       <div class="position-sticky pt-3 sidebar-sticky">
         <ul class="nav flex-column">
         <li class="nav-item">
-            <a class="nav-link" href="/apps/work/ui/views/home/discover.php?pl=upwork">
+            <a class="nav-link" href="/work/ui/views/home/discover.php?pl=upwork">
               <span data-feather="shopping-cart" class="align-text-bottom"></span>
               Upwork
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/apps/work/ui/views/home/discover.php?pl=freelancer">
+            <a class="nav-link" href="/work/ui/views/home/discover.php?pl=freelancer">
               <span data-feather="file" class="align-text-bottom"></span>
               Freelancer
             </a>
@@ -251,7 +251,7 @@ if($user_type == 'Professional'){
 
 
 
-include $path.'/apps/work/ui/layouts/footer.php';
+include $path.'/work/ui/layouts/footer.php';
 
 
 ?>

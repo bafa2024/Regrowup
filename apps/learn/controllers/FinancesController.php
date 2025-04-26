@@ -148,9 +148,9 @@ class FinancesController extends Controller  {
       VALUES ('$user_id','$bank_name','$account_name','$account_no','$transit_no','$institution_no')";
       $result=$this->run_query($sql);
       if($result ){
-        $this->alert_redirect("Payment Method Updated","/apps/work/ui/views/finance/finances.php");
+        $this->alert_redirect("Payment Method Updated","/work/ui/views/finance/finances.php");
       }else{
-        $this->alert_redirect("Failed Try Again","/apps/work/ui/views/finance/finances.php");
+        $this->alert_redirect("Failed Try Again","/work/ui/views/finance/finances.php");
       }
 
     }

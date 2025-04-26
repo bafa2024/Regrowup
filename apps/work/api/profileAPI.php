@@ -1,7 +1,7 @@
 <?php
 session_start();
 $path = $_SERVER['DOCUMENT_ROOT'];
-include $path . '/apps/work/controllers/ProfileController.php';
+include $path . '/work/controllers/ProfileController.php';
 $profile = new ProfileController();
 
 if(isset($_POST['submit_review'])){

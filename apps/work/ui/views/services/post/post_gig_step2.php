@@ -1,7 +1,7 @@
 <?php
 session_start();
 $path = $_SERVER['DOCUMENT_ROOT'];
-include $path . '/apps/work/controllers/HomeController.php';
+include $path . '/work/controllers/HomeController.php';
 
 $home = new HomeController();
 
@@ -11,7 +11,7 @@ $home->authCheck();
 
 $user_type = $_SESSION['user_type'];
 
-include $path . '/apps/work/ui/layouts/nav.php';
+include $path . '/work/ui/layouts/nav.php';
 
 ?>
 <style>
@@ -138,7 +138,7 @@ include $path . '/apps/work/ui/layouts/nav.php';
     </div>
 </section>
 <?php
-include $path . '/apps/work/ui/layouts/footer.php';
+include $path . '/work/ui/layouts/footer.php';
 ?>
 <script>
 

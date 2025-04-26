@@ -1,7 +1,7 @@
 <?php
 session_start();
 $path = $_SERVER['DOCUMENT_ROOT'];
-include $path . '/apps/work/controllers/ProfileController.php';
+include $path . '/work/controllers/ProfileController.php';
 $profile = new ProfileController();
 
 $user_id = $_GET['ui']=null;
@@ -24,7 +24,7 @@ $address=$profile->sanitize($details['address']);
 
 
 
-include $path . '/apps/work/ui/layouts/nav.php';
+include $path . '/work/ui/layouts/nav.php';
 
 ?>
 
@@ -124,6 +124,6 @@ include $path . '/apps/work/ui/layouts/nav.php';
 </section>
 
 <?php
-include $path . '/apps/work/ui/layouts/footer.php';
+include $path . '/work/ui/layouts/footer.php';
 
 ?>

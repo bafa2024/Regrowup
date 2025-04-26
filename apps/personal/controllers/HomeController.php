@@ -102,7 +102,7 @@ class HomeController extends Controller
                                 <div class="col-md-8">
                                     <div class="card-body">
                                         <h5 class="card-title">
-                                            <a href="/apps/work/ui/views/profile/profile.php?ui=<?php echo $user['id']; ?>">
+                                            <a href="/work/ui/views/profile/profile.php?ui=<?php echo $user['id']; ?>">
                                                 <?php echo $user['first_name'] . ' ' . $user['last_name']; ?>
                                             </a>
                                         </h5>

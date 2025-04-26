@@ -106,9 +106,9 @@ class SettingsController extends Controller{
       values('$user_id','$email_notif','$sms_notif','$noti_posts','$noti_jobs','$noti_blogs')";
       $result=$this->run_query($sql);
       if($result){
-        $this->alert_redirect('Notifications Updated Successfully','/apps/work/ui/views/settings/settings.php?form=notifications');
+        $this->alert_redirect('Notifications Updated Successfully','/work/ui/views/settings/settings.php?form=notifications');
       }else{
-        $this->alert_redirect('Notifications Update Failed','/apps/work/ui/views/settings/settings.php?form=notifications');
+        $this->alert_redirect('Notifications Update Failed','/work/ui/views/settings/settings.php?form=notifications');
       }
 
     
@@ -188,10 +188,10 @@ class SettingsController extends Controller{
       $result=$this->run_query($sql);
       if($result){
           echo '<script>alert("Security Updated Successfully")</script>';
-          echo '<script>window.location.href="/apps/work/ui/views/settings/settings.php?form=security"</script>';
+          echo '<script>window.location.href="/work/ui/views/settings/settings.php?form=security"</script>';
       }else{
           echo '<script>alert("Account Update Failed")</script>';
-          echo '<script>window.location.href="/apps/work/ui/views/settings/settings.php?form=security"</script>';
+          echo '<script>window.location.href="/work/ui/views/settings/settings.php?form=security"</script>';
       }
   }
 
@@ -238,9 +238,9 @@ public function re_log($uid){
           $profile_status=$pass['profile_status'];
       
             if($profile_status==0){
-              header("Location: /apps/work/ui/views/settings/complete_profile.php");
+              header("Location: /work/ui/views/settings/complete_profile.php");
             }else{
-              header("Location: /apps/work/ui/views/home/home.php");
+              header("Location: /work/ui/views/home/home.php");
               
             }
          
@@ -261,9 +261,9 @@ public function re_log($uid){
     VALUES ('$user_id','$bank_name','$account_name','$account_no','$transit_no','$institution_no')";
     $result=$this->run_query($sql);
     if($result){
-      $this->alert_redirect("Payment Method Updated","/apps/work/ui/views/settings/settings.php?form=payouts");
+      $this->alert_redirect("Payment Method Updated","/work/ui/views/settings/settings.php?form=payouts");
     }else{
-      $this->alert_redirect("Failed Try Again","/apps/work/ui/views/settings/settings.php?form=payouts");
+      $this->alert_redirect("Failed Try Again","/work/ui/views/settings/settings.php?form=payouts");
     }
   }
 
@@ -281,9 +281,9 @@ public function re_log($uid){
       VALUES('$user_id','$card_number','$card_name','$billing_address','$card_expiry_mm','$card_expiry_year','$card_cvv')";
       $result=$this->run_query($sql);
       if($result){
-         $this->alert_redirect("Payment Method Updated","/apps/work/ui/views/settings/settings.php?form=payments");
+         $this->alert_redirect("Payment Method Updated","/work/ui/views/settings/settings.php?form=payments");
       }else{
-        $this->alert_redirect("Failed Try again","/apps/work/ui/views/settings/settings.php?form=payments");
+        $this->alert_redirect("Failed Try again","/work/ui/views/settings/settings.php?form=payments");
       }
     
   }

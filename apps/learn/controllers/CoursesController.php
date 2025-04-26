@@ -43,7 +43,7 @@ class CoursesController extends Controller{
                     </div>
                     <div class="flex-shrink-0">
                         <div class="d-flex gap-3">
-                            <a href="/apps/work/ui/views/purchases/pur_course.php?cr='.$row['id'].'" class="apply-btn">Buy Now</a>                            
+                            <a href="/work/ui/views/purchases/pur_course.php?cr='.$row['id'].'" class="apply-btn">Buy Now</a>                            
                             </a>
                         </div>
                     </div>
@@ -93,7 +93,7 @@ class CoursesController extends Controller{
                     </div>
                     <div class="flex-shrink-0">
                         <div class="d-flex gap-3">
-                            <a href="/apps/work/ui/views/purchases/pur_course.php?cr='.$row['id'].'" class="apply-btn">Buy Now</a>                            
+                            <a href="/work/ui/views/purchases/pur_course.php?cr='.$row['id'].'" class="apply-btn">Buy Now</a>                            
                             </a>
                         </div>
                     </div>
@@ -144,7 +144,7 @@ class CoursesController extends Controller{
                     </div>
                     <div class="flex-shrink-0">
                         <div class="d-flex gap-3">
-                            <a href="/apps/work/ui/views/purchases/pur_course.php?cr='.$row['id'].'" class="apply-btn">Buy Now</a>                            
+                            <a href="/work/ui/views/purchases/pur_course.php?cr='.$row['id'].'" class="apply-btn">Buy Now</a>                            
                             </a>
                         </div>
                     </div>
@@ -195,7 +195,7 @@ class CoursesController extends Controller{
                     </div>
                     <div class="flex-shrink-0">
                         <div class="d-flex gap-3">
-                            <a href="/apps/work/ui/views/purchases/pur_course.php?cr='.$row['id'].'" class="apply-btn">Buy Now</a>                            
+                            <a href="/work/ui/views/purchases/pur_course.php?cr='.$row['id'].'" class="apply-btn">Buy Now</a>                            
                             </a>
                         </div>
                     </div>
@@ -246,7 +246,7 @@ class CoursesController extends Controller{
                     </div>
                     <div class="flex-shrink-0">
                         <div class="d-flex gap-3">
-                            <a href="/apps/work/ui/views/purchases/pur_course.php?cr='.$row['id'].'" class="apply-btn">Buy Now</a>                            
+                            <a href="/work/ui/views/purchases/pur_course.php?cr='.$row['id'].'" class="apply-btn">Buy Now</a>                            
                             </a>
                         </div>
                     </div>
@@ -296,7 +296,7 @@ class CoursesController extends Controller{
                     </div>
                     <div class="flex-shrink-0">
                         <div class="d-flex gap-3">
-                            <a href="/apps/work/ui/views/purchases/pur_course.php?cr='.$row['id'].'" class="apply-btn">Buy Now</a>                            
+                            <a href="/work/ui/views/purchases/pur_course.php?cr='.$row['id'].'" class="apply-btn">Buy Now</a>                            
                             </a>
                         </div>
                     </div>

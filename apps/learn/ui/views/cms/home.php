@@ -1,10 +1,10 @@
 <?php
 session_start();
 $path=$_SERVER['DOCUMENT_ROOT'];
-include $path.'/apps/work/controllers/HomeController.php';
+include $path.'/work/controllers/HomeController.php';
 $home=new HomeController();
 $home->checkSessionAndRedirect();
-include $path.'/apps/work/ui/layouts/nav.php';
+include $path.'/work/ui/layouts/nav.php';
 
 ?>
 

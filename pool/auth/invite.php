@@ -1,7 +1,7 @@
 <?php
 session_start();
 $path = $_SERVER['DOCUMENT_ROOT'];
-include $path . '/apps/work/ui/layouts/nav.php';
+include $path . '/work/ui/layouts/nav.php';
 ?>
 
 <style>
@@ -32,7 +32,7 @@ include $path . '/apps/work/ui/layouts/nav.php';
               
               $uri = $_SERVER['HTTP_HOST'];
 
-              $link = $uri . '/apps/work/ui/views/auth/signup.php?ref=' . $_SESSION['user_id'];
+              $link = $uri . '/work/ui/views/auth/signup.php?ref=' . $_SESSION['user_id'];
               ?>
               <div class="input-group">
                 <input type="text" name="link" id="link" value="<?php echo $link; ?>" class="form-control form-control-md" readonly>
@@ -71,5 +71,5 @@ include $path . '/apps/work/ui/layouts/nav.php';
 </script>
 
 <?php
-include $path . '/apps/work/ui/layouts/footer.php';
+include $path . '/work/ui/layouts/footer.php';
 ?>

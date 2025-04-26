@@ -8,9 +8,9 @@ if(isset($_GET['act'])){
         session_destroy();
         header("Location: /index.php");
     }else if($act=="login"){
-        header("Location: /apps/work/ui/views/auth/login.php");
+        header("Location: /work/ui/views/auth/login.php");
     }else if($act=="signup"){
-        header("Location: /apps/work/ui/views/auth/signup.php");
+        header("Location: /work/ui/views/auth/signup.php");
     }    
 }
 */

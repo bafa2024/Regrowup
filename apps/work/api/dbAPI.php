@@ -1,6 +1,6 @@
 <?php
 $path = $_SERVER['DOCUMENT_ROOT'];
-include $path . '/apps/work/controllers/DbController.php';
+include $path . '/work/controllers/DbController.php';
 
 $db = new Db();
 

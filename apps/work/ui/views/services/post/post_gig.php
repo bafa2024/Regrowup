@@ -1,7 +1,7 @@
 <?php
 session_start();
 $path = $_SERVER['DOCUMENT_ROOT'];
-include $path . '/apps/work/controllers/GigsController.php';
+include $path . '/work/controllers/GigsController.php';
 
 $gig = new GigsController();
 
@@ -11,7 +11,7 @@ $gig->authCheck();
 
 $role = $_SESSION['role'];
 
-include $path . '/apps/work/ui/layouts/nav.php';
+include $path . '/work/ui/layouts/nav.php';
 
 ?>
 <style>
@@ -1673,7 +1673,7 @@ include $path . '/apps/work/ui/layouts/nav.php';
     </div>
 </section>
 <?php
-include $path . '/apps/work/ui/layouts/footer.php';
+include $path . '/work/ui/layouts/footer.php';
 ?>
 <script>
 function getsubcategory(_this) {

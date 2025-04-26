@@ -1,7 +1,7 @@
 <?php
 session_start();
 $path=$_SERVER['DOCUMENT_ROOT'];
-include $path.'/apps/work/controllers/HomeController.php';
+include $path.'/work/controllers/HomeController.php';
 
 $home=new HomeController();
 
@@ -11,7 +11,7 @@ $home->authCheck();
 
 $role=$_SESSION['role'];
 
-include $path.'/apps/work/ui/layouts/nav.php';
+include $path.'/work/ui/layouts/nav.php';
 if($role=='Professional'){
     ?>
 
@@ -200,5 +200,5 @@ if($role=='Professional'){
 
 
 <?php
-include $path.'/apps/work/ui/layouts/footer.php';
+include $path.'/work/ui/layouts/footer.php';
 ?>

@@ -3,7 +3,7 @@
 session_start();
 $path=$_SERVER['DOCUMENT_ROOT'];
 
-include $path.'/apps/work/controllers/LogsController.php';
+include $path.'/work/controllers/LogsController.php';
 $log=new LogsController();
 
 if(isset($_POST['sw'])){
@@ -37,7 +37,7 @@ if(isset($_POST['sw'])){
         $_SESSION["name"] = $pass['name'];
         $_SESSION["role"] = $pass['role'];
         $role=$pass['role'];
-        header("Location: /apps/work/ui/views/home/home.php");
+        header("Location: /work/ui/views/home/home.php");
     }    
 }
 

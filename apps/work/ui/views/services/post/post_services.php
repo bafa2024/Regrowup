@@ -1,7 +1,7 @@
 <?php
 session_start();
 $path = $_SERVER['DOCUMENT_ROOT'];
-include $path . '/apps/work/controllers/ServicesController.php';
+include $path . '/work/controllers/ServicesController.php';
 
 $service = new ServicesController();
 
@@ -11,7 +11,7 @@ $service->authCheck();
 
 $role = $_SESSION['role'];
 
-include $path . '/apps/work/ui/layouts/nav.php';
+include $path . '/work/ui/layouts/nav.php';
 
 ?>
 

@@ -1,7 +1,7 @@
 <?php
 session_start();
 $path = $_SERVER['DOCUMENT_ROOT'];
-include $path.'/apps/work/controllers/JobController.php';
+include $path.'/work/controllers/JobController.php';
 
 $job = new JobController();
 
@@ -11,10 +11,10 @@ $job_id = $job->var($_GET['jo']);
 $user_id = $_SESSION['user_id'];
 
 if($job->check_if_applied($job_id, $user_id)){
-    $job->alert_redirect("You have already applied for this job", "/apps/work/ui/views/browse/browse_jobs.php");
+    $job->alert_redirect("You have already applied for this job", "/work/ui/views/browse/browse_jobs.php");
 }
 
-include $path.'/apps/work/ui/layouts/nav.php';
+include $path.'/work/ui/layouts/nav.php';
 ?>
 
 <section class="py-60 postform">
@@ -102,5 +102,5 @@ include $path.'/apps/work/ui/layouts/nav.php';
 </section>
 
 <?php
-include $path.'/apps/work/ui/layouts/footer.php';
+include $path.'/work/ui/layouts/footer.php';
 ?>

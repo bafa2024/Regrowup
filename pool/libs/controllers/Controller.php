@@ -5,7 +5,7 @@ require $path . '/pool/config/database.php';
 include 'StripeController.php';
 include 'CrudController.php';
 include 'Metadata.php';
-
+namespace Pool\Libs\Controllers;
 
 class Controller extends Database
 {

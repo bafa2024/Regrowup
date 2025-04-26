@@ -1,7 +1,7 @@
 <?php
 session_start();
 $path=$_SERVER['DOCUMENT_ROOT'];
-include $path.'/apps/work/controllers/GigsController.php';
+include $path.'/work/controllers/GigsController.php';
 
 $gig=new GigsController();
 
@@ -19,7 +19,7 @@ if(isset($_POST['create_gig_step1'])){
     $res=$gig->store_gigs_step1();
 
    if($res){
-    header("Location:/apps/work/ui/views/post/post_gig_step2.php?gig=$res");
+    header("Location:/work/ui/views/post/post_gig_step2.php?gig=$res");
     }else{
         echo "error";
     }
@@ -31,7 +31,7 @@ if(isset($_POST['create_gig_step2'])){
     $res=$gig->store_gigs_step2();
 
    if($res){
-        header("Location:/apps/work/ui/views/browse/browse_gigs.php");
+        header("Location:/work/ui/views/browse/browse_gigs.php");
     }else{
         echo "error";
     }
@@ -209,9 +209,9 @@ if(isset($_POST['pur_gig'])){
     
     $res=$gig->purchase_gig($gig_id,$freelancer_id,$client_id,$price,$payment,$order_date);
     if($res){
-        $gig->alert_redirect("Gig Purchased","/apps/work/ui/views/browse/browse_gigs.php");
+        $gig->alert_redirect("Gig Purchased","/work/ui/views/browse/browse_gigs.php");
     }else{
-        $gig->alert_redirect("Error, Try Again","/apps/work/ui/views/browse/browse_gigs.php");
+        $gig->alert_redirect("Error, Try Again","/work/ui/views/browse/browse_gigs.php");
     }
 }
 

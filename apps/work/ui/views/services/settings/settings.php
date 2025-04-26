@@ -1,7 +1,7 @@
 <?php
 //session_start();
 $path = $_SERVER['DOCUMENT_ROOT'];
-//include $path . '/apps/work/controllers/SettingsController.php';
+//include $path . '/work/controllers/SettingsController.php';
 /*
 $settings = new SettingsController();
 $settings->checkSessionAndRedirect();
@@ -96,23 +96,23 @@ include $path . '/top.php';
                 </div>
 
                 <div class="list-group list-group-flush" role="tablist">
-                <a class="list-group-item list-group-item-action" data-toggle="list" href="/apps/work/ui/views/settings/settings.php?form=app" role="tab">
+                <a class="list-group-item list-group-item-action" data-toggle="list" href="/work/ui/views/settings/settings.php?form=app" role="tab">
                       App Settings
                     </a>
-                    <a class="list-group-item list-group-item-action" data-toggle="list" href="/apps/work/ui/views/settings/settings.php?form=profile" role="tab">
+                    <a class="list-group-item list-group-item-action" data-toggle="list" href="/work/ui/views/settings/settings.php?form=profile" role="tab">
                       Profile
                     </a>
-                    <a class="list-group-item list-group-item-action" data-toggle="list" href="/apps/work/ui/views/settings/settings.php?form=security" role="tab">
+                    <a class="list-group-item list-group-item-action" data-toggle="list" href="/work/ui/views/settings/settings.php?form=security" role="tab">
                       Password
                     </a>
-                    <a class="list-group-item list-group-item-action " data-toggle="list" href="/apps/work/ui/views/settings/settings.php?form=company" role="tab">
+                    <a class="list-group-item list-group-item-action " data-toggle="list" href="/work/ui/views/settings/settings.php?form=company" role="tab">
                       Company
                     </a>
                 
-                    <a class="list-group-item list-group-item-action " data-toggle="list" href="/apps/work/ui/views/settings/settings.php?form=notifications" role="tab">
+                    <a class="list-group-item list-group-item-action " data-toggle="list" href="/work/ui/views/settings/settings.php?form=notifications" role="tab">
                     Notifications
                     </a>
-                    <a class="list-group-item list-group-item-action " data-toggle="list" href="/apps/work/ui/views/settings/settings.php?form=resume" role="tab">
+                    <a class="list-group-item list-group-item-action " data-toggle="list" href="/work/ui/views/settings/settings.php?form=resume" role="tab">
                     My Resume/CV
                     </a>
                 </div>
@@ -1363,7 +1363,7 @@ include $path . '/top.php';
 </div>
 
   <?php
-  include $path . '/apps/work/ui/layouts/footer.php';
+  include $path . '/work/ui/layouts/footer.php';
 
 
   ?>

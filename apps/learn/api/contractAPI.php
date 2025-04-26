@@ -1,7 +1,7 @@
 <?php
 session_start();
 $path=$_SERVER['DOCUMENT_ROOT'];
-include $path.'/apps/work/controllers/ContractController.php';
+include $path.'/work/controllers/ContractController.php';
 $contract=new ContractController();
 
 
@@ -28,11 +28,11 @@ if(isset($_POST['post_contract'])){
 
       
         
-        $contract->alert_redirect("Contract Posted Successfully", "/apps/work/ui/views/finance/deposit.php?am=$price");
+        $contract->alert_redirect("Contract Posted Successfully", "/work/ui/views/finance/deposit.php?am=$price");
 
      }else{
         
-        $contract->alert_redirect("Contract not saved", "/apps/work/ui/views/freelancing/post_contract.php");
+        $contract->alert_redirect("Contract not saved", "/work/ui/views/freelancing/post_contract.php");
      }        
 }
 
@@ -47,16 +47,16 @@ if(isset($_POST['apply'])){
    $res=$contract->check_if_applied($contract_id,$applicant_id);
 
    if($res){
-      $contract->alert_redirect("You have already applied for this contract", "/apps/work/ui/views/browse/browse_contracts.php");
+      $contract->alert_redirect("You have already applied for this contract", "/work/ui/views/browse/browse_contracts.php");
    }else{
       $res=$contract->apply_contracts();
       if($res){
           
-          $contract->alert_redirect("Contract applied successfully", "/apps/work/ui/views/browse/browse_contracts.php");
+          $contract->alert_redirect("Contract applied successfully", "/work/ui/views/browse/browse_contracts.php");
   
        }else{
           
-          $contract->alert_redirect("Failed Try again", "/apps/work/ui/views/applications/apply_contract.php");
+          $contract->alert_redirect("Failed Try again", "/work/ui/views/applications/apply_contract.php");
        }
    }
    
@@ -73,9 +73,9 @@ if(isset($_POST['mg_action'])){
         
     $res=$contract->award_contract($client_id,$contract_id,$applicant_id);
     if($res){
-        $contract->alert_redirect("Contract awarded successfully", "/apps/work/ui/views/manage/manage_contracts.php");
+        $contract->alert_redirect("Contract awarded successfully", "/work/ui/views/manage/manage_contracts.php");
      }else{    
-        $contract->alert_redirect("Failed Try again", "/apps/work/ui/views/manage/applications.php");
+        $contract->alert_redirect("Failed Try again", "/work/ui/views/manage/applications.php");
      }
 
     }
@@ -95,9 +95,9 @@ if(isset($_POST['ct_action'])){
    
    
    if($res){
-      $contract->alert_redirect('Contract Deleted Successfully', '/apps/work/ui/views/browse/browse_contracts.php');
+      $contract->alert_redirect('Contract Deleted Successfully', '/work/ui/views/browse/browse_contracts.php');
   }else{
-       $contract->alert_redirect('Error Deleting Contract', '/apps/work/ui/views/browse/browse_contracts.php');
+       $contract->alert_redirect('Error Deleting Contract', '/work/ui/views/browse/browse_contracts.php');
   }
 
 
@@ -118,9 +118,9 @@ if(isset($_POST['action_offer'])){
        
    $res=$contract->accept_contract($client_id,$contract_id,$applicant_id);
    if($res){
-       $contract->alert_redirect("Contract Accepted ", "/apps/work/ui/views/manage/manage_contracts.php");
+       $contract->alert_redirect("Contract Accepted ", "/work/ui/views/manage/manage_contracts.php");
     }else{    
-       $contract->alert_redirect("Failed Try again", "/apps/work/ui/views/manage/manage_contracts.php");
+       $contract->alert_redirect("Failed Try again", "/work/ui/views/manage/manage_contracts.php");
     }
 
    }
@@ -139,9 +139,9 @@ if(isset($_POST['final_action'])){
        
    $res=$contract->contract_final($contract_id,$action);
    if($res){
-       $contract->alert_redirect("Contract Completed ", "/apps/work/ui/views/manage/manage_contracts.php");
+       $contract->alert_redirect("Contract Completed ", "/work/ui/views/manage/manage_contracts.php");
     }else{    
-       $contract->alert_redirect("Failed Try again", "/apps/work/ui/views/manage/manage_contracts.php");
+       $contract->alert_redirect("Failed Try again", "/work/ui/views/manage/manage_contracts.php");
     }
 
    
@@ -156,9 +156,9 @@ if(isset($_POST['create_milestone'])){
    $ct=$_POST['contract'];
    $cl=$_POST['client'];
    if($res){
-       $contract->alert_redirect("Milestone Created ", "/apps/work/ui/views/manage/project.php?ct=$ct&cl=$cl");
+       $contract->alert_redirect("Milestone Created ", "/work/ui/views/manage/project.php?ct=$ct&cl=$cl");
     }else{    
-       $contract->alert_redirect("Failed Try again", "/apps/work/ui/views/manage/project.php?ct=$ct&cl=$cl");
+       $contract->alert_redirect("Failed Try again", "/work/ui/views/manage/project.php?ct=$ct&cl=$cl");
     }
    
          
@@ -172,9 +172,9 @@ if(isset($_POST['create_task'])){
    $cl=$_POST['client'];
    $ml=$_POST['milestone'];
    if($res){
-       $contract->alert_redirect("Task is  Created ", "/apps/work/ui/views/manage/project.php?ct=$ct&cl=$cl&ml=$ml");
+       $contract->alert_redirect("Task is  Created ", "/work/ui/views/manage/project.php?ct=$ct&cl=$cl&ml=$ml");
     }else{    
-       $contract->alert_redirect("Failed Try again", "/apps/work/ui/views/manage/project.php?ct=$ct&cl=$cl&ml=$ml");
+       $contract->alert_redirect("Failed Try again", "/work/ui/views/manage/project.php?ct=$ct&cl=$cl&ml=$ml");
     }
          
 }
@@ -189,9 +189,9 @@ if(isset($_POST['complete_task'])){
    $res=$contract->task_completed($ts);
 
    if($res){
-       $contract->alert_redirect("Task is  Completed ", "/apps/work/ui/views/manage/project.php?ct=$ct&cl=$cl&ml=$ml&ts=$ts");
+       $contract->alert_redirect("Task is  Completed ", "/work/ui/views/manage/project.php?ct=$ct&cl=$cl&ml=$ml&ts=$ts");
     }else{    
-       $contract->alert_redirect("Failed Try again", "/apps/work/ui/views/manage/project.php?ct=$ct&cl=$cl&ml=$ml&ts=$ts");
+       $contract->alert_redirect("Failed Try again", "/work/ui/views/manage/project.php?ct=$ct&cl=$cl&ml=$ml&ts=$ts");
     }
          
 }
@@ -204,9 +204,9 @@ if(isset($_POST['update_task'])){
    $ml=$_POST['milestone'];
    $res=$contract->update_task($ts);
    if($res){
-       $contract->alert_redirect("Task is  Updated ", "/apps/work/ui/views/manage/project.php?ct=$ct&cl=$cl&ml=$ml&ts=$ts");
+       $contract->alert_redirect("Task is  Updated ", "/work/ui/views/manage/project.php?ct=$ct&cl=$cl&ml=$ml&ts=$ts");
     }else{    
-       $contract->alert_redirect("Failed Try again", "/apps/work/ui/views/manage/project.php?ct=$ct&cl=$cl&ml=$ml&ts=$ts");
+       $contract->alert_redirect("Failed Try again", "/work/ui/views/manage/project.php?ct=$ct&cl=$cl&ml=$ml&ts=$ts");
     }
          
 }
@@ -227,9 +227,9 @@ if(isset($_POST['complete_contract'])){
 
    
    if($res){
-       $contract->alert_redirect("Contract is  Completed ", "/apps/work/ui/views/manage/manage_contracts.php");
+       $contract->alert_redirect("Contract is  Completed ", "/work/ui/views/manage/manage_contracts.php");
     }else{    
-       $contract->alert_redirect("Failed Try again", "/apps/work/ui/views/manage/project.php?ct=$ct&cl=$cl");
+       $contract->alert_redirect("Failed Try again", "/work/ui/views/manage/project.php?ct=$ct&cl=$cl");
     }
          
 }
@@ -245,9 +245,9 @@ if(isset($_POST['delete_contract'])){
 
    
    if($res){
-       $contract->alert_redirect("Contract is  Deleted ", "/apps/work/ui/views/manage/manage_contracts.php");
+       $contract->alert_redirect("Contract is  Deleted ", "/work/ui/views/manage/manage_contracts.php");
     }else{    
-       $contract->alert_redirect("Failed Try again", "/apps/work/ui/views/manage/project.php?ct=$ct&cl=$cl");
+       $contract->alert_redirect("Failed Try again", "/work/ui/views/manage/project.php?ct=$ct&cl=$cl");
     }
          
 }
@@ -265,9 +265,9 @@ if(isset($_POST['delete_task'])){
 
    
    if($res){
-       $contract->alert_redirect("Task is  Deleted ", "/apps/work/ui/views/manage/project.php?ct=$ct&cl=$cl&ml=$ml");
+       $contract->alert_redirect("Task is  Deleted ", "/work/ui/views/manage/project.php?ct=$ct&cl=$cl&ml=$ml");
     }else{    
-       $contract->alert_redirect("Failed Try again", "/apps/work/ui/views/manage/project.php?ct=$ct&cl=$cl&ml=$ml");
+       $contract->alert_redirect("Failed Try again", "/work/ui/views/manage/project.php?ct=$ct&cl=$cl&ml=$ml");
     }
          
 }
@@ -285,9 +285,9 @@ if(isset($_POST['delete_milestone'])){
 
    
    if($res){
-       $contract->alert_redirect("Milestone is  Deleted ", "/apps/work/ui/views/manage/project.php?ct=$ct&cl=$cl");
+       $contract->alert_redirect("Milestone is  Deleted ", "/work/ui/views/manage/project.php?ct=$ct&cl=$cl");
     }else{    
-       $contract->alert_redirect("Failed Try again", "/apps/work/ui/views/manage/project.php?ct=$ct&cl=$cl");
+       $contract->alert_redirect("Failed Try again", "/work/ui/views/manage/project.php?ct=$ct&cl=$cl");
     }
          
 }
@@ -305,9 +305,9 @@ if(isset($_POST['update_milestone'])){
 
    
    if($res){
-       $contract->alert_redirect("Milestone is  Updated ", "/apps/work/ui/views/manage/project.php?ct=$ct&cl=$cl");
+       $contract->alert_redirect("Milestone is  Updated ", "/work/ui/views/manage/project.php?ct=$ct&cl=$cl");
     }else{    
-       $contract->alert_redirect("Failed Try again", "/apps/work/ui/views/manage/project.php?ct=$ct&cl=$cl");
+       $contract->alert_redirect("Failed Try again", "/work/ui/views/manage/project.php?ct=$ct&cl=$cl");
     }
          
 }
@@ -324,9 +324,9 @@ if(isset($_POST['complete_milestone'])){
 
    
    if($res){
-       $contract->alert_redirect("Milestone is  Completed ", "/apps/work/ui/views/manage/project.php?ct=$ct&cl=$cl");
+       $contract->alert_redirect("Milestone is  Completed ", "/work/ui/views/manage/project.php?ct=$ct&cl=$cl");
     }else{    
-       $contract->alert_redirect("Failed Try again", "/apps/work/ui/views/manage/project.php?ct=$ct&cl=$cl");
+       $contract->alert_redirect("Failed Try again", "/work/ui/views/manage/project.php?ct=$ct&cl=$cl");
     }
          
 }
@@ -342,9 +342,9 @@ if(isset($_GET['act']) && ($_GET['act']=="release_req")){
 
    
    if($res){
-       $contract->alert_redirect("Payment Requested ", "/apps/work/ui/views/manage/manage_contracts.php");
+       $contract->alert_redirect("Payment Requested ", "/work/ui/views/manage/manage_contracts.php");
     }else{    
-       $contract->alert_redirect("Failed Try again", "/apps/work/ui/views/manage/manage_contracts.php");
+       $contract->alert_redirect("Failed Try again", "/work/ui/views/manage/manage_contracts.php");
     }
          
 }
@@ -370,9 +370,9 @@ if(isset($_GET['act']) && ($_GET['act']=="release")){
    $res=$contract->release_milestone($ml);
 
    if($res && $payment){
-       $contract->alert_redirect("Milestone Released ", "/apps/work/ui/views/manage/manage_contracts.php");
+       $contract->alert_redirect("Milestone Released ", "/work/ui/views/manage/manage_contracts.php");
     }else{    
-       $contract->alert_redirect("Failed Try again", "/apps/work/ui/views/manage/manage_contracts.php");
+       $contract->alert_redirect("Failed Try again", "/work/ui/views/manage/manage_contracts.php");
     }
 
    }   

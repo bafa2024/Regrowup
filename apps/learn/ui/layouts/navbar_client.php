@@ -1,7 +1,7 @@
 
         <nav class="navbar navbar-expand-lg navbar-light">
                         <div class="container-lg">
-                            <a class="navbar-brand w-120 w-md-140 fulw" href="/apps/work/ui/views/home/home.php">
+                            <a class="navbar-brand w-120 w-md-140 fulw" href="/work/ui/views/home/home.php">
                                 <img src="/ui/assets/images/logo.png" alt="logo" />
                             </a>
                             <button class="navbar-toggler rounded-0" type="button" data-bs-toggle="collapse"
@@ -14,14 +14,14 @@
                 
                                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                                     <li class="nav-item">
-                                        <a class="nav-link" href="/apps/work/ui/views/home/home.php">Home</a>
+                                        <a class="nav-link" href="/work/ui/views/home/home.php">Home</a>
                                     </li>
                                     <li class="nav-item dropdown">
                                     <a class="nav-link  dropdown-toggle bold" href="#" data-bs-toggle="dropdown"> Post </a>
                                     <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="/apps/work/ui/views/post/post_job.php"> Post Jobs</a></li>
+                                    <li><a class="dropdown-item" href="/work/ui/views/post/post_job.php"> Post Jobs</a></li>
                         
-                                    <li><a class="dropdown-item" href="/apps/work/ui/views/post/post_contract.php"> Post  Contracts </a></li>
+                                    <li><a class="dropdown-item" href="/work/ui/views/post/post_contract.php"> Post  Contracts </a></li>
   
                                 </ul>
                                     </li>
@@ -29,7 +29,7 @@
                                     <a class="nav-link  dropdown-toggle bold" href="#" data-bs-toggle="dropdown"> Create </a>
                                     <ul class="dropdown-menu">
                             
-                                    <li><a class="dropdown-item" href="/apps/work/ui/views/create/create_blog.php"> Blog Post</a></li>
+                                    <li><a class="dropdown-item" href="/work/ui/views/create/create_blog.php"> Blog Post</a></li>
                             
                                       </ul>
                                     </li>
@@ -38,13 +38,13 @@
                                     <li class="nav-item dropdown">
                                     <a class="nav-link  dropdown-toggle bold" href="#" data-bs-toggle="dropdown"> Browse </a>
                                     <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="/apps/work/ui/views/browse/browse_blogs.php"> Blogs</a></li>
+                                    <li><a class="dropdown-item" href="/work/ui/views/browse/browse_blogs.php"> Blogs</a></li>
                             
                                 
-                                    <li><a class="dropdown-item" href="/apps/work/ui/views/browse/browse_freelancers.php"> Freelancers</a></li>
-                                    <li><a class="dropdown-item" href="/apps/work/ui/views/browse/browse_gigs.php"> Gigs </a></li>
-                                    <li><a class="dropdown-item" href="/apps/work/ui/views/browse/browse_education.php"> Courses</a></li>
-                                    <li><a class="dropdown-item" href="/apps/work/ui/views/browse/browse_services.php"> Local Services </a></li>
+                                    <li><a class="dropdown-item" href="/work/ui/views/browse/browse_freelancers.php"> Freelancers</a></li>
+                                    <li><a class="dropdown-item" href="/work/ui/views/browse/browse_gigs.php"> Gigs </a></li>
+                                    <li><a class="dropdown-item" href="/work/ui/views/browse/browse_education.php"> Courses</a></li>
+                                    <li><a class="dropdown-item" href="/work/ui/views/browse/browse_services.php"> Local Services </a></li>
                                       </ul>
                                     </li>
                         
@@ -53,17 +53,17 @@
                                     <li class="nav-item dropdown">
                                     <a class="nav-link  dropdown-toggle bold" href="#" data-bs-toggle="dropdown"> Manage </a>
                                     <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="/apps/work/ui/views/manage/manage_jobs.php"> Employment</a></li>
+                                    <li><a class="dropdown-item" href="/work/ui/views/manage/manage_jobs.php"> Employment</a></li>
                         
                         
 
-                                    <li><a class="dropdown-item" href="/apps/work/ui/views/manage/manage_jobs.php"> Jobs</a></li>
+                                    <li><a class="dropdown-item" href="/work/ui/views/manage/manage_jobs.php"> Jobs</a></li>
                             
-                                    <li><a class="dropdown-item" href="/apps/work/ui/views/manage/manage_gigs.php"> Gigs</a></li>    
-                                    <li><a class="dropdown-item" href="/apps/work/ui/views/manage/manage_blogs.php"> Blogs</a></li> 
-                                    <li><a class="dropdown-item" href="/apps/work/ui/views/manage/manage_contracts.php"> Contracts</a></li>    
-                                    <li><a class="dropdown-item" href="/apps/work/ui/views/manage/manage_services.php">Local Services</a></li> 
-                                    <li><a class="dropdown-item" href="/apps/work/ui/views/manage/manage_courses.php"> Courses </a></li>
+                                    <li><a class="dropdown-item" href="/work/ui/views/manage/manage_gigs.php"> Gigs</a></li>    
+                                    <li><a class="dropdown-item" href="/work/ui/views/manage/manage_blogs.php"> Blogs</a></li> 
+                                    <li><a class="dropdown-item" href="/work/ui/views/manage/manage_contracts.php"> Contracts</a></li>    
+                                    <li><a class="dropdown-item" href="/work/ui/views/manage/manage_services.php">Local Services</a></li> 
+                                    <li><a class="dropdown-item" href="/work/ui/views/manage/manage_courses.php"> Courses </a></li>
                                 </ul>
                                     </li>
                             
@@ -131,15 +131,15 @@
                     <button type="button" class="btn btn-success">Busy</button>
                   </div>
           
-                  <a href="/apps/work/ui/views/profile/profile.php?ui=<?php echo $_SESSION['id']; ?>" target="_blank"><i class="fal fa-address-card"></i>
+                  <a href="/work/ui/views/profile/profile.php?ui=<?php echo $_SESSION['id']; ?>" target="_blank"><i class="fal fa-address-card"></i>
                                                     Profile</a>
-                                                    <a href="/apps/work/ui/views/home/statistics.php"><i class="fas fa-eye mt-2"></i> 
+                                                    <a href="/work/ui/views/home/statistics.php"><i class="fas fa-eye mt-2"></i> 
                                                     Statistics</a>
-                                                    <a href="/apps/work/ui/views/finance/finances.php"><i class="fas fa-eye mt-2"></i> 
+                                                    <a href="/work/ui/views/finance/finances.php"><i class="fas fa-eye mt-2"></i> 
                                                     Finances</a>
-                                                    <a href="/apps/work/ui/views/settings/settings.php?form=profile"><i class="fas fa-eye mt-2"></i> 
+                                                    <a href="/work/ui/views/settings/settings.php?form=profile"><i class="fas fa-eye mt-2"></i> 
                                                     Settings</a>
-                                                    <a href="/apps/work/ui/views/auth/invite.php"><i class="fas fa-eye mt-2"></i> 
+                                                    <a href="/work/ui/views/auth/invite.php"><i class="fas fa-eye mt-2"></i> 
                                                     Invite&Earn</a>
                                                 <hr>
                                                 <form action="/api/logsAPI.php" method="post">

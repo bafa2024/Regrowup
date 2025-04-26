@@ -134,7 +134,7 @@
 
 <?php
 $path = $_SERVER['DOCUMENT_ROOT'];
-include $path.'/apps/work/ui/layouts/footer.php';
+include $path.'/work/ui/layouts/footer.php';
 
 
 ?>

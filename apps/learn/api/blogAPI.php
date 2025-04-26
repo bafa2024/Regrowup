@@ -1,7 +1,7 @@
 <?php
 session_start();
 $path=$_SERVER['DOCUMENT_ROOT'];
-include $path.'/apps/work/controllers/BlogController.php';
+include $path.'/work/controllers/BlogController.php';
 $blog=new BlogController();
 
 
@@ -15,7 +15,7 @@ if(isset($_POST['save'])){
     //($blog->save() ? "Uploaded" : $blog->error);
     if($blog->save()){
         
-        $blog->alert_redirect("Blog Posted Successfully","/apps/work/ui/views/browse/browse_blogs.php");
+        $blog->alert_redirect("Blog Posted Successfully","/work/ui/views/browse/browse_blogs.php");
         
     }else{
         echo $blog->error;

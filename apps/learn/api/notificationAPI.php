@@ -1,7 +1,7 @@
 <?php
 session_start();
 $path = $_SERVER['DOCUMENT_ROOT'];
-include $path . '/apps/work/controllers/NotificationsController.php';
+include $path . '/work/controllers/NotificationsController.php';
 $notifications = new NotificationsController();
 
 header("Access-Control-Allow-Origin: *");

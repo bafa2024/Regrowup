@@ -57,7 +57,7 @@ $router->route('/edu_db_setup', 'apps/edu/api/dbAPI.php');
 
 $router->route('/per_db_setup', 'apps/personal/api/dbAPI.php');
 
-$router->route('/work_db_setup', 'apps/work/api/dbAPI.php');
+$router->route('/work_db_setup', 'work/api/dbAPI.php');
 
 $router->route('/dev', 'pool/dev/vackup/versions.php');
 
@@ -154,19 +154,19 @@ $router->route('/task', 'apps/personal/ui/views/home/task.php');
 
 
 //routes for work app assets
-$router->route('/mbid', 'apps/work/api/autowork.php');
+$router->route('/mbid', 'work/api/autowork.php');
 
 $router->route('/finance', 'apps/fincycle/index.php');
 
 //$router->route('/pricing', 'pool/auth/pricing.php');
 
-$router->route('/work/services/elite', 'apps/work/ui/views/services/home/elite.php');
+$router->route('/work/services/elite', 'work/ui/views/services/home/elite.php');
 
-$router->route('/work/services/history', 'apps/work/ui/views/services/home/bids.php');
+$router->route('/work/services/history', 'work/ui/views/services/home/bids.php');
 
-$router->route('/work/services/home', 'apps/work/ui/views/services/home/home.php');
+$router->route('/work/services/home', 'work/ui/views/services/home/home.php');
 
-$router->route('/work', 'apps/work/ui/views/services/home/home.php');
+$router->route('/work', 'work/ui/views/services/home/home.php');
 
 $router->route('/personal', 'apps/personal/ui/views/home/app.php');
 

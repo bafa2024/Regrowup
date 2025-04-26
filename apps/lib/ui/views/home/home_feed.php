@@ -153,7 +153,7 @@ function showPopup(message) {
 }
 
 async function makeSingleBid(p) {
-    let url = "/apps/work/api/autowork.php?task=mbid&p=" + p;
+    let url = "/work/api/autowork.php?task=mbid&p=" + p;
     
     try {
         let response = await fetch(url, {
@@ -234,5 +234,5 @@ function makeManyBids() {
 </div>
 <?php
 }
-include $path.'/apps/work/ui/layouts/footer.php';
+include $path.'/work/ui/layouts/footer.php';
 ?>

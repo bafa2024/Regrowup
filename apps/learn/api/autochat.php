@@ -1,7 +1,7 @@
 <?php
 session_start();
 $path=$_SERVER['DOCUMENT_ROOT'];
-include $path.'/apps/work/controllers/Autochat.php';
+include $path.'/work/controllers/Autochat.php';
 
 $chat = new Autochat();
 

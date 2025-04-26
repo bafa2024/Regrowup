@@ -50,8 +50,8 @@
                                 <div class="d-flex flex-column gap-2">
                                     <a href="#" class="text-white fs-13">About us</a>
                                     <a href="#" class="text-white fs-13">Trust safety & security</a>
-                                    <a href="/apps/work/ui/views/landing_pages/career.php" class="text-white fs-13">Careers</a>
-                                    <a href="/apps/work/ui/views/landing_pages/faqs.php" class="text-white fs-13">FAQs</a>
+                                    <a href="/work/ui/views/landing_pages/career.php" class="text-white fs-13">Careers</a>
+                                    <a href="/work/ui/views/landing_pages/faqs.php" class="text-white fs-13">FAQs</a>
                                 </div>
                             </div>
                         </div>
