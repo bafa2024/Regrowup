@@ -194,7 +194,7 @@ $router->route('/mbid', function() {
     require 'work/api/autowork.php';
 });
 
-$router->route('/at', function() {
+$router->route('/atw', function() {
     require 'apps/autowork/api/aw.php';
 });
 
