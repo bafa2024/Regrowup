@@ -67,7 +67,7 @@ trait Discovery
     public $min_bg_hourly = "20";
 
     public $limit = "10";
-    public $duration = "2";
+    public $duration = "5";
 
     public $upwork_rss_link1='https://www.upwork.com/ab/feed/jobs/rss?q=development';
 
