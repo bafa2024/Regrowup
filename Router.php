@@ -1,0 +1,93 @@
+<?php
+// Enable error reporting for debugging
+// Remove these lines in production
+//error_reporting(E_ALL);
+//ini_set('display_errors', 1);
+
+class Router {
+    
+    private $routes = [];
+    private $basePath = '';
+
+    public function __construct($basePath = '') {
+        $this->basePath = $basePath;
+    }
+
+    public function route($route, $handler) {
+        $this->routes[$route] = $handler;
+    }
+
+    public function handleRequest($url) {
+        $url = str_replace($this->basePath, '', $url);
+
+        $handler = $this->findMatchingRoute($url);
+
+        if ($handler !== null) {
+            $this->callHandler($handler['handler'], $handler['params']);
+        } else {
+            // Redirect to a 404 page or a custom error handler
+            $this->redirectTo('/404');
+        }
+    }
+
+    private function findMatchingRoute($url) {
+        foreach ($this->routes as $route => $handler) {
+            // Adjust the regex to allow optional trailing slashes
+            $pattern = str_replace('/', '\/', $route);
+            $pattern = "/^$pattern\/?$/"; // Match both with and without a trailing slash
+
+            if (preg_match($pattern, $url)) {
+                return [
+                    'handler' => $handler,
+                    'params' => []
+                ];
+            }
+        }
+
+        // Debugging: Log the failed match
+        error_log("Route not found for URL: $url");
+
+        return null;
+    }
+
+    private function callHandler($handler, $params)
+    {
+        if (is_callable($handler)) {
+            call_user_func($handler, $params);
+        } elseif (is_string($handler)) {
+            $filePath = __DIR__ . '/../../' . ltrim($handler, '/');
+            if (file_exists($filePath)) {
+                include $filePath;
+            } else {
+                echo "Sorry, File not found!";
+            }
+        } else {
+            echo "Oops! Invalid path!";
+        }
+    }
+
+    // Added a method to set a default application based on a parameter
+    public function return_defaultApp($dApp)
+    {
+        switch ($dApp) {
+            case 1:
+                $defaultApp = 'edu';
+                break;
+            case 2:
+                $defaultApp = 'work';
+                break;
+            case 3:
+                $defaultApp = 'personal';
+                break;
+            default:
+                $defaultApp = null;
+                break;
+        }
+        return $defaultApp;
+    }
+
+    public function redirectTo($url) {
+        header("Location: $url");
+        exit;
+    }
+}
