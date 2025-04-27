@@ -9,9 +9,9 @@ class config
     private $pass_local = "root";
     
     private $servername = "localhost";
-    private $dbname = 'u559678163_wh_main';
-    private $user = "u559678163_whu";
-    private $pass = "passOfwh_main!@#123$%^--";
+    private $dbname = 'u946493694_autowork';
+    private $user = "u946493694_atu";
+    private $pass = "^fD7HMH/]9c";
 
     //database details for testing server
     private $servername_d = "localhost";
@@ -38,9 +38,9 @@ class config
         switch ($host) {
             case 'localhost:3000':
                 return 1;
-            case 'wheeleder.com':
+            case 'regrowup.site':
                 return 2;
-            case 'wheeleder.xyz':
+            case 'wheeleder.com':
                 return 3;
             default:
                 return 0;

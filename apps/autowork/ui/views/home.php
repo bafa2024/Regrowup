@@ -1,261 +1,178 @@
-<?php
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="RegrowUp Freelancing Platform Dashboard - Manage Your Projects, Bids, and Workflows Efficiently">
+  <meta name="author" content="RegrowUp">
+  <title>RegrowUp | Dashboard</title>
 
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" 
+  integrity="sha384-KyZXEAg3QhqLMpG8r+8jhAXg7V+1zvN8CM5q2OQ9YG8HxAq0K6M13oQJbVUGla7Q" crossorigin="anonymous">
+
+  <!-- Custom CSS (optional, you can create /assets/css/style.css) -->
+  <link href="/apps/autowork/assets/css/style.css" rel="stylesheet">
+
+  <link rel="icon" type="image/png" href="/apps/autowork/assets/images/favicon.png">
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body { background-color: #f8f9fa; }
+    .popup-hidden { display: none; }
+    .popup-visible {
+      display: block;
+      position: fixed;
+      bottom: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #4CAF50;
+      color: white;
+      padding: 16px;
+      border-radius: 8px;
+      z-index: 9999;
+    }
+    .loading-splash {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.5);
+      z-index: 1000;
+    }
+    .loader {
+      border: 5px solid #f3f3f3;
+      border-top: 5px solid #3498db;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      animation: spin 2s linear infinite;
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    @keyframes spin {
+      0% { transform: translate(-50%, -50%) rotate(0deg); }
+      100% { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+  </style>
+</head>
+
+<body>
+
+<?php
 // Dynamic project folder detection
 $path = $_SERVER['DOCUMENT_ROOT'];
 $scriptName = dirname($_SERVER['SCRIPT_NAME']);
-$scriptName = str_replace('\\', '/', $scriptName); // Normalize for Windows
-
-// Extract folder name if exists
+$scriptName = str_replace('\\', '/', $scriptName); // Normalize
 $folder = trim($scriptName, '/');
 
-// If we are on localhost and have a folder like 'wheeleder', include it
 if (strpos($_SERVER['HTTP_HOST'], 'localhost') !== false && !empty($folder)) {
     $fullPath = $path . '/' . $folder . '/apps/autowork/controllers/ExternalProjects.php';
 } else {
-    // On live server (no extra folder needed)
     $fullPath = $path . '/apps/autowork/controllers/ExternalProjects.php';
 }
 
-// Finally include the correct file
 if (file_exists($fullPath)) {
     include_once $fullPath;
 } else {
     die("Error: Cannot find ExternalProjects.php at $fullPath");
 }
 
-
+include 'nav.php'; // Navbar
+session_start();
 $bid = new Bidding();
-
-//$bid->checkSessionAndRedirect();
-
-//include $fullPath.'/apps/autowork/ui/layouts/nav.php';
-
-$role = $_SESSION['role'];
+$role = $_SESSION['role'] ?? 'Guest';
 ?>
 
+<!-- Popup -->
 <div id="popup" class="popup-hidden">
   <span id="popup-message"></span>
 </div>
-<style>
-  .popup-hidden {
-  display: none;
-  /* other styles */
-}
 
-.popup-visible {
-  display: block;
-  position: fixed;
-  bottom: 10%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #4CAF50;
-  color: white;
-  padding: 16px;
-  z-index: 1;
-  text-align: center;
-  border-radius: 4px;
-}
-
-.loading-splash {
-    display: none;
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.7);
-    z-index: 9999;
-}
-
-.loader {
-    border: 5px solid #f3f3f3;
-    border-top: 5px solid #3498db;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    animation: spin 2s linear infinite;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-@keyframes spin {
-    0% { transform: translate(-50%, -50%) rotate(0deg); }
-    100% { transform: translate(-50%, -50%) rotate(360deg); }
-}
-
-
-  </style>
-<div class="container-fluid d-flex">
+<!-- Loading Splash -->
 <div id="loadingSplash" class="loading-splash">
-    <div class="loader"></div>
+  <div class="loader"></div>
 </div>
 
+<!-- Main Content -->
+<div class="container-fluid d-flex my-4">
+  <div class="nav flex-column nav-pills me-4 shadow p-2 rounded" style="max-height: 80vh; overflow-y: auto;" id="project-tabs" role="tablist" aria-orientation="vertical">
+    <?php
+    $queries = [
+      "Php", "Javascript", "Reactjs", "Vuejs", "Python", "ChatGPT", "AWS", "Java", "Django", "Flask",
+      "Nodejs", "Expressjs", "Android", "iOS", "Flutter", "React Native", "Nextjs", "Nuxtjs",
+      "Spring", "Springboot", "Springmvc", "Restfulapi", "Restapi", "Graphql"
+    ];
+    $limit = $_GET['limit'] ?? 20;
 
-  <?php
-  if ($role == "Client") {
-      include 'usermap.php';
-  } else {
-      $queries = ["Php", "Javascript", "Reactjs","Vuejs","Python","chatgpt","AWS","Java","Django","Flask","Nodejs","Expressjs","Android","Ios","Flutter","React Native","Nextjs","Nuxtjs","Spring","Springboot","Springmvc","Restfulapi","Restapi","Graphql"];
-      $limit = $_GET['limit'] ?? 20;
-    
-      ?>
-    <div class="nav flex-column nav-pills me-5 shadow radius-4 overflow-auto" id="v-pills-tab" role="tablist" aria-orientation="vertical" style="max-height: 80vh; overflow: auto;">
-
-        <?php
-        foreach ($queries as $index => $query) {
-            $isActive = ($index === 0) ? 'active' : '';
-            echo '<a class="nav-link ' . $isActive . '" id="v-pills-' . $query . '-tab" data-bs-toggle="pill" href="#v-pills-' . $query . '" role="tab" aria-controls="v-pills-' . $query . '" aria-selected="true">' . ucfirst($query) . '</a>';
-        }
-        ?>
-      </div>
-
-      <div class="tab-content" id="v-pills-tabContent">
-        <?php
-        foreach ($queries as $index => $query) {
-            $isActive = ($index === 0) ? 'show active' : '';
-            echo '<div class="scrollable-content tab-pane fade ' . $isActive . '" id="v-pills-' . $query . '" role="tabpanel" aria-labelledby="v-pills-' . $query . '-tab">';
-            $bid->feeder_home($query, $limit);
-            echo '</div>';
-        }
-        ?>
-      </div>
-      <!-- Add the dropdown select element -->
-      <div class="mb-3">
-        <h5><a href="/apps/work/services/elite" target="_self" class="btn btn-primary">Elite</a> 
-        <a href="/apps/work/services/history" target="_self" class="btn btn-primary">History</a> </h5>
-        <label for="limitSelect" class="form-label">Select Limit:</label>
-        <select class="form-select" id="limitSelect" name="limit" onchange="updateLimit()">
-          <option value="10" <?php if ($limit == 10) echo 'selected'; ?>>10</option>
-          <option value="20" <?php if ($limit == 20) echo 'selected'; ?>>20</option>
-          <option value="30" <?php if ($limit == 30) echo 'selected'; ?>>30</option>
-          <option value="50" <?php if ($limit == 50) echo 'selected'; ?>>50</option>
-          <option value="70" <?php if ($limit == 70) echo 'selected'; ?>>70</option>
-          <option value="100" <?php if ($limit == 100) echo 'selected'; ?>>100</option>
-          <!-- Add more options as needed -->
-        </select>
-      </div>
+    foreach ($queries as $index => $query) {
+      $isActive = ($index === 0) ? 'active' : '';
+      echo "<a class='nav-link $isActive' id='tab-$query' data-bs-toggle='pill' href='#content-$query' role='tab'>$query</a>";
+    }
+    ?>
   </div>
 
-  <!-- Include Bootstrap JS and Your Own Scripts -->
-  <!-- Bootstrap 5.1 JS Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" 
-integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"></script>
-
-  <script>
-
-function confirmAndMakeManyBids() {
-    var result = confirm("Are you sure you want to proceed?");
-    if (result) {
-        // User pressed OK
-        makeManyBids();
-    } else {
-        // User pressed Cancel
-        console.log("Action canceled!");
+  <div class="tab-content flex-grow-1 p-3 shadow rounded bg-light" id="project-tabContent">
+    <?php
+    foreach ($queries as $index => $query) {
+      $isActive = ($index === 0) ? 'show active' : '';
+      echo "<div class='tab-pane fade $isActive' id='content-$query' role='tabpanel'>";
+      $bid->list_elites($query, $limit);
+      echo "</div>";
     }
-}
+    ?>
+  </div>
+</div>
 
+<!-- Limit Dropdown -->
+<div class="container mb-4">
+  <div class="d-flex justify-content-between align-items-center">
+    <h5>Change Project Feed Limit:</h5>
+    <select id="limitSelect" class="form-select w-auto" onchange="updateLimit()">
+      <?php foreach ([10, 20, 30, 50, 70, 100] as $opt) {
+          $selected = ($limit == $opt) ? 'selected' : '';
+          echo "<option value='$opt' $selected>$opt</option>";
+      } ?>
+    </select>
+  </div>
+</div>
 
+<!-- Bootstrap 5 JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
 
-
-    function showPopupM(message) {
-    alert(message);  // Replace with your own popup implementation if you have one
-}
-
+<!-- Custom Scripts -->
+<script>
 function showPopup(message) {
   const popup = document.getElementById("popup");
   const popupMessage = document.getElementById("popup-message");
-  
-  popupMessage.innerHTML = message;
+  popupMessage.textContent = message;
   popup.className = "popup-visible";
-  
-  setTimeout(() => {
-    popup.className = "popup-hidden";
-  }, 1000); // Hide after 3 seconds
+  setTimeout(() => { popup.className = "popup-hidden"; }, 3000);
 }
 
-async function makeSingleBid(p) {
-    let url = "/apps/work/api/autowork.php?task=mbid&p=" + p;
-    
-    try {
-        let response = await fetch(url, {
-            method: "GET",
-            headers: {
-                // Add any necessary headers here, like authentication tokens
-            }
-        });
+function updateLimit() {
+  const selectedLimit = document.getElementById('limitSelect').value;
+  window.location.href = `?limit=${selectedLimit}`;
+}
 
-        if (response.ok) {
-            let jsonResponse = await response.json();
-            if (jsonResponse.status === 200) {
-                showPopup("Bid Success: " + jsonResponse.message);
-            } else {
-                showPopup("Bid Failed: " + jsonResponse.error);
-            }
-        } else {
-            showPopup("Network response was not ok");
-        }
-    } catch (error) {
-        showPopup("Fetch Error: " + error);
+async function makeSingleBid(project) {
+  try {
+    let response = await fetch(`/apps/work/api/autowork.php?task=mbid&p=${project}`);
+    let result = await response.json();
+    if (response.ok && result.status === 200) {
+      showPopup("Bid Success: " + result.message);
+    } else {
+      showPopup("Bid Failed: " + (result.error || result.message));
     }
+  } catch (error) {
+    showPopup("Error sending bid: " + error.message);
+  }
 }
-
-function makeManyBids() {
-    const multi_bid_url = "/mbid?task=manybid"; // Your API endpoint for multiple bids
-
-    // Show the loading splash
-  //  document.getElementById('loadingSplash').style.display = 'block';
-
-    fetch(multi_bid_url)
-    .then(response => response.json())
-    .then(data => {
-        if (data.status === 200) {
-            showPopup("MultiBid Success: " + data.message);
-        } else {
-            showPopup("MultiBid Failed: " + data.message);
-        }
-        
-        // Hide the loading splash after showing the popup
-        //document.getElementById('loadingSplash').style.display = 'none';
-    })
-    .catch((error) => {
-        // Show the popup first
-        showPopup("MultiBid Failed: Fetch Error");
-
-        // Hide the loading splash even if there's an error
-      //  document.getElementById('loadingSplash').style.display = 'none';
-        
-        console.error('Fetch Error:', error);
-    });
-}
-
-
-
-
 </script>
-  <script>
-    function updateLimit() {
-      const limitValue = document.getElementById('limitSelect').value;
-      window.location.href = `?limit=${limitValue}`;
-    }
 
-    const tabLinks = document.querySelectorAll('.nav-link');
-    tabLinks.forEach(link => {
-      link.addEventListener('click', (e) => {
-        e.preventDefault();
-        tabLinks.forEach(l => l.classList.remove('active'));
-        link.classList.add('active');
-        const target = link.getAttribute('href');
-        document.querySelectorAll('.tab-pane').forEach(tab => {
-          tab.classList.remove('show', 'active');
-        });
-        document.querySelector(target).classList.add('show', 'active');
-      });
-    });
-  </script>
-</div>
-<?php
-}
-include $path.'/apps/work/ui/layouts/footer.php';
-?>
+<?php include $path.'/apps/work/ui/layouts/footer.php'; ?>
+
+</body>
+</html>
