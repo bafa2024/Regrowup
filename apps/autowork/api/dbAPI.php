@@ -11,7 +11,7 @@ if($_GET['key']=="createdb") {
     $db->external_projects();
     $db->external_projects_bidden();
     $db->auto_bid();
-    $db->createFinancialDataTable();
+    
     $db->create_cities_table();
     $db->external_elite_projects();
     
