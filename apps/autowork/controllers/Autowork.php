@@ -63,7 +63,18 @@ class Autowork {
                     $description = $project->preview_description;
                     $link="https://www.freelancer.com/projects/".$pid;
                     $type = $project->type;
-                    /*
+                    $wproject= $resp;
+
+                   $res=$this->storeProjects($pid, $client_id, $status, $link, $max_bg, $min_bg, $type,$wproject);
+                   if($res==true){
+
+                    echo "Got new projects";
+
+
+                   }else{
+                    echo "There is no new project";
+                   }
+                   /*
                     if (!$this->filterCountry($country)) {
                         continue;
                     }
@@ -194,12 +205,12 @@ class Autowork {
     /*
     Step3-Store the non-elite projects in the non-elite table
     */
-    public function storeProjects($projectId, $client_id, $status, $link, $max_bg, $min_bg, $type)
+    public function storeProjects($projectId, $client_id, $status, $link, $max_bg, $min_bg, $type,$wproject)
     {
         //check if the project is already stored in the database
         if (!$this->checkStoredProjects($projectId, 'external_projects')) {
-            $sql = "INSERT INTO external_projects(project_id, client_id,status,link,max_budget,min_budget,type) 
-                    VALUES ('$projectId','$client_id','$status', '$link','$max_bg','$min_bg','$type')";
+            $sql = "INSERT INTO external_projects(project_id, client_id,status,link,max_budget,min_budget,type,whole_project) 
+                    VALUES ('$projectId','$client_id','$status', '$link','$max_bg','$min_bg','$type','$wproject')";
             $result = $this->run_query($sql);
             if ($result) {
                 return true;
