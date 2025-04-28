@@ -1,8 +1,7 @@
 <?php
 //session_start();
-$path=$_SERVER['DOCUMENT_ROOT'];
-include $path.'/apps/work/controllers/Autowork.php';
 
+require_once $_SERVER['DOCUMENT_ROOT'] . '/apps/autowork/controllers/Autowork.php';
 
 $at = new Autowork();
 
