@@ -7,8 +7,9 @@ class Autowork extends Controller {
     use Discovery;
 
     //1-a-Check the API Call and Bidding
-    public function api_checkup($query, $limit)
+    public function api_checkup($query)
     {
+        $limit=null;
         $url = "https://www.freelancer.com/api/projects/0.1/projects/active/?compact=&limit=" . $limit . "&query=" . $query;
         // Perform the API call
         $resp = $this->api_call($url);
@@ -33,8 +34,10 @@ class Autowork extends Controller {
     1-b-If not restricted:
          Step1-Fetch the new projects data from the API
     */
-    public function fetch_new_projects($query, $limit)
+    public function fetch_new_projects($query)
     {
+        $limit=null;
+
         $url = "https://www.freelancer.com/api/projects/0.1/projects/active/?compact=&limit=" . $limit . "&query=" . $query;
         // Perform the API call
         $resp = $this->api_call($url);
@@ -216,6 +219,60 @@ class Autowork extends Controller {
 
             Step3-a-2-Store the bidded projects in the bidded table & bidding results in the bidding table
     */
+    public function get_projects_data(){
+
+        // List of queries to search for
+       $queries = [
+     // Programming Languages and Frameworks
+     "PHP", "Javascript", "Reactjs", "Vuejs", "Python", "Java", "Nodejs", "Expressjs", "Django", "Flask",
+     "Nextjs", "Nuxtjs", "Spring", "Springboot", "Springmvc", "Graphql", "Restfulapi", "Restapi",
+     "Kotlin", "Swift", "C#", "C++", "ASP.NET", "Laravel", "Symfony", "CodeIgniter",
+     "GoLang", "Ruby on Rails", "Perl",
+ 
+     // Mobile App Development
+     "Android", "iOS", "Flutter", "React Native", "SwiftUI", "Objective-C", "Xamarin",
+ 
+     // Cloud and DevOps
+     "AWS", "Azure", "Google Cloud", "Firebase", "Docker", "Kubernetes", "CI/CD Pipelines", "Serverless",
+ 
+     // Artificial Intelligence and Data Science
+     "ChatGPT", "OpenAI", "Machine Learning", "Deep Learning", "NLP", "Tensorflow", "Pytorch", "Data Analysis",
+ 
+     // Blockchain and Web3
+     "Blockchain", "Ethereum", "Smart Contracts", "Solidity", "NFT Development", "Web3.js",
+ 
+     // UI/UX and Frontend Technologies
+     "TailwindCSS", "Bootstrap", "SASS", "Figma", "Adobe XD", "UI/UX Design",
+ 
+     // Digital Marketing
+     "Digital Marketing", "Social Media Marketing", "Facebook Marketing", "Instagram Marketing",
+     "SEO", "SEM", "Content Marketing", "Email Marketing", "Affiliate Marketing",
+     "YouTube Marketing", "LinkedIn Marketing", "Pinterest Marketing",
+ 
+     // Content Creation
+     "Blog Writing", "Copywriting", "Technical Writing", "Video Editing", "Podcast Editing", "Graphics Design",
+ 
+     // E-commerce
+     "Shopify Development", "WooCommerce", "Magento", "BigCommerce",
+ 
+     // Cybersecurity
+     "Penetration Testing", "Vulnerability Assessment", "Security Audits",
+     "Security Consulting", "Application Security", "Cloud Security", "Network Security",
+     "Security Operations Center (SOC)", "Threat Intelligence", "Endpoint Protection",
+     "Identity and Access Management (IAM)", "Data Loss Prevention (DLP)",
+     "SIEM (Security Information and Event Management)", "Compliance Audits (GDPR, HIPAA, PCI DSS)",
+     "Phishing Protection", "Ransomware Protection", "Incident Response", "Risk Assessment",
+     "Zero Trust Architecture", "Firewall Management", "Intrusion Detection and Prevention Systems (IDS/IPS)"
+     ];
+ 
+         // Loop over each query
+         foreach ($queries as $query) {
+           if($this->fetch_new_projects($query)){
+             echo "New Projects Stored";
+           }
+         }
+     }
+
     public function makebid_normal()
     {
       $sql = "SELECT * FROM external_projects";
@@ -246,6 +303,8 @@ class Autowork extends Controller {
       }
     }
 
+    
+
     //Bidding On Projects
     public function bidOnProject($pid)
     {
@@ -259,7 +318,7 @@ class Autowork extends Controller {
         "amount": ' . $charges . ',
         "period": ' . $this->duration . ',
         "milestone_percentage": 100,
-        "description": "Hi, I am a professional web developer and I can do this project ' . $title . ', I have 5 years of experience in web development. I have done many projects like this. I can do this job for you. I can start right now. Please contact me. Thanks"
+        "description": "Hello,  I checked ' . $title . ' is a good project to work on, with 10+ years of experience in development we are ready to start and deliver it on time, we can disucess the details in chat. Thanks"
          }';
 
         $resp = $this->api_call($url, 'POST', $data);
@@ -357,7 +416,7 @@ class Autowork extends Controller {
 
               if ($tag == 'NDA') {
                 echo '
-   <div class="card shadow" style="width: 80%;">
+     <div class="card shadow" style="width: 80%;">
        <div class="card-body">
            <h5 class="card-title">' . $title . '</h5>
            <p class="card-text">' . $description . '</p>

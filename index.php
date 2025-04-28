@@ -198,6 +198,10 @@ $router->route('/atw', function() {
     require 'apps/autowork/api/aw.php';
 });
 
+$router->route('/aw', function() {
+    require 'apps/autowork/api/atwork.php';
+});
+
 $router->route('/atwdb', function() {
     require 'apps/autowork/api/dbAPI.php';
 });
