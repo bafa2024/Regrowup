@@ -198,7 +198,7 @@ $router->route('/atw', function() {
     require 'apps/autowork/api/aw.php';
 });
 
-$router->route('/aw', function() {
+$router->route('/autoworking', function() {
     require 'apps/autowork/api/atwork.php';
 });
 
@@ -210,7 +210,7 @@ $router->route('/aw/home', function() {
     require 'apps/autowork/ui/views/home.php';
 });
 
-$router->route('/aw', function() {
+$router->route('/addg', function() {
     require 'apps/autowork/api/autowork.php';
 });
 
