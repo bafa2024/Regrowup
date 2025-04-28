@@ -1,9 +1,9 @@
 <?php
 $path = $_SERVER['DOCUMENT_ROOT'];
- $path . '/pool/libs/controllers/Controller.php';
+// $path . '/pool/libs/controllers/Controller.php';
 include 'Discovery.php';
 
-class Autowork extends Controller {
+class Autowork {
     use Discovery;
 
     //1-a-Check the API Call and Bidding
