@@ -79,9 +79,12 @@ class Autowork {
                     $tag = $this->elites($pid);
                     if($tag=='Normal'){
                         $this->storeProjects($pid, $client_id, $status, $link, $max_bg, $min_bg, $type);
-                    }else{
+                    }
+                    /*
+                    else{
                         $this->storeEliteProjects($pid, $client_id, $status, $link, $max_bg, $min_bg, $type, $tag);
                     }
+                   */
     
                     
                 }
