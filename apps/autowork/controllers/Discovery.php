@@ -446,7 +446,7 @@ trait Discovery
     echo '</tbody></table>';
 }
 
-
+   /*
     public function checkStoredProjects($projectId,$table)
     {
         $sql = "SELECT * FROM '.$table.' WHERE project_id='$projectId' ORDER BY id DESC";
@@ -458,6 +458,7 @@ trait Discovery
         }
 
     }
+    */
 
     public function ref_users($user_id)
     {
