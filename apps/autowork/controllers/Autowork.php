@@ -1,6 +1,6 @@
 <?php
 $path = $_SERVER['DOCUMENT_ROOT'];
-// $path . '/pool/libs/controllers/Controller.php';
+ $path . '/pool/libs/controllers/Controller.php';
 include 'Discovery.php';
 
 class Autowork extends Controller {
@@ -171,7 +171,7 @@ class Autowork extends Controller {
         //check if the project is already stored in the database
         if (!$this->checkStoredProjects($projectId, 'external_elite_projects')) {
             $sql = "INSERT INTO external_elite_projects(project_id, client_id,status,link,max_budget,min_budget,type,tag) 
-VALUES ('$projectId','$client_id','$status', '$link','$max_bg','$min_bg','$type','$tag')";
+                    VALUES ('$projectId','$client_id','$status', '$link','$max_bg','$min_bg','$type','$tag')";
             $result = $this->run_query($sql);
             if ($result) {
                 return true;
@@ -188,7 +188,7 @@ VALUES ('$projectId','$client_id','$status', '$link','$max_bg','$min_bg','$type'
         //check if the project is already stored in the database
         if (!$this->checkStoredProjects($projectId, 'external_projects')) {
             $sql = "INSERT INTO external_projects(project_id, client_id,status,link,max_budget,min_budget,type) 
-VALUES ('$projectId','$client_id','$status', '$link','$max_bg','$min_bg','$type')";
+                    VALUES ('$projectId','$client_id','$status', '$link','$max_bg','$min_bg','$type')";
             $result = $this->run_query($sql);
             if ($result) {
                 return true;
@@ -298,7 +298,7 @@ VALUES ('$projectId','$client_id','$status', '$link','$max_bg','$min_bg','$type'
     public function storeBidResult($projectId, $client_id, $status, $status_message, $error_code, $request_id)
     {
       $sql = "INSERT INTO external_projects_bidden(project_id,client_id,status,status_message,error_code,request_id) 
-  VALUES ('$projectId', '$client_id','$status','$status_message','$error_code','$request_id')";
+              VALUES ('$projectId', '$client_id','$status','$status_message','$error_code','$request_id')";
       $result = $this->run_query($sql);
       if ($result) {
         return true;
@@ -311,7 +311,7 @@ VALUES ('$projectId','$client_id','$status', '$link','$max_bg','$min_bg','$type'
     public function bidding_result($projectId, $status)
     {
         $sql = "INSERT INTO external_projects_bidden(project_id,status,) 
-  VALUES ('$projectId','$status')";
+                VALUES ('$projectId','$status')";
         $result = $this->run_query($sql);
         if ($result) {
             return true;

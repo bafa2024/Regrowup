@@ -310,10 +310,10 @@ class Bidding
           return $tag;
     }
     
-    public function multibids($limit = 100){
+    public function multibids(){
 
        // List of queries to search for
-$queries = [
+      $queries = [
     // Programming Languages and Frameworks
     "PHP", "Javascript", "Reactjs", "Vuejs", "Python", "Java", "Nodejs", "Expressjs", "Django", "Flask",
     "Nextjs", "Nuxtjs", "Spring", "Springboot", "Springmvc", "Graphql", "Restfulapi", "Restapi",
@@ -354,7 +354,7 @@ $queries = [
     "SIEM (Security Information and Event Management)", "Compliance Audits (GDPR, HIPAA, PCI DSS)",
     "Phishing Protection", "Ransomware Protection", "Incident Response", "Risk Assessment",
     "Zero Trust Architecture", "Firewall Management", "Intrusion Detection and Prevention Systems (IDS/IPS)"
-];
+    ];
 
         // Loop over each query
         foreach ($queries as $query) {
