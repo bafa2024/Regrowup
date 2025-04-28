@@ -358,7 +358,7 @@ class Bidding
 
         // Loop over each query
         foreach ($queries as $query) {
-    
+            $limit=null;
             // Build the URL for the API call
             $url = "https://www.freelancer.com/api/projects/0.1/projects/active/?query=" . $query . "&limit=" . $limit;
     
