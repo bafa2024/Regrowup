@@ -63,6 +63,7 @@ class Autowork {
                     $description = $project->preview_description;
                     $link="https://www.freelancer.com/projects/".$pid;
                     $type = $project->type;
+                    /*
                     if (!$this->filterCountry($country)) {
                         continue;
                     }
@@ -88,6 +89,7 @@ class Autowork {
                         $this->storeEliteProjects($pid, $client_id, $status, $link, $max_bg, $min_bg, $type, $tag);
                     }
                    */
+                  echo $pid;
     
                     
                 }
