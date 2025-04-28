@@ -7,7 +7,7 @@ class Db extends Database
   public $table;
 
 
-  public function projects($table = "projects")  // Changed to 'projects'
+  public function projects($table = "allprojects")  // Changed to 'projects'
   {
       $this->deleteTable($table);
       $this->createTable(

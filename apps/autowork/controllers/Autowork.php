@@ -209,7 +209,7 @@ class Autowork extends Controller{
     {
         //check if the project is already stored in the database
         if (!$this->checkStoredProjects($projectId, 'projects')) {
-            $sql = "INSERT INTO projects(project_id, client_id,status,link,max_budget,min_budget,type,whole_project) 
+            $sql = "INSERT INTO allprojects(project_id, client_id,status,link,max_budget,min_budget,type,whole_project) 
                     VALUES ('$projectId','$client_id','$status', '$link','$max_bg','$min_bg','$type','$wproject')";
             $result = $this->run_query($sql);
             if ($result) {
@@ -296,7 +296,7 @@ class Autowork extends Controller{
 
     public function makebid_normal()
     {
-      $sql = "SELECT * FROM projects";
+      $sql = "SELECT * FROM allprojects";
       $result = mysqli_query($this->db, $sql);
   
       if (mysqli_num_rows($result) > 0) {
