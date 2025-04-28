@@ -1,7 +1,7 @@
 <?php
 
 // Include necessary files for database connection and logging
-// Assuming this handles table creation, if needed
+//   Assuming this handles table creation, if needed
 require_once $_SERVER['DOCUMENT_ROOT'] . '/apps/autowork/controllers/DbConnection.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/apps/autowork/controllers/DbController.php';
 class Autowork {
