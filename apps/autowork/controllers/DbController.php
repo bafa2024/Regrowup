@@ -26,6 +26,7 @@ class Db extends Database
         type VARCHAR(20) NULL,
         details TEXT NULL,
         link TEXT NULL,
+        whole_project JSON NULL,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
         '
