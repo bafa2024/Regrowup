@@ -36,7 +36,7 @@ class Autowork {
     */
     public function fetch_new_projects($query)
     {
-        $limit=null;
+        $limit=10;
 
         $url = "https://www.freelancer.com/api/projects/0.1/projects/active/?compact=&limit=" . $limit . "&query=" . $query;
         // Perform the API call
