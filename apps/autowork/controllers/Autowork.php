@@ -203,7 +203,7 @@ class Autowork {
             }
         }
     }
-    /*
+    
     public function checkStoredProjects($projectId,$table)
     {
         $sql = "SELECT * FROM '.$table.' WHERE project_id='$projectId' ORDER BY id DESC";
@@ -215,7 +215,7 @@ class Autowork {
         }
 
     }
-    */
+    
 
     /*
       Step3-a-Fetch all the non-elite projects from the non-elite table
