@@ -89,7 +89,7 @@ class Autowork {
                         $this->storeEliteProjects($pid, $client_id, $status, $link, $max_bg, $min_bg, $type, $tag);
                     }
                    */
-                  echo $pid;
+                  echo $pid."<br>";
     
                     
                 }
