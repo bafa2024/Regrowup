@@ -33,6 +33,32 @@ class Db extends Database
       );
   }
 
+  public function new_projects($table = "newprojects")  // Changed to 'projects'
+  {
+      $this->deleteTable($table);
+      $this->createTable(
+          $table,
+          '
+              id INT AUTO_INCREMENT PRIMARY KEY,
+              project_id INT NULL,
+              freelancer_id INT NULL,
+              client_id INT NULL,
+              flag JSON NULL,
+              status VARCHAR(20) NULL,
+              title TEXT NULL,
+              bidding_interval VARCHAR(20) NULL,
+              max_budget VARCHAR(20) NULL,
+              min_budget VARCHAR(20) NULL,
+              type VARCHAR(20) NULL,
+              details TEXT NULL,
+              link TEXT NULL,
+              whole_project JSON NULL,
+              created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+              updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+          '
+      );
+  }
+
   public function external_elite_projects($table = "external_elite_projects")
   {
     $this->deleteTable($table);

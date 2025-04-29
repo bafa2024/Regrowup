@@ -235,6 +235,18 @@ class Autowork extends Controller{
         }
 
     }
+
+    public function bid_checkup($pid){
+        $sql = "SELECT * FROM allprojects WHERE project_id='$projectId' ORDER BY id DESC";
+        $result = $this->run_query($sql);
+        if ($result->num_rows > 0) {
+            $status=$result['status'];
+            $this->bidding_result($projectId, $status);
+
+        } else {
+            return false;
+        }
+    }
     
 
     /*

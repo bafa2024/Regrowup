@@ -8,7 +8,8 @@ $db = new Db();
 if($_GET['key']=="createdb") {
 
 
-    $db->projects();
+    //$db->projects();
+    $db->new_projects();
     $db->external_projects_bidden();
     $db->auto_bid();
     
