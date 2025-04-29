@@ -208,7 +208,7 @@ class Autowork extends Controller{
     public function storeProjects($projectId, $client_id, $status, $link, $max_bg, $min_bg, $type,$wproject)
     {
         //check if the project is already stored in the database
-       // if (!$this->checkStoredProjects($projectId, 'allprojects')) {
+        if (!$this->checkStoredProjects($projectId, 'allprojects')) {
         $status = $this->connectDb()->real_escape_string($status);
         $link = $this->connectDb()->real_escape_string($link);
          $max_bg = $this->connectDb()->real_escape_string($max_bg);
@@ -224,7 +224,7 @@ class Autowork extends Controller{
             } else {
                 return false;
             }
-        //}
+        }
     }
     
     public function checkStoredProjects($projectId,$table)
