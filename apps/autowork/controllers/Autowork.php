@@ -36,7 +36,7 @@ class Autowork extends Controller{
     */
     public function fetch_new_projects($query)
     {
-        $limit=10;
+        $limit=null;
 
         $url = "https://www.freelancer.com/api/projects/0.1/projects/active/?compact=&limit=" . $limit . "&query=" . $query;
         // Perform the API call
@@ -67,10 +67,7 @@ class Autowork extends Controller{
 
                    $res=$this->storeProjects($pid, $client_id, $status, $link, $max_bg, $min_bg, $type,$wproject);
                    if($res==true){
-
                     echo "Got new projects";
-
-
                    }else{
                     echo "There is no new project";
                    }
@@ -229,7 +226,7 @@ class Autowork extends Controller{
     
     public function checkStoredProjects($projectId,$table)
     {
-        $sql = "SELECT * FROM '.$table.' WHERE project_id='$projectId' ORDER BY id DESC";
+        $sql = "SELECT * FROM '$table' WHERE project_id='$projectId' ORDER BY id DESC";
         $result = $this->run_query($sql);
         if ($result->num_rows > 0) {
             return true;
