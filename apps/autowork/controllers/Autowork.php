@@ -209,6 +209,13 @@ class Autowork extends Controller{
     {
         //check if the project is already stored in the database
        // if (!$this->checkStoredProjects($projectId, 'allprojects')) {
+        $status = $this->mysqli->real_escape_string($status);
+        $link = $this->mysqli->real_escape_string($link);
+         $max_bg = $this->mysqli->real_escape_string($max_bg);
+        $min_bg = $this->mysqli->real_escape_string($min_bg);
+        $type = $this->mysqli->real_escape_string($type);
+        $wproject = $this->mysqli->real_escape_string($wproject);
+
             $sql = "INSERT INTO allprojects(project_id, client_id,status,link,max_budget,min_budget,type,whole_project) 
                     VALUES ('$projectId','$client_id','$status', '$link','$max_bg','$min_bg','$type','$wproject')";
             $result = $this->run_query($sql);
