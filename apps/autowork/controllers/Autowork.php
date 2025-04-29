@@ -226,7 +226,7 @@ class Autowork extends Controller{
     
     public function checkStoredProjects($projectId,$table)
     {
-        $sql = "SELECT * FROM '$table' WHERE project_id='$projectId' ORDER BY id DESC";
+        $sql = "SELECT * FROM ".$table." WHERE project_id='$projectId' ORDER BY id DESC";
         $result = $this->run_query($sql);
         if ($result->num_rows > 0) {
             return true;
