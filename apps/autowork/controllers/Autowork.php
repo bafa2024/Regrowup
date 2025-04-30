@@ -225,6 +225,8 @@ class Autowork extends Controller{
                     
                 }
     
+        }else{
+            echo "The system is paused, please try again later";
         } 
     }
 
