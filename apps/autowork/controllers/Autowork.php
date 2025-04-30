@@ -191,7 +191,7 @@ class Autowork extends Controller{
                    //$this->storeProjects($pid, $client_id, $status, $link, $max_bg, $min_bg, $type,$wproject);
                    $tag = $this->elites($pid);
                    if($tag=='Normal'){
-                       $this->storeProjects($pid, $client_id, $status, $link, $max_bg, $min_bg, $type);
+                       $this->storeProjects($pid, $client_id, $status, $link, $max_bg, $min_bg, $type,$wproject);
                        echo "Not Elite";
                    }else{
                        echo "Elite";
