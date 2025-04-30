@@ -188,25 +188,23 @@ class Autowork extends Controller{
                     $type = $project->type;
                     $wproject= $resp;
 
-                   $res=$this->storeProjects($pid, $client_id, $status, $link, $max_bg, $min_bg, $type,$wproject);
-                   if($res==true){
-                    echo "Got new projects";
+                   //$this->storeProjects($pid, $client_id, $status, $link, $max_bg, $min_bg, $type,$wproject);
+                   $tag = $this->elites($pid);
+                   if($tag=='Normal'){
+                       $this->storeProjects($pid, $client_id, $status, $link, $max_bg, $min_bg, $type);
+                       echo "Not Elite";
                    }else{
-                    echo "There is no new project";
+                       echo "Elite";
+                       //Store the elite projects in the elite table
+                       $this->storeEliteProjects($pid, $client_id, $status, $link, $max_bg, $min_bg, $type, $tag);
                    }
+
+                    
+                  
+                   /*
                    if(!$this->proposed_checkup($pid)){
                     continue;
                     }
-                    $tag = $this->elites($pid);
-                    if($tag=='Normal'){
-                        //$this->storeProjects($pid, $client_id, $status, $link, $max_bg, $min_bg, $type);
-                        echo "Not Elite";
-                    }else{
-                        echo "Elite";
-                        //Store the elite projects in the elite table
-                        $this->storeEliteProjects($pid, $client_id, $status, $link, $max_bg, $min_bg, $type, $tag);
-                    }
-                   /*
                     if (!$this->filterCountry($country)) {
                         continue;
                     }
