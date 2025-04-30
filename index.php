@@ -202,6 +202,10 @@ $router->route('/aw', function() {
     require 'apps/autowork/api/atwork.php';
 });
 
+$router->route('/elite', function() {
+    require 'apps/autowork/ui/views/elite.php';
+});
+
 $router->route('/aw_t', function() {
     require 'apps/autowork/api/aw_tests.php';
 });
