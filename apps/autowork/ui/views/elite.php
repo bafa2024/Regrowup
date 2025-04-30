@@ -9,7 +9,7 @@ $at = new Autowork();
 
 //include $path.'/apps/work/ui/layouts/nav.php';
 
-$role = $_SESSION['role'];
+//$role = $_SESSION['role'];
 ?>
 
 <div id="popup" class="popup-hidden">

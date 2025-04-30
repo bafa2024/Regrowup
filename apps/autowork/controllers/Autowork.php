@@ -495,7 +495,8 @@ class Autowork extends Controller{
     public function fetch_elite_projects()
     {
       $sql = "SELECT * FROM external_elite_projects";
-      $result = mysqli_query($this->db, $sql);
+      //$result = mysqli_query($this->db, $sql);
+        $result = $this->run_query($sql);
   
       if (mysqli_num_rows($result) > 0) {
         // output data of each row
