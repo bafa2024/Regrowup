@@ -6,6 +6,129 @@ include 'Discovery.php';
 class Autowork extends Controller{
     use Discovery;
 
+    public function get_projects_data(){
+
+        // List of queries to search for
+       $queries = [
+     // Programming Languages and Frameworks
+     "PHP", "Javascript", "Reactjs", "Vuejs", "Python", "Java", "Nodejs", "Expressjs", "Django", "Flask",
+     "Nextjs", "Nuxtjs", "Spring", "Springboot", "Springmvc", "Graphql", "Restfulapi", "Restapi",
+     "Kotlin", "Swift", "C#", "C++", "ASP.NET", "Laravel", "Symfony", "CodeIgniter",
+     "GoLang", "Ruby on Rails", "Perl",
+ 
+     // Mobile App Development
+     "Android", "iOS", "Flutter", "React Native", "SwiftUI", "Objective-C", "Xamarin",
+ 
+     // Cloud and DevOps
+     "AWS", "Azure", "Google Cloud", "Firebase", "Docker", "Kubernetes", "CI/CD Pipelines", "Serverless",
+ 
+     // Artificial Intelligence and Data Science
+     "ChatGPT", "OpenAI", "Machine Learning", "Deep Learning", "NLP", "Tensorflow", "Pytorch", "Data Analysis",
+ 
+     // Blockchain and Web3
+     "Blockchain", "Ethereum", "Smart Contracts", "Solidity", "NFT Development", "Web3.js",
+ 
+     // UI/UX and Frontend Technologies
+     "TailwindCSS", "Bootstrap", "SASS", "Figma", "Adobe XD", "UI/UX Design",
+ 
+     // Digital Marketing
+     "Digital Marketing", "Social Media Marketing", "Facebook Marketing", "Instagram Marketing",
+     "SEO", "SEM", "Content Marketing", "Email Marketing", "Affiliate Marketing",
+     "YouTube Marketing", "LinkedIn Marketing", "Pinterest Marketing",
+ 
+     // Content Creation
+     "Blog Writing", "Copywriting", "Technical Writing", "Video Editing", "Podcast Editing", "Graphics Design",
+ 
+     // E-commerce
+     "Shopify Development", "WooCommerce", "Magento", "BigCommerce",
+ 
+     // Cybersecurity
+     "Penetration Testing", "Vulnerability Assessment", "Security Audits",
+     "Security Consulting", "Application Security", "Cloud Security", "Network Security",
+     "Security Operations Center (SOC)", "Threat Intelligence", "Endpoint Protection",
+     "Identity and Access Management (IAM)", "Data Loss Prevention (DLP)",
+     "SIEM (Security Information and Event Management)", "Compliance Audits (GDPR, HIPAA, PCI DSS)",
+     "Phishing Protection", "Ransomware Protection", "Incident Response", "Risk Assessment",
+     "Zero Trust Architecture", "Firewall Management", "Intrusion Detection and Prevention Systems (IDS/IPS)"
+     ];
+ 
+         // Loop over each query
+         foreach ($queries as $query) {
+           if($this->fetch_new_projects($query)){
+             echo "New Projects Stored";
+           }
+         }
+     }
+
+     public function bid_on_projects()
+     {
+         $sql = "SELECT * FROM allprojects ORDER BY id DESC";
+         $result = $this->run_query($sql);
+ 
+         while ($result && $res = mysqli_fetch_array($result)) {
+             //check if the project is already bidded by calling proposed_checkup function
+         $pid = $res['project_id'];
+         $client_id = $res['client_id'];
+         $min_bg = $res['min_budget'];
+         $max_bg = $res['max_budget'];
+         $title = $res['title'];
+         $link = $res['link'];
+         $type = $res['type'];
+         $wproject = $res['whole_project'];
+         $status = $res['status'];
+ 
+         $bidded=$this->proposed_checkup($pid);
+         if ($bidded) {
+             echo "Hey, you already bidded on this project: ".$pid."<br>";
+         } else {
+             echo "No, this is a new project: ".$pid."<br>";
+            $bd=$this->bidOnProject($pid);
+            if($bd==true){
+             echo "Bid placed successfully on project: ".$pid."<br>";
+               }else{
+                 echo "Bid failed on project: ".$pid."<br>";
+               }
+ 
+             //$this->storeBidResult($pid, $client_id, $status, $link, $max_bg, $min_bg, $type, $wproject);
+         }
+ 
+         }
+     
+     }
+
+     /*=====================================================================================================*/
+
+   
+     public function makebid_normal()
+    {
+      $sql = "SELECT * FROM allprojects";
+      $result = mysqli_query($this->db, $sql);
+  
+      if (mysqli_num_rows($result) > 0) {
+        // output data of each row
+        $projects = array();
+        while ($row = mysqli_fetch_assoc($result)) {
+          $projects[] = $row;
+        }
+        foreach ($projects as $project) {
+          $charges = $project['min_budget'];
+          $title = $project['title'];
+          $client_id = $project['client_id'];
+          $pid = $project['project_id'];
+            $res = $this->bidOnProject($pid);
+            $result = json_decode($res, true);
+            $status = $result['status'];
+            $status_message = $result['message'];
+            $error_code = $result['error_code'];
+            $request_id = $result['request_id'];
+            $this->storeBidResult($pid, $client_id, $status, $status_message, $error_code, $request_id);
+        }
+  
+      } else {
+        echo "0 results";
+      }
+    }
+
     //1-a-Check the API Call and Bidding
     public function api_checkup($query)
     {
@@ -257,46 +380,8 @@ class Autowork extends Controller{
 
     //write a function to get all the project details from the database allprojects and then bid on it
 
-    public function get_all_projects()
-    {
-        $sql = "SELECT * FROM allprojects ORDER BY id DESC";
-        $result = $this->run_query($sql);
+   
 
-        while ($result && $res = mysqli_fetch_array($result)) {
-            //check if the project is already bidded by calling proposed_checkup function
-        $pid = $res['project_id'];
-        $client_id = $res['client_id'];
-        $min_bg = $res['min_budget'];
-        $max_bg = $res['max_budget'];
-        $title = $res['title'];
-        $link = $res['link'];
-        $type = $res['type'];
-        $wproject = $res['whole_project'];
-        $status = $res['status'];
-
-        $bidded=$this->proposed_checkup($pid);
-        if ($bidded) {
-            echo "Hey, you already bidded on this project: ".$pid."<br>";
-        } else {
-            echo "No, this is a new project: ".$pid."<br>";
-           $bd=$this->bidOnProject($pid);
-           if($bd==true){
-            echo "Bid placed successfully on project: ".$pid."<br>";
-              }else{
-                echo "Bid failed on project: ".$pid."<br>";
-              }
-
-            //$this->storeBidResult($pid, $client_id, $status, $link, $max_bg, $min_bg, $type, $wproject);
-        }
-
-        }
-
-
-      
-        
-
-        
-    }
     //write a function to get all the project details from the database newprojects and then bid on it
     public function get_new_projects()
     {

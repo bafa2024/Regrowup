@@ -7,4 +7,6 @@ $at = new Autowork();
 
 //wget -O /dev/null https://regrowup.site/aw
 
-$at->get_all_projects();
+//wget -O /dev/null https://regrowup.site/aw_bid
+
+$at->bid_on_projects();
