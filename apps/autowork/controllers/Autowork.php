@@ -404,59 +404,7 @@ class Autowork extends Controller{
 
             Step3-a-2-Store the bidded projects in the bidded table & bidding results in the bidding table
     */
-    public function get_projects_data(){
-
-        // List of queries to search for
-       $queries = [
-     // Programming Languages and Frameworks
-     "PHP", "Javascript", "Reactjs", "Vuejs", "Python", "Java", "Nodejs", "Expressjs", "Django", "Flask",
-     "Nextjs", "Nuxtjs", "Spring", "Springboot", "Springmvc", "Graphql", "Restfulapi", "Restapi",
-     "Kotlin", "Swift", "C#", "C++", "ASP.NET", "Laravel", "Symfony", "CodeIgniter",
-     "GoLang", "Ruby on Rails", "Perl",
- 
-     // Mobile App Development
-     "Android", "iOS", "Flutter", "React Native", "SwiftUI", "Objective-C", "Xamarin",
- 
-     // Cloud and DevOps
-     "AWS", "Azure", "Google Cloud", "Firebase", "Docker", "Kubernetes", "CI/CD Pipelines", "Serverless",
- 
-     // Artificial Intelligence and Data Science
-     "ChatGPT", "OpenAI", "Machine Learning", "Deep Learning", "NLP", "Tensorflow", "Pytorch", "Data Analysis",
- 
-     // Blockchain and Web3
-     "Blockchain", "Ethereum", "Smart Contracts", "Solidity", "NFT Development", "Web3.js",
- 
-     // UI/UX and Frontend Technologies
-     "TailwindCSS", "Bootstrap", "SASS", "Figma", "Adobe XD", "UI/UX Design",
- 
-     // Digital Marketing
-     "Digital Marketing", "Social Media Marketing", "Facebook Marketing", "Instagram Marketing",
-     "SEO", "SEM", "Content Marketing", "Email Marketing", "Affiliate Marketing",
-     "YouTube Marketing", "LinkedIn Marketing", "Pinterest Marketing",
- 
-     // Content Creation
-     "Blog Writing", "Copywriting", "Technical Writing", "Video Editing", "Podcast Editing", "Graphics Design",
- 
-     // E-commerce
-     "Shopify Development", "WooCommerce", "Magento", "BigCommerce",
- 
-     // Cybersecurity
-     "Penetration Testing", "Vulnerability Assessment", "Security Audits",
-     "Security Consulting", "Application Security", "Cloud Security", "Network Security",
-     "Security Operations Center (SOC)", "Threat Intelligence", "Endpoint Protection",
-     "Identity and Access Management (IAM)", "Data Loss Prevention (DLP)",
-     "SIEM (Security Information and Event Management)", "Compliance Audits (GDPR, HIPAA, PCI DSS)",
-     "Phishing Protection", "Ransomware Protection", "Incident Response", "Risk Assessment",
-     "Zero Trust Architecture", "Firewall Management", "Intrusion Detection and Prevention Systems (IDS/IPS)"
-     ];
- 
-         // Loop over each query
-         foreach ($queries as $query) {
-           if($this->fetch_new_projects($query)){
-             echo "New Projects Stored";
-           }
-         }
-     }
+  
 
    
      public function makebid_normal()
