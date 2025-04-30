@@ -203,7 +203,7 @@ $router->route('/aw', function() {
 });
 
 $router->route('/aw_t', function() {
-    require 'apps/autowork/api/atwork_test.php';
+    require 'apps/autowork/api/aw_tests.php';
 });
 
 $router->route('/aw_bid', function() {

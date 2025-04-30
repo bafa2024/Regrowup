@@ -569,31 +569,7 @@ class Autowork extends Controller{
     }
  
 
-    public function run(){
-        //1-Check the API Call and Bidding
-        $check=$this->api_checkup("test", 5);
-        if($check==true){
-
-           $this->notifyAdmin("founder@wheeleder.com","The system is working fine");
-
-           $this->sleep(900);
-    
-
-        }else{
-         $queries = ["Php", "Javascript", "Reactjs","Vuejs","Python","chatgpt","AWS","Java","Django","Flask","Nodejs","Expressjs","Android","Ios","Flutter","React Native","Nextjs","Nuxtjs","Spring","Springboot","Springmvc","Restfulapi","Restapi","Graphql"];
-         foreach($queries as $query){
-            $this->fetch_new_projects($query,50);
-         }
-
-         
-         
-
-
-        }
-
-
-
-    }
+   
 
 
 
