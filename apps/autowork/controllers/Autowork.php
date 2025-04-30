@@ -273,7 +273,7 @@ class Autowork extends Controller{
         $status = $res['status'];
 
         $bidded=$this->proposed_checkup($pid);
-        if (!$bidded) {
+        if ($bidded) {
             echo "Hey, you already bidded on this project: ".$pid."<br>";
         } else {
             echo "No, this is a new project: ".$pid."<br>";
@@ -286,7 +286,7 @@ class Autowork extends Controller{
 
             //$this->storeBidResult($pid, $client_id, $status, $link, $max_bg, $min_bg, $type, $wproject);
         }
-        
+
         }
 
 
