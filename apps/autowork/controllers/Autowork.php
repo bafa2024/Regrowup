@@ -259,7 +259,7 @@ class Autowork extends Controller{
     {
         $sql = "SELECT * FROM allprojects ORDER BY id DESC";
         $result = $this->run_query($sql);
-        $res=$this->mysqli_rows($result);
+        $res=mysqli_fetch_assoc($result);
         //check if the project is already bidded by calling proposed_checkup function
         $pid = $res['project_id'];
         $client_id = $res['client_id'];
