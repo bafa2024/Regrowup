@@ -300,44 +300,7 @@ class Autowork extends Controller{
         }
     }
 
-    public function storenewProjects($wproject)
-    {
-
-        $obj = json_decode($wproject);
-        $status = $obj->status;
-        //check if the pros is not null , else display a message system is paused
-        if ($status == "success") {
-                // Extract projects from the parsed object
-                $pros = $obj->result->projects;
-                // Loop through each project
-                foreach ($pros as $project) {
-                    // Get the project ID
-                    $pid = $project->id;
-                    $client_id = $project->owner_id;
-                    $min_bg = $project->budget->minimum;
-                    $max_bg = $project->budget->maximum;
-                    $title = $project->title;
-                }
-            }
-        //check if the project is already stored in the database
-        $projectId, $client_id, $status, $link, $max_bg, $min_bg, $type,
-        $status = $this->connectDb()->real_escape_string($status);
-        $link = $this->connectDb()->real_escape_string($link);
-         $max_bg = $this->connectDb()->real_escape_string($max_bg);
-        $min_bg = $this->connectDb()->real_escape_string($min_bg);
-        $type = $this->connectDb()->real_escape_string($type);
-        $wproject = $this->connectDb()->real_escape_string($wproject);
-
-            $sql = "INSERT INTO new_projects(project_id, client_id,status,link,max_budget,min_budget,type,whole_project) 
-                    VALUES ('$projectId','$client_id','$status', '$link','$max_bg','$min_bg','$type','$wproject')";
-            $result = $this->run_query($sql);
-            if ($result) {
-                return true;
-            } else {
-                return false;
-            }
-        
-    }
+    
     
 
     /*
