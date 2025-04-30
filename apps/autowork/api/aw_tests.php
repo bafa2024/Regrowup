@@ -9,5 +9,6 @@ $at = new Autowork();
 
 //$at->get_projects_data();
 //$at->bids_history();
+//$at->fetch_new_projects("php");
 
-$at->fetch_new_projects("php");
+$at->get_projects_data();
