@@ -203,9 +203,7 @@ class Autowork extends Controller{
                         echo "Not Elite";
                     }else{
                         echo "Elite";
-                    }
-                    
-                    else{
+                        //Store the elite projects in the elite table
                         $this->storeEliteProjects($pid, $client_id, $status, $link, $max_bg, $min_bg, $type, $tag);
                     }
                    /*
