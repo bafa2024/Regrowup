@@ -407,36 +407,7 @@ class Autowork extends Controller{
   
 
    
-     public function makebid_normal()
-    {
-      $sql = "SELECT * FROM allprojects";
-      $result = mysqli_query($this->db, $sql);
-  
-      if (mysqli_num_rows($result) > 0) {
-        // output data of each row
-        $projects = array();
-        while ($row = mysqli_fetch_assoc($result)) {
-          $projects[] = $row;
-        }
-        foreach ($projects as $project) {
-          $charges = $project['min_budget'];
-          $title = $project['title'];
-          $client_id = $project['client_id'];
-          $pid = $project['project_id'];
-            $res = $this->bidOnProject($pid);
-            $result = json_decode($res, true);
-            $status = $result['status'];
-            $status_message = $result['message'];
-            $error_code = $result['error_code'];
-            $request_id = $result['request_id'];
-            $this->storeBidResult($pid, $client_id, $status, $status_message, $error_code, $request_id);
-        }
-  
-      } else {
-        echo "0 results";
-      }
-    }
-
+    
     
 
     //Bidding On Projects
