@@ -24,7 +24,13 @@ class Autowork extends Controller{
  
      // Artificial Intelligence and Data Science
      "ChatGPT", "OpenAI", "Machine Learning", "Deep Learning", "NLP", "Tensorflow", "Pytorch", "Data Analysis",
- 
+        "Data Visualization", "Data Mining", "Big Data", "Hadoop", "Spark", "Data Engineering","Automation",
+        "Data Science", "Data Analytics", "Data Warehousing", "Data Modeling", "Data Governance",
+        "Data Quality", "Data Integration", "Data Migration", "Data Architecture", "Data Strategy",
+        "Data Management", "Data Security", "Data Privacy", "Data Compliance", "Data Ethics",
+        "Data Visualization", "Data Storytelling", "Data Journalism", "Data Literacy", "Data Culture",
+        "Data Democratization", "Data-Driven Decision Making", "Data-Driven Marketing",
+        "Data-Driven Sales", "Data-Driven Product Development", "Data-Driven Customer Experience",
      // Blockchain and Web3
      "Blockchain", "Ethereum", "Smart Contracts", "Solidity", "NFT Development", "Web3.js",
  
@@ -40,7 +46,40 @@ class Autowork extends Controller{
      "Blog Writing", "Copywriting", "Technical Writing", "Video Editing", "Podcast Editing", "Graphics Design",
  
      // E-commerce
-     "Shopify Development", "WooCommerce", "Magento", "BigCommerce",
+     "Shopify Development", "WooCommerce", "Magento", "BigCommerce","Wordpress",
+     "E-commerce Development", "Dropshipping", "Print on Demand",
+     "E-commerce SEO", "E-commerce Marketing",
+        "E-commerce Analytics", "E-commerce Strategy",
+        "E-commerce Design", "E-commerce Branding",
+        "E-commerce Content Creation", "E-commerce Customer Service",
+        "E-commerce Social Media","E-commerce Email Marketing",
+        "E-commerce Influencer Marketing", "E-commerce Affiliate Marketing",
+        "E-commerce PPC Advertising", "E-commerce Retargeting",
+        "E-commerce Conversion Rate Optimization", "E-commerce A/B Testing",
+        "E-commerce User Experience", "E-commerce User Interface",
+        "E-commerce Mobile Optimization", "E-commerce Website Speed",
+        "E-commerce Website Security", "E-commerce Website Maintenance",
+        "E-commerce Website Hosting", "E-commerce Website Backup",
+        "E-commerce Website Migration", "E-commerce Website Redesign",
+        "E-commerce Website Development", "E-commerce Website Design",
+        "E-commerce Website Optimization", "E-commerce Website Analytics",
+        "E-commerce Website Tracking", "E-commerce Website Reporting",
+        "E-commerce Website Monitoring", "E-commerce Website Testing",
+        "E-commerce Website Debugging", "E-commerce Website Troubleshooting",
+        "E-commerce Website Support", "E-commerce Website Help",
+        "E-commerce Website Assistance", "E-commerce Website Consultation",
+        "E-commerce Website Strategy", "E-commerce Website Planning",
+        "E-commerce Website Management", "E-commerce Website Administration",
+        "E-commerce Website Coordination", "E-commerce Website Supervision",
+        "E-commerce Website Direction", "E-commerce Website Leadership",
+        "E-commerce Website Guidance", "E-commerce Website Mentoring",
+        "E-commerce Website Coaching", "E-commerce Website Training",
+        "Logo Design", "Branding", "Business Card Design",
+     "Brochure Design", "Flyer Design", "Poster Design",
+        "Banner Design", "Infographic Design", "Social Media Graphics",
+        "Web Design", "UI/UX Design", "Print Design",
+        "Packaging Design", "Label Design", "T-shirt Design",
+        "Merchandise Design", "Book Cover Design",
  
      // Cybersecurity
      "Penetration Testing", "Vulnerability Assessment", "Security Audits",
