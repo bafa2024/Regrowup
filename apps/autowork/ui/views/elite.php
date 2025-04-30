@@ -74,8 +74,8 @@ $role = $_SESSION['role'];
 
   <?php
   $at->fetch_elite_projects();
-<?php
-}
+
+
 include $path.'/apps/work/ui/layouts/footer.php';
 ?>
 
