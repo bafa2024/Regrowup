@@ -516,7 +516,7 @@ class Autowork extends Controller{
             
             $purl = "https://www.freelancer.com/projects/" . $pid;
 
-              if ($tag == 'NDA') {
+             // if ($tag == 'NDA') {
                 echo '
      <div class="card shadow" style="width: 80%;">
        <div class="card-body">
@@ -533,7 +533,7 @@ class Autowork extends Controller{
            <button onclick="makeSingleBid(\'' . $pid . '\')">Bid</button>
        </div>
    </div>';
-          }
+         // }
         }
 
       } else {
