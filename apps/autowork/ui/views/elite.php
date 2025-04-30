@@ -7,7 +7,7 @@ $at = new Autowork();
 
 //$bid->checkSessionAndRedirect();
 
-include $path.'/apps/work/ui/layouts/nav.php';
+//include $path.'/apps/work/ui/layouts/nav.php';
 
 $role = $_SESSION['role'];
 ?>
