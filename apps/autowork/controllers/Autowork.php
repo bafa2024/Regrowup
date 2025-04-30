@@ -373,7 +373,8 @@ class Autowork extends Controller{
          }
      }
 
-    public function makebid_normal()
+   
+     public function makebid_normal()
     {
       $sql = "SELECT * FROM allprojects";
       $result = mysqli_query($this->db, $sql);
@@ -424,12 +425,12 @@ class Autowork extends Controller{
         $resp = $this->api_call($url, 'POST', $data);
 
         if ($resp) {
-            $this->bidding_result($pid,'success');
+           // $this->bidding_result($pid,'success');
             return true;
             
 
         } else {
-            $this->bidding_result($pid,'bid failed');
+           // $this->bidding_result($pid,'bid failed');
             return false;
         }
     }
