@@ -194,6 +194,20 @@ class Autowork extends Controller{
                    }else{
                     echo "There is no new project";
                    }
+                   if(!$this->proposed_checkup($pid)){
+                    continue;
+                    }
+                    $tag = $this->elites($pid);
+                    if($tag=='Normal'){
+                        //$this->storeProjects($pid, $client_id, $status, $link, $max_bg, $min_bg, $type);
+                        echo "Not Elite";
+                    }else{
+                        echo "Elite";
+                    }
+                    
+                    else{
+                        $this->storeEliteProjects($pid, $client_id, $status, $link, $max_bg, $min_bg, $type, $tag);
+                    }
                    /*
                     if (!$this->filterCountry($country)) {
                         continue;
@@ -202,22 +216,6 @@ class Autowork extends Controller{
                     //filtering the project budget
                     if (!$this->filterBudget($min_bg, $type)) {
                         continue;
-                    }
-
-                    if(!$this->proposed_checkup($pid)){
-                        continue;
-                    }
-
-                    $tag = $this->elites($pid);
-                    if($tag=='Normal'){
-                        //$this->storeProjects($pid, $client_id, $status, $link, $max_bg, $min_bg, $type);
-                        echo "Not Elite";
-                    }else{
-                        echo "Elite";
-                    }
-                    /*
-                    else{
-                        $this->storeEliteProjects($pid, $client_id, $status, $link, $max_bg, $min_bg, $type, $tag);
                     }
                    */
                  // echo $pid."<br>";
