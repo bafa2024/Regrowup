@@ -192,7 +192,7 @@ date_created TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'
 }
 $action = $_GET['action'];
 
-if ($action == '2023') {
+if ($action == 'cr') {
 
   $db = new Migration();
 
