@@ -128,10 +128,12 @@ class Autowork extends Controller{
             // If a bid for the given project is found, return true
             if ($bid_project_id == $projectId) {
                 return true;
+            }else{
+                return false;
             }
         }
         // If no bid for the given project is found, return false
-        return false;
+        
     }
 
     //Step2-Filter the projects to elite and non-elite projects
