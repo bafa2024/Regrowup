@@ -202,6 +202,10 @@ $router->route('/aw', function() {
     require 'apps/autowork/api/atwork.php';
 });
 
+$router->route('/aw_t', function() {
+    require 'apps/autowork/api/atwork_test.php';
+});
+
 $router->route('/atwdb', function() {
     require 'apps/autowork/api/dbAPI.php';
 });

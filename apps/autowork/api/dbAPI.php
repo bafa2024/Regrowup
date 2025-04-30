@@ -16,7 +16,7 @@ if($_GET['key']=="createdb") {
     $db->create_cities_table();
     $db->external_elite_projects();
     
-    $db->website_traffic($table = "website_traffic");
+    
 
 }
 

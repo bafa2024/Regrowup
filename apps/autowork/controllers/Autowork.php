@@ -236,16 +236,107 @@ class Autowork extends Controller{
 
     }
 
-    public function bid_checkup($pid){
-        $sql = "SELECT * FROM allprojects WHERE project_id='$projectId' ORDER BY id DESC";
+    public function bid_checkup(){
+        $sql = "SELECT * FROM allprojects ORDER BY id DESC";
         $result = $this->run_query($sql);
-        if ($result->num_rows > 0) {
-            $status=$result['status'];
-            $this->bidding_result($projectId, $status);
+        $res=$this->mysqli_rows($result);
+        //check if the project is already stored in the database
+        if ($res) {
+            // $status=$result['status'];
+            // $this->bidding_result($projectId, $status);
+            echo "Hey, you already bidded on this project: ".$pid."<br>";
+        } else {
+          // $this->storenewProjects($wpproject);
+          echo "No, this is a new project: ".$pid."<br>";
+        }
 
+      
+    }
+
+    //write a function to get all the project details from the database allprojects and then bid on it
+
+    public function get_all_projects()
+    {
+        $sql = "SELECT * FROM allprojects ORDER BY id DESC";
+        $result = $this->run_query($sql);
+        $res=$this->mysqli_rows($result);
+        //check if the project is already bidded by calling proposed_checkup function
+        $pid = $res['project_id'];
+        $client_id = $res['client_id'];
+        $min_bg = $res['min_budget'];
+        $max_bg = $res['max_budget'];
+        $title = $res['title'];
+        $link = $res['link'];
+        $type = $res['type'];
+        $wproject = $res['whole_project'];
+        $status = $res['status'];
+
+        $bidded=$this->proposed_checkup($pid);
+        if (!$bidded) {
+            echo "Hey, you already bidded on this project: ".$pid."<br>";
+        } else {
+            echo "No, this is a new project: ".$pid."<br>";
+           $bd=$this->bidOnProject($pid);
+           if($bd==true){
+            echo "Bid placed successfully on project: ".$pid."<br>";
+              }else{
+                echo "Bid failed on project: ".$pid."<br>";
+              }
+
+            //$this->storeBidResult($pid, $client_id, $status, $link, $max_bg, $min_bg, $type, $wproject);
+        }
+
+        
+    }
+    //write a function to get all the project details from the database newprojects and then bid on it
+    public function get_new_projects()
+    {
+        $sql = "SELECT * FROM new_projects ORDER BY id DESC";
+        $result = $this->run_query($sql);
+        if ($result) {
+            return $result;
         } else {
             return false;
         }
+    }
+
+    public function storenewProjects($wproject)
+    {
+
+        $obj = json_decode($wproject);
+        $status = $obj->status;
+        //check if the pros is not null , else display a message system is paused
+        if ($status == "success") {
+                // Extract projects from the parsed object
+                $pros = $obj->result->projects;
+                // Loop through each project
+                foreach ($pros as $project) {
+                    // Get the project ID
+                    $pid = $project->id;
+                    $client_id = $project->owner_id;
+                    $min_bg = $project->budget->minimum;
+                    $max_bg = $project->budget->maximum;
+                    $title = $project->title;
+                }
+            }
+        //check if the project is already stored in the database
+        $projectId, $client_id, $status, $link, $max_bg, $min_bg, $type,
+        $status = $this->connectDb()->real_escape_string($status);
+        $link = $this->connectDb()->real_escape_string($link);
+         $max_bg = $this->connectDb()->real_escape_string($max_bg);
+        $min_bg = $this->connectDb()->real_escape_string($min_bg);
+        $type = $this->connectDb()->real_escape_string($type);
+        $wproject = $this->connectDb()->real_escape_string($wproject);
+
+            $sql = "INSERT INTO new_projects(project_id, client_id,status,link,max_budget,min_budget,type,whole_project) 
+                    VALUES ('$projectId','$client_id','$status', '$link','$max_bg','$min_bg','$type','$wproject')";
+            $result = $this->run_query($sql);
+            if ($result) {
+                return true;
+            } else {
+                return false;
+            }
+        
     }
     
 
