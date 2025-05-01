@@ -87,6 +87,10 @@ $router->route('/aw_t', function() {
     require 'apps/autowork/api/aw_tests.php';
 });
 
+$router->route('/mybids', function() {
+    require 'apps/autowork/api/bids_history.php';
+});
+
 $router->route('/aw_bid', function() {
     require 'apps/autowork/api/atwork_bid.php';
 });
