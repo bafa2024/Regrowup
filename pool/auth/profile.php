@@ -1,5 +1,5 @@
 <?php
-session_start();
+//session_start();
 $path = $_SERVER['DOCUMENT_ROOT'];
 include $path . '/pool/libs/controllers/LogsController.php';
 
