@@ -61,30 +61,6 @@
 
 <body>
 
-<?php
-// Dynamic project folder detection
-$path = $_SERVER['DOCUMENT_ROOT'];
-$scriptName = dirname($_SERVER['SCRIPT_NAME']);
-$scriptName = str_replace('\\', '/', $scriptName); // Normalize
-$folder = trim($scriptName, '/');
-
-if (strpos($_SERVER['HTTP_HOST'], 'localhost') !== false && !empty($folder)) {
-    $fullPath = $path . '/' . $folder . '/apps/autowork/controllers/ExternalProjects.php';
-} else {
-    $fullPath = $path . '/apps/autowork/controllers/ExternalProjects.php';
-}
-
-if (file_exists($fullPath)) {
-    include_once $fullPath;
-} else {
-    die("Error: Cannot find ExternalProjects.php at $fullPath");
-}
-
-include 'nav.php'; // Navbar
-session_start();
-$bid = new Bidding();
-$role = $_SESSION['role'] ?? 'Guest';
-?>
 
 <!-- Popup -->
 <div id="popup" class="popup-hidden">
@@ -97,32 +73,7 @@ $role = $_SESSION['role'] ?? 'Guest';
 </div>
 
 <!-- Main Content -->
-<div class="container-fluid d-flex my-4">
-  <div class="nav flex-column nav-pills me-4 shadow p-2 rounded" style="max-height: 80vh; overflow-y: auto;" id="project-tabs" role="tablist" aria-orientation="vertical">
-    <?php
-    $queries = [
-      "Php", "Javascript", "Reactjs", "Vuejs", "Python", "ChatGPT", "AWS", "Java", "Django", "Flask",
-      "Nodejs", "Expressjs", "Android", "iOS", "Flutter", "React Native", "Nextjs", "Nuxtjs",
-      "Spring", "Springboot", "Springmvc", "Restfulapi", "Restapi", "Graphql"
-    ];
-    $limit = $_GET['limit'] ?? 20;
 
-    foreach ($queries as $index => $query) {
-      $isActive = ($index === 0) ? 'active' : '';
-      echo "<a class='nav-link $isActive' id='tab-$query' data-bs-toggle='pill' href='#content-$query' role='tab'>$query</a>";
-    }
-    ?>
-  </div>
-
-  <div class="tab-content flex-grow-1 p-3 shadow rounded bg-light" id="project-tabContent">
-    <?php
-    foreach ($queries as $index => $query) {
-      $isActive = ($index === 0) ? 'show active' : '';
-      echo "<div class='tab-pane fade $isActive' id='content-$query' role='tabpanel'>";
-      $bid->list_elites($query, $limit);
-      echo "</div>";
-    }
-    ?>
   </div>
 </div>
 

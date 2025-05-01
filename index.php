@@ -66,7 +66,58 @@ $router->route('/logout', function() {
     require 'pool/auth/logout.php';
 });
 
+// --- Work App Sections ---
+$router->route('/mbid', function() {
+    require 'work/api/autowork.php';
+});
 
+$router->route('/atw', function() {
+    require 'apps/autowork/api/aw.php';
+});
+
+$router->route('/aw', function() {
+    require 'apps/autowork/api/atwork.php';
+});
+
+$router->route('/elite', function() {
+    require 'apps/autowork/ui/views/elite.php';
+});
+
+$router->route('/aw_t', function() {
+    require 'apps/autowork/api/aw_tests.php';
+});
+
+$router->route('/aw_bid', function() {
+    require 'apps/autowork/api/atwork_bid.php';
+});
+
+$router->route('/atwdb', function() {
+    require 'apps/autowork/api/dbAPI.php';
+});
+
+$router->route('/aw/home', function() {
+    require 'apps/autowork/ui/views/home.php';
+});
+
+$router->route('/addg', function() {
+    require 'apps/autowork/api/autowork.php';
+});
+
+$router->route('/apps/work/services/elite', function() {
+    require 'apps/work/ui/views/services/home/elite.php';
+});
+
+$router->route('/apps/work/services/history', function() {
+    require 'apps/work/ui/views/services/home/bids.php';
+});
+
+$router->route('/apps/work/services/home', function() {
+    require 'apps/work/ui/views/services/home/home.php';
+});
+
+$router->route('/work', function() {
+    require 'apps/autowork/ui/views/home/home.php';
+});
 
 $router->route('/topics', function() {
     require 'pool/auth/topics.php';
@@ -204,62 +255,13 @@ $router->route('/task', function() {
     require 'apps/personal/ui/views/home/task.php';
 });
 
-// --- Work App Sections ---
-$router->route('/mbid', function() {
-    require 'work/api/autowork.php';
-});
 
-$router->route('/atw', function() {
-    require 'apps/autowork/api/aw.php';
-});
-
-$router->route('/aw', function() {
-    require 'apps/autowork/api/atwork.php';
-});
-
-$router->route('/elite', function() {
-    require 'apps/autowork/ui/views/elite.php';
-});
-
-$router->route('/aw_t', function() {
-    require 'apps/autowork/api/aw_tests.php';
-});
-
-$router->route('/aw_bid', function() {
-    require 'apps/autowork/api/atwork_bid.php';
-});
-
-$router->route('/atwdb', function() {
-    require 'apps/autowork/api/dbAPI.php';
-});
-
-$router->route('/aw/home', function() {
-    require 'apps/autowork/ui/views/home.php';
-});
-
-$router->route('/addg', function() {
-    require 'apps/autowork/api/autowork.php';
-});
 
 $router->route('/finance', function() {
     require 'apps/fincycle/index.php';
 });
 
-$router->route('/apps/work/services/elite', function() {
-    require 'apps/work/ui/views/services/home/elite.php';
-});
 
-$router->route('/apps/work/services/history', function() {
-    require 'apps/work/ui/views/services/home/bids.php';
-});
-
-$router->route('/apps/work/services/home', function() {
-    require 'apps/work/ui/views/services/home/home.php';
-});
-
-$router->route('/work', function() {
-    require 'apps/work/ui/views/services/home/home.php';
-});
 
 // --- Personal App Section ---
 $router->route('/personal', function() {
