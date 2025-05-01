@@ -33,6 +33,10 @@ $router->route('/signup', function() {
     require 'pool/auth/signup.php';
 });
 
+$router->route('/profile', function() {
+    require 'apps/lib/ui/views/profile/profile.php';
+});
+
 $router->route('/topics', function() {
     require 'pool/auth/topics.php';
 });
@@ -139,9 +143,7 @@ $router->route('/ads', function() {
     require 'apps/lib/ui/views/home/ads.php';
 });
 
-$router->route('/profile', function() {
-    require 'apps/lib/ui/views/profile/profile.php';
-});
+
 
 $router->route('/settings', function() {
     require 'apps/lib/ui/views/settings/settings.php';
