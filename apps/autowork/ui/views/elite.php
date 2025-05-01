@@ -5,7 +5,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/apps/autowork/controllers/Autowork.ph
 
 $at = new Autowork();
 
-//$bid->checkSessionAndRedirect();
+$bid->checkSessionAndRedirect();
 
 //include $path.'/apps/work/ui/layouts/nav.php';
 

@@ -8,7 +8,7 @@ $bid->checkSessionAndRedirect();
 
 include $path.'/apps/work/ui/layouts/nav.php';
 
-$role = $_SESSION['role'];
+
 ?>
 
 <div id="popup" class="popup-hidden">

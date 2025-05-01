@@ -1,3 +1,16 @@
+<?php
+
+$path = $_SERVER['DOCUMENT_ROOT'];
+include $path.'/apps/work/controllers/ExternalProjects.php';
+$bid = new Bidding();
+
+$bid->checkSessionAndRedirect();
+
+include $path.'/apps/work/ui/layouts/nav.php';
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
