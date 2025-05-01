@@ -384,15 +384,25 @@ class Bidding
 
                 $country = $project->currency->country;
 
+                /*
                 if(!$this->filterCountry($country)){
                     continue;
                 }
-        
-                  //filtering the project budget
-        
+
+                 //filtering the project budget
+
                 if(!$this->filterBudget($min_bg,$project_type)){
                     continue;
                 }
+                */
+                // Check if the project is already bidded
+                if ($this->proposed_checkup($pid)) {
+                    continue; // Skip this project if already bidded
+                }
+        
+                 
+        
+               
 
                 if (!$this->bidOnProject($pid)) {
                     echo "Bid failed for project ID: $pid";
