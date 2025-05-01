@@ -116,7 +116,7 @@ $router->route('/apps/work/services/home', function() {
 });
 
 $router->route('/work', function() {
-    require 'apps/autowork/ui/views/home/home.php';
+    require 'apps/autowork/ui/views/home.php';
 });
 
 $router->route('/topics', function() {
