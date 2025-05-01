@@ -106,19 +106,19 @@ if (isset($_POST['login'])) {
 
           switch ($dapp) {
             case 1:
-              header("Location: /profile"); // Redirect to personal app  
+              header("Location: /work"); // Redirect to personal app  
               break;
             case 2:
-              header("Location: /profile"); // Redirect to education app
+              header("Location: /work"); // Redirect to education app
               break;
             case 3:
-              header("Location: /profile"); // Redirect to work app
+              header("Location: /work"); // Redirect to work app
               break;
             case 4:
-              header("Location: /profile"); // Redirect to work app
+              header("Location: /work"); // Redirect to work app
               break;
             default:
-              header("Location: /profile"); // Redirect to home page if default app is not set
+              header("Location: /work"); // Redirect to home page if default app is not set
               break;
           }
 
@@ -127,23 +127,23 @@ if (isset($_POST['login'])) {
 
           switch ($_SESSION['dapp']) {
             case 1:
-              header("Location: /profile"); // Redirect to personal app  
+              header("Location: /work"); // Redirect to personal app  
               break;
             case 2:
-              header("Location: /profile"); // Redirect to education app
+              header("Location: /work"); // Redirect to education app
               break;
             case 3:
-              header("Location: /profile"); // Redirect to work app
+              header("Location: /work"); // Redirect to work app
               break;
             default:
-              header("Location: /profile"); // Redirect to home page if default app is not set
+              header("Location: /work"); // Redirect to home page if default app is not set
               break;
           }
         }
 
       } else {
 
-        header("Location: /profile");
+        header("Location: /work");
 
       }
 
