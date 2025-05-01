@@ -37,6 +37,10 @@ $router->route('/profile', function() {
     require 'apps/lib/ui/views/profile/profile.php';
 });
 
+$router->route('/home', function() {
+    require 'apps/lib/ui/views/profile/profile.php';
+});
+
 $router->route('/log_api', function() {
     require 'pool/api/logsAPI.php';
 });
