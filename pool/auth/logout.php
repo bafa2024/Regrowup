@@ -1,6 +1,6 @@
 <?php
     session_destroy();
-    header("Location: /index.php");
+    header("Location: /");
 /*
 if(isset($_GET['act'])){
     $act=$_GET['act'];
