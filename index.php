@@ -210,7 +210,7 @@ $router->route('/ads', function() {
 
 
 $router->route('/settings', function() {
-    require 'apps/work/ui/views/settings/settings.php';
+    require 'apps/lib/ui/views/settings/settings.php';
 });
 
 $router->route('/pricing', function() {
