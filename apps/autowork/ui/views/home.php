@@ -1,129 +1,212 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="RegrowUp Freelancing Platform Dashboard - Manage Your Projects, Bids, and Workflows Efficiently">
-  <meta name="author" content="RegrowUp">
-  <title>RegrowUp | Dashboard</title>
-
-  <!-- Bootstrap 5 CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" 
-  integrity="sha384-KyZXEAg3QhqLMpG8r+8jhAXg7V+1zvN8CM5q2OQ9YG8HxAq0K6M13oQJbVUGla7Q" crossorigin="anonymous">
-
-  <!-- Custom CSS (optional, you can create /assets/css/style.css) -->
-  <link href="/apps/autowork/assets/css/style.css" rel="stylesheet">
-
-  <link rel="icon" type="image/png" href="/apps/autowork/assets/images/favicon.png">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <title>Freelancer Dashboard</title>
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
   <style>
-    html { scroll-behavior: smooth; }
-    body { background-color: #f8f9fa; }
-    .popup-hidden { display: none; }
-    .popup-visible {
-      display: block;
-      position: fixed;
-      bottom: 10%;
-      left: 50%;
-      transform: translateX(-50%);
-      background-color: #4CAF50;
-      color: white;
-      padding: 16px;
-      border-radius: 8px;
-      z-index: 9999;
+    html, body {
+      height: 100%;
+      margin: 0;
     }
-    .loading-splash {
-      display: none;
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.5);
-      z-index: 1000;
+    #app {
+      display: flex;
+      height: 100%;
+      overflow: hidden;
     }
-    .loader {
-      border: 5px solid #f3f3f3;
-      border-top: 5px solid #3498db;
-      border-radius: 50%;
-      width: 60px;
-      height: 60px;
-      animation: spin 2s linear infinite;
-      position: absolute;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
+    .sidebar {
+      width: 240px;
+      background: #343a40;
+      color: #fff;
+      padding: 1rem;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
     }
-    @keyframes spin {
-      0% { transform: translate(-50%, -50%) rotate(0deg); }
-      100% { transform: translate(-50%, -50%) rotate(360deg); }
+    .sidebar h4 {
+      margin-bottom: 1.5rem;
+    }
+    .sidebar .nav-link {
+      color: #adb5bd;
+    }
+    .sidebar .nav-link.active {
+      color: #fff;
+      background: rgba(255,255,255,0.1);
+      border-radius: .25rem;
+    }
+    .main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .navbar {
+      flex-shrink: 0;
+    }
+    .content {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1rem;
+      background: #f8f9fa;
+    }
+    .card {
+      margin-bottom: 1.5rem;
     }
   </style>
 </head>
-
 <body>
+  <div id="app">
+    <nav class="sidebar">
+      <h4 class="text-center">Dashboard</h4>
+      <ul class="nav nav-pills flex-column mb-auto">
+        <li class="nav-item">
+          <a href="#" class="nav-link active">Home</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">Projects</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">Earnings</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">Messages</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">Settings</a>
+        </li>
+      </ul>
+    </nav>
 
+    <div class="main">
+      <nav class="navbar navbar-light bg-light px-4">
+        <span class="navbar-brand mb-0 h1">Freelancer Dashboard</span>
+        <div class="d-flex align-items-center ms-auto">
+          <small id="lastUpdated" class="me-3 text-muted">Last updated: --:--:--</small>
+          <div class="dropdown">
+            <a
+              href="#"
+              class="d-flex align-items-center text-decoration-none dropdown-toggle"
+              id="avatarDropdown"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <img
+                src="https://via.placeholder.com/32"
+                alt="Avatar"
+                class="rounded-circle"
+                width="32"
+                height="32"
+              />
+            </a>
+            <ul
+              class="dropdown-menu dropdown-menu-end text-small"
+              aria-labelledby="avatarDropdown"
+            >
+              <li><a class="dropdown-item" href="#">Profile</a></li>
+              <li><a class="dropdown-item" href="#">Settings</a></li>
+              <li><hr class="dropdown-divider" /></li>
+              <li><a class="dropdown-item" href="#">Logout</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
 
-<!-- Popup -->
-<div id="popup" class="popup-hidden">
-  <span id="popup-message"></span>
-</div>
+      <div class="content container-fluid">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="card text-white bg-primary">
+              <div class="card-body">
+                <h5 class="card-title">Earnings</h5>
+                <p class="card-text display-6" id="earnings">$0</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card text-white bg-success">
+              <div class="card-body">
+                <h5 class="card-title">Active Projects</h5>
+                <p class="card-text display-6" id="projects">0</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card text-white bg-warning">
+              <div class="card-body">
+                <h5 class="card-title">Pending Tasks</h5>
+                <p class="card-text display-6" id="tasks">0</p>
+              </div>
+            </div>
+          </div>
+        </div>
 
-<!-- Loading Splash -->
-<div id="loadingSplash" class="loading-splash">
-  <div class="loader"></div>
-</div>
-
-<!-- Main Content -->
-
+        <h4 class="mt-4">Recent Projects</h4>
+        <div class="table-responsive">
+          <table class="table table-striped align-middle">
+            <thead>
+              <tr>
+                <th>Project</th>
+                <th>Status</th>
+                <th>Deadline</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="recentList">
+              <!-- injected rows -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
 
-<!-- Limit Dropdown -->
-<div class="container mb-4">
-  <div class="d-flex justify-content-between align-items-center">
-    <h5>Change Project Feed Limit:</h5>
-    <select id="limitSelect" class="form-select w-auto" onchange="updateLimit()">
-      <?php foreach ([10, 20, 30, 50, 70, 100] as $opt) {
-          $selected = ($limit == $opt) ? 'selected' : '';
-          echo "<option value='$opt' $selected>$opt</option>";
-      } ?>
-    </select>
-  </div>
-</div>
+  <script>
+    const dummyProjects = [
+      { name: 'Website Redesign', status: 'Completed', deadline: 'Apr 25, 2025' },
+      { name: 'Mobile App', status: 'In Progress', deadline: 'May 10, 2025' },
+      { name: 'Logo Design', status: 'Pending', deadline: 'May 15, 2025' },
+      { name: 'API Integration', status: 'In Progress', deadline: 'May 20, 2025' },
+      { name: 'Marketing Funnel', status: 'Pending', deadline: 'May 30, 2025' }
+    ];
 
-<!-- Bootstrap 5 JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
-
-<!-- Custom Scripts -->
-<script>
-function showPopup(message) {
-  const popup = document.getElementById("popup");
-  const popupMessage = document.getElementById("popup-message");
-  popupMessage.textContent = message;
-  popup.className = "popup-visible";
-  setTimeout(() => { popup.className = "popup-hidden"; }, 3000);
-}
-
-function updateLimit() {
-  const selectedLimit = document.getElementById('limitSelect').value;
-  window.location.href = `?limit=${selectedLimit}`;
-}
-
-async function makeSingleBid(project) {
-  try {
-    let response = await fetch(`/apps/work/api/autowork.php?task=mbid&p=${project}`);
-    let result = await response.json();
-    if (response.ok && result.status === 200) {
-      showPopup("Bid Success: " + result.message);
-    } else {
-      showPopup("Bid Failed: " + (result.error || result.message));
+    function randomInt(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
     }
-  } catch (error) {
-    showPopup("Error sending bid: " + error.message);
-  }
-}
-</script>
 
-<?php include $path.'/apps/work/ui/layouts/footer.php'; ?>
+    function updateMetrics() {
+      document.getElementById('earnings').textContent = '$' + randomInt(1000, 10000);
+      document.getElementById('projects').textContent = randomInt(1, 15);
+      document.getElementById('tasks').textContent = randomInt(0, 10);
+      document.getElementById('lastUpdated').textContent =
+        'Last updated: ' + new Date().toLocaleTimeString();
 
+      const tbody = document.getElementById('recentList');
+      tbody.innerHTML = '';
+      dummyProjects.forEach(proj => {
+        const statusClass =
+          proj.status === 'Completed' ? 'success'
+          : proj.status === 'In Progress' ? 'warning'
+          : 'danger';
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${proj.name}</td>
+          <td><span class="badge bg-${statusClass}">${proj.status}</span></td>
+          <td>${proj.deadline}</td>
+          <td><a href="#" class="btn btn-sm btn-outline-primary">View</a></td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      updateMetrics();
+      setInterval(updateMetrics, 5000);
+    });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
