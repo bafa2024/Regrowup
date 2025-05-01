@@ -37,6 +37,28 @@ $router->route('/profile', function() {
     require 'apps/lib/ui/views/profile/profile.php';
 });
 
+$router->route('/log_api', function() {
+    require 'pool/api/logsAPI.php';
+});
+
+$router->route('/forgot_pass', function() {
+    require 'pool/auth/forgot_password.php';
+});
+
+$router->route('/reset_pass', function() {
+    require 'pool/auth/reset_pass.php';
+});
+
+$router->route('/invite', function() {
+    require 'pool/auth/invite.php';
+});
+
+$router->route('/logout', function() {
+    require 'pool/auth/logout.php';
+});
+
+
+
 $router->route('/topics', function() {
     require 'pool/auth/topics.php';
 });
@@ -85,25 +107,7 @@ $router->route('/verification', function() {
     require 'pool/auth/verification.php';
 });
 
-$router->route('/log_api', function() {
-    require 'pool/api/logsAPI.php';
-});
 
-$router->route('/forgot_pass', function() {
-    require 'pool/auth/forgot_password.php';
-});
-
-$router->route('/reset_pass', function() {
-    require 'pool/auth/reset_pass.php';
-});
-
-$router->route('/invite', function() {
-    require 'pool/auth/invite.php';
-});
-
-$router->route('/logout', function() {
-    require 'pool/auth/logout.php';
-});
 
 // --- LAB and Blog sections ---
 $router->route('/lab', function() {

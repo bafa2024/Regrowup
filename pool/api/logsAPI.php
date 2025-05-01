@@ -106,19 +106,19 @@ if (isset($_POST['login'])) {
 
           switch ($dapp) {
             case 1:
-              header("Location: /lib"); // Redirect to personal app  
+              header("Location: /profile"); // Redirect to personal app  
               break;
             case 2:
-              header("Location: /lab"); // Redirect to education app
+              header("Location: /profile"); // Redirect to education app
               break;
             case 3:
-              header("Location: /lab"); // Redirect to work app
+              header("Location: /profile"); // Redirect to work app
               break;
             case 4:
-              header("Location: /lab"); // Redirect to work app
+              header("Location: /profile"); // Redirect to work app
               break;
             default:
-              header("Location: /"); // Redirect to home page if default app is not set
+              header("Location: /profile"); // Redirect to home page if default app is not set
               break;
           }
 
@@ -127,23 +127,23 @@ if (isset($_POST['login'])) {
 
           switch ($_SESSION['dapp']) {
             case 1:
-              header("Location: /lib"); // Redirect to personal app  
+              header("Location: /profile"); // Redirect to personal app  
               break;
             case 2:
-              header("Location: /lab"); // Redirect to education app
+              header("Location: /profile"); // Redirect to education app
               break;
             case 3:
-              header("Location: /lab"); // Redirect to work app
+              header("Location: /profile"); // Redirect to work app
               break;
             default:
-              header("Location: /"); // Redirect to home page if default app is not set
+              header("Location: /profile"); // Redirect to home page if default app is not set
               break;
           }
         }
 
       } else {
 
-        header("Location: /topics");
+        header("Location: /profile");
 
       }
 
