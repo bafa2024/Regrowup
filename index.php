@@ -34,7 +34,7 @@ $router->route('/signup', function() {
 });
 
 $router->route('/profile', function() {
-    require 'apps/lib/ui/views/profile/profile.php';
+    require 'pool/auth/profile.php';
 });
 
 $router->route('/home', function() {
