@@ -1,5 +1,9 @@
 <?php
-
+if (!isset($_SESSION['user_id'])) {
+  header('Location: /login.php');
+   exit();
+}
+/*
 $path = $_SERVER['DOCUMENT_ROOT'];
 include $path.'/apps/work/controllers/ExternalProjects.php';
 $bid = new Bidding();
@@ -7,7 +11,7 @@ $bid = new Bidding();
 $bid->checkSessionAndRedirect();
 
 include $path.'/apps/work/ui/layouts/nav.php';
-
+*/
 
 ?>
 <!DOCTYPE html>
