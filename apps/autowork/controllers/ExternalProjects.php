@@ -402,8 +402,6 @@ class Bidding
         
                  
         
-               
-
                 if (!$this->bidOnProject($pid)) {
                     echo "Bid failed for project ID: $pid";
                 }

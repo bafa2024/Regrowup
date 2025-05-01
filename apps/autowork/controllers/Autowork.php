@@ -124,8 +124,10 @@ class Autowork extends Controller{
             $bd=$this->bidOnProject($pid);
             if($bd==true){
              echo "Bid placed successfully on project: ".$pid."<br>";
+                $this->storeBidResult($pid, $client_id, 'success', 'Bid placed successfully', null, null);
                }else{
                  echo "Bid failed on project: ".$pid."<br>";
+                $this->storeBidResult($pid, $client_id, 'failed', 'Bid failed', null, null);
                }
  
              //$this->storeBidResult($pid, $client_id, $status, $link, $max_bg, $min_bg, $type, $wproject);
