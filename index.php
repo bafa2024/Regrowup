@@ -34,7 +34,7 @@ $router->route('/signup', function() {
 });
 
 $router->route('/profile', function() {
-    require 'apps/work/ui/views/profile/profile.php';
+    require 'apps/lib/ui/views/profile/profile.php';
 });
 
 // --- Profile setup page ---
