@@ -38,12 +38,12 @@ if($_GET['key']=="createdb") {
     $db->job_applications_table();
     $db->saved_jobs_table();
     $db->createGigPurchaseTable();
-    $db->external_projects();
-    $db->external_projects_bidden();
+    //$db->external_projects();
+    //$db->external_projects_bidden();
     $db->auto_bid();
     $db->createFinancialDataTable();
     $db->create_cities_table();
-    $db->external_elite_projects();
+   // $db->external_elite_projects();
     
     $db->website_traffic($table = "website_traffic");
 
