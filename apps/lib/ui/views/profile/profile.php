@@ -40,11 +40,11 @@ include $path . '/apps/lib/ui/layouts/nav.php';
 
     <form action="" method="post" enctype="multipart/form-data">
            
-        <div class="container-lg">
+        <div class="container">
             <div class="row p-3">
         
         
-                <div class="col-md-8 m-auto bordered shadow">
+                <div class="col-md-4 m-auto bordered shadow">
                     <div class="d-flex flex-column gap-2">
                     
                         <div class="d-flex gap-4">
