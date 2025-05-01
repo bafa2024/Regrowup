@@ -209,7 +209,7 @@ if (isset($_POST['signup'])) {
     $first_name = $_POST['first_name'];
     $last_name = $_POST['last_name'];
     //$default_app = $_POST['default_app'];
-    $default_app = 1;
+    $default_app = 2;
     $referringCode = null;
     //encrypt passwor
     $password = $_POST['password'];
