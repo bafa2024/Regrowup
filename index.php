@@ -231,19 +231,19 @@ $router->route('/finance', function() {
 });
 
 $router->route('/apps/work/services/elite', function() {
-    require 'work/ui/views/services/home/elite.php';
+    require 'apps/work/ui/views/services/home/elite.php';
 });
 
 $router->route('/apps/work/services/history', function() {
-    require 'work/ui/views/services/home/bids.php';
+    require 'apps/work/ui/views/services/home/bids.php';
 });
 
 $router->route('/apps/work/services/home', function() {
-    require 'work/ui/views/services/home/home.php';
+    require 'apps/work/ui/views/services/home/home.php';
 });
 
 $router->route('/work', function() {
-    require 'work/ui/views/services/home/home.php';
+    require 'apps/work/ui/views/services/home/home.php';
 });
 
 // --- Personal App Section ---

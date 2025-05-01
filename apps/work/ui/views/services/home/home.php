@@ -1,239 +1,203 @@
-<?php
-
-$path = $_SERVER['DOCUMENT_ROOT'];
-include $path.'/apps/work/controllers/ExternalProjects.php';
-$bid = new Bidding();
-
-$bid->checkSessionAndRedirect();
-
-include $path.'/apps/work/ui/layouts/nav.php';
-
-$role = $_SESSION['role'];
-?>
-
-<div id="popup" class="popup-hidden">
-  <span id="popup-message"></span>
-</div>
-<style>
-  .popup-hidden {
-  display: none;
-  /* other styles */
-}
-
-.popup-visible {
-  display: block;
-  position: fixed;
-  bottom: 10%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #4CAF50;
-  color: white;
-  padding: 16px;
-  z-index: 1;
-  text-align: center;
-  border-radius: 4px;
-}
-
-.loading-splash {
-    display: none;
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.7);
-    z-index: 9999;
-}
-
-.loader {
-    border: 5px solid #f3f3f3;
-    border-top: 5px solid #3498db;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    animation: spin 2s linear infinite;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-@keyframes spin {
-    0% { transform: translate(-50%, -50%) rotate(0deg); }
-    100% { transform: translate(-50%, -50%) rotate(360deg); }
-}
-
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <title>Freelancer Dashboard</title>
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+    #app {
+      display: flex;
+      height: 100%;
+      overflow: hidden;
+    }
+    .sidebar {
+      width: 240px;
+      background: #343a40;
+      color: #fff;
+      padding: 1rem;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+    }
+    .sidebar h4 {
+      margin-bottom: 1.5rem;
+    }
+    .sidebar .nav-link {
+      color: #adb5bd;
+    }
+    .sidebar .nav-link.active {
+      color: #fff;
+      background: rgba(255,255,255,0.1);
+      border-radius: .25rem;
+    }
+    .main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .navbar {
+      flex-shrink: 0;
+    }
+    .content {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1rem;
+      background: #f8f9fa;
+    }
+    .card {
+      margin-bottom: 1.5rem;
+    }
   </style>
-<div class="container-fluid d-flex">
-<div id="loadingSplash" class="loading-splash">
-    <div class="loader"></div>
-</div>
+</head>
+<body>
+  <div id="app">
+    <nav class="sidebar">
+      <h4 class="text-center">Dashboard</h4>
+      <ul class="nav nav-pills flex-column mb-auto">
+        <li class="nav-item">
+          <a href="/work" class="nav-link active">Home</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">Projects</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">Earnings</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">Messages</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">Settings</a>
+        </li>
+        <li class="nav-item">
+          <a href="/logout" class="nav-link">Logout</a>
+        </li>
+      </ul>
+    </nav>
 
+    <div class="main">
+      <nav class="navbar navbar-light bg-light px-4">
+        <span class="navbar-brand mb-0 h1">Freelancer Dashboard</span>
+        <div class="d-flex align-items-center ms-auto">
+          <small id="lastUpdated" class="me-3 text-muted">Last updated: --:--:--</small>
+          <span class="me-3">Welcome, Freelancer</span>
+          <img src="https://via.placeholder.com/32" class="rounded-circle" alt="Avatar" />
+        </div>
+      </nav>
 
-  <?php
-  if ($role == "Client") {
-      include 'usermap.php';
-  } else {
-      $queries = ["Php", "Javascript", "Reactjs","Vuejs","Python","chatgpt","AWS","Java","Django","Flask","Nodejs","Expressjs","Android","Ios","Flutter","React Native","Nextjs","Nuxtjs","Spring","Springboot","Springmvc","Restfulapi","Restapi","Graphql"];
-      $limit = $_GET['limit'] ?? 20;
-    
-      ?>
-    <div class="nav flex-column nav-pills me-5 shadow radius-4 overflow-auto" id="v-pills-tab" role="tablist" aria-orientation="vertical" style="max-height: 80vh; overflow: auto;">
+      <div class="content container-fluid">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="card text-white bg-primary">
+              <div class="card-body">
+                <h5 class="card-title">Earnings</h5>
+                <p class="card-text display-6" id="earnings">$0</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card text-white bg-success">
+              <div class="card-body">
+                <h5 class="card-title">Active Projects</h5>
+                <p class="card-text display-6" id="projects">0</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card text-white bg-warning">
+              <div class="card-body">
+                <h5 class="card-title">Pending Tasks</h5>
+                <p class="card-text display-6" id="tasks">0</p>
+              </div>
+            </div>
+          </div>
+        </div>
 
-        <?php
-        foreach ($queries as $index => $query) {
-            $isActive = ($index === 0) ? 'active' : '';
-            echo '<a class="nav-link ' . $isActive . '" id="v-pills-' . $query . '-tab" data-bs-toggle="pill" href="#v-pills-' . $query . '" role="tab" aria-controls="v-pills-' . $query . '" aria-selected="true">' . ucfirst($query) . '</a>';
-        }
-        ?>
+        <h4 class="mt-4">Recent Projects</h4>
+        <div class="table-responsive">
+          <table class="table table-striped align-middle">
+            <thead>
+              <tr>
+                <th>Project</th>
+                <th>Status</th>
+                <th>Deadline</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="recentList">
+              <!-- rows get injected here -->
+            </tbody>
+          </table>
+        </div>
       </div>
-
-      <div class="tab-content" id="v-pills-tabContent">
-        <?php
-        foreach ($queries as $index => $query) {
-            $isActive = ($index === 0) ? 'show active' : '';
-            echo '<div class="scrollable-content tab-pane fade ' . $isActive . '" id="v-pills-' . $query . '" role="tabpanel" aria-labelledby="v-pills-' . $query . '-tab">';
-            $bid->feeder_home($query, $limit);
-            echo '</div>';
-        }
-        ?>
-      </div>
-      <!-- Add the dropdown select element -->
-      <div class="mb-3">
-        <h5><a href="/apps/work/services/elite" target="_self" class="btn btn-primary">Elite</a> 
-        <a href="/apps/work/services/history" target="_self" class="btn btn-primary">History</a> </h5>
-        <label for="limitSelect" class="form-label">Select Limit:</label>
-        <select class="form-select" id="limitSelect" name="limit" onchange="updateLimit()">
-          <option value="10" <?php if ($limit == 10) echo 'selected'; ?>>10</option>
-          <option value="20" <?php if ($limit == 20) echo 'selected'; ?>>20</option>
-          <option value="30" <?php if ($limit == 30) echo 'selected'; ?>>30</option>
-          <option value="50" <?php if ($limit == 50) echo 'selected'; ?>>50</option>
-          <option value="70" <?php if ($limit == 70) echo 'selected'; ?>>70</option>
-          <option value="100" <?php if ($limit == 100) echo 'selected'; ?>>100</option>
-          <!-- Add more options as needed -->
-        </select>
-      </div>
+    </div>
   </div>
 
-  <!-- Include Bootstrap JS and Your Own Scripts -->
-  <!-- Bootstrap 5.1 JS Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" 
-integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"></script>
-
   <script>
+    // Dummy data source (replace with real API calls or websocket)
+    const dummyProjects = [
+      { name: 'Website Redesign', status: 'Completed', deadline: 'Apr 25, 2025' },
+      { name: 'Mobile App', status: 'In Progress', deadline: 'May 10, 2025' },
+      { name: 'Logo Design', status: 'Pending', deadline: 'May 15, 2025' },
+      { name: 'API Integration', status: 'In Progress', deadline: 'May 20, 2025' },
+      { name: 'Marketing Funnel', status: 'Pending', deadline: 'May 30, 2025' },
+    ];
 
-function confirmAndMakeManyBids() {
-    var result = confirm("Are you sure you want to proceed?");
-    if (result) {
-        // User pressed OK
-        makeManyBids();
-    } else {
-        // User pressed Cancel
-        console.log("Action canceled!");
-    }
-}
-
-
-
-
-    function showPopupM(message) {
-    alert(message);  // Replace with your own popup implementation if you have one
-}
-
-function showPopup(message) {
-  const popup = document.getElementById("popup");
-  const popupMessage = document.getElementById("popup-message");
-  
-  popupMessage.innerHTML = message;
-  popup.className = "popup-visible";
-  
-  setTimeout(() => {
-    popup.className = "popup-hidden";
-  }, 1000); // Hide after 3 seconds
-}
-
-async function makeSingleBid(p) {
-    let url = "/apps/work/api/autowork.php?task=mbid&p=" + p;
-    
-    try {
-        let response = await fetch(url, {
-            method: "GET",
-            headers: {
-                // Add any necessary headers here, like authentication tokens
-            }
-        });
-
-        if (response.ok) {
-            let jsonResponse = await response.json();
-            if (jsonResponse.status === 200) {
-                showPopup("Bid Success: " + jsonResponse.message);
-            } else {
-                showPopup("Bid Failed: " + jsonResponse.error);
-            }
-        } else {
-            showPopup("Network response was not ok");
-        }
-    } catch (error) {
-        showPopup("Fetch Error: " + error);
-    }
-}
-
-function makeManyBids() {
-    const multi_bid_url = "/mbid?task=manybid"; // Your API endpoint for multiple bids
-
-    // Show the loading splash
-  //  document.getElementById('loadingSplash').style.display = 'block';
-
-    fetch(multi_bid_url)
-    .then(response => response.json())
-    .then(data => {
-        if (data.status === 200) {
-            showPopup("MultiBid Success: " + data.message);
-        } else {
-            showPopup("MultiBid Failed: " + data.message);
-        }
-        
-        // Hide the loading splash after showing the popup
-        //document.getElementById('loadingSplash').style.display = 'none';
-    })
-    .catch((error) => {
-        // Show the popup first
-        showPopup("MultiBid Failed: Fetch Error");
-
-        // Hide the loading splash even if there's an error
-      //  document.getElementById('loadingSplash').style.display = 'none';
-        
-        console.error('Fetch Error:', error);
-    });
-}
-
-
-
-
-</script>
-  <script>
-    function updateLimit() {
-      const limitValue = document.getElementById('limitSelect').value;
-      window.location.href = `?limit=${limitValue}`;
+    function randomInt(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
     }
 
-    const tabLinks = document.querySelectorAll('.nav-link');
-    tabLinks.forEach(link => {
-      link.addEventListener('click', (e) => {
-        e.preventDefault();
-        tabLinks.forEach(l => l.classList.remove('active'));
-        link.classList.add('active');
-        const target = link.getAttribute('href');
-        document.querySelectorAll('.tab-pane').forEach(tab => {
-          tab.classList.remove('show', 'active');
-        });
-        document.querySelector(target).classList.add('show', 'active');
-      });
-    });
+    function updateMetrics() {
+      // In a real dashboard, fetch your real data here
+      document.getElementById('earnings').textContent = '$' + randomInt(2000, 8000);
+      document.getElementById('projects').textContent = randomInt(5, 15);
+      document.getElementById('tasks').textContent = randomInt(0, 10);
+      document.getElementById('lastUpdated').textContent =
+        'Last updated: ' + new Date().toLocaleTimeString();
+    }
+
+    function renderRecent() {
+      const tbody = document.getElementById('recentList');
+      tbody.innerHTML = '';
+      // Shuffle and take top 3
+      const list = [...dummyProjects].sort(() => 0.5 - Math.random()).slice(0, 3);
+      for (let p of list) {
+        const badgeClass =
+          p.status === 'Completed' ? 'bg-success'
+          : p.status === 'Pending'   ? 'bg-danger'
+          : 'bg-warning';
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${p.name}</td>
+          <td><span class="badge ${badgeClass}">${p.status}</span></td>
+          <td>${p.deadline}</td>
+          <td><a href="#" class="btn btn-sm btn-outline-primary">View</a></td>
+        `;
+        tbody.appendChild(tr);
+      }
+    }
+
+    // Initial render
+    updateMetrics();
+    renderRecent();
+
+    // Real-time simulation: update every 5 seconds
+    setInterval(() => {
+      updateMetrics();
+      renderRecent();
+    }, 5000);
   </script>
-</div>
-<?php
-}
-include $path.'/apps/work/ui/layouts/footer.php';
-?>
+ 
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
