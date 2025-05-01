@@ -71,6 +71,9 @@
           <a href="#" class="nav-link">Projects</a>
         </li>
         <li class="nav-item">
+          <a href="/elite" class="nav-link">Elite Projects</a>
+        </li>
+        <li class="nav-item">
           <a href="#" class="nav-link">Earnings</a>
         </li>
         <li class="nav-item">
