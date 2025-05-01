@@ -34,7 +34,12 @@ $router->route('/signup', function() {
 });
 
 $router->route('/profile', function() {
-    require 'apps/lib/ui/views/profile/profile.php';
+    require 'apps/work/ui/views/profile/profile.php';
+});
+
+// --- Profile setup page ---
+$router->route('/profile_setup', function() {
+    require 'pool/auth/profile.php';
 });
 
 $router->route('/home', function() {
@@ -261,10 +266,7 @@ $router->route('/personal', function() {
     require 'apps/personal/ui/views/home/app.php';
 });
 
-// --- Profile setup page ---
-$router->route('/profile_setup', function() {
-    require 'pool/auth/profile.php';
-});
+
 
 // --- Handle the current request ---
 $router->handleRequest($_SERVER['REQUEST_URI']);
