@@ -62,7 +62,7 @@ $router->route('/per_db_setup', function() {
 });
 
 $router->route('/work_db_setup', function() {
-    require 'work/api/dbAPI.php';
+    require 'apps/work/api/dbAPI.php';
 });
 
 $router->route('/dev', function() {
