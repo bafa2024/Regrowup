@@ -1,12 +1,18 @@
 <?php
 //session_start();
+ //check if the user is logged in
+if (!isset($_SESSION['user_id'])) {
+   header('Location: /login.php');
+    exit();
+}
 
+/*
 require_once $_SERVER['DOCUMENT_ROOT'] . '/apps/autowork/controllers/Autowork.php';
 
 $at = new Autowork();
 
 $bid->checkSessionAndRedirect();
-
+*/
 //include $path.'/apps/work/ui/layouts/nav.php';
 
 //$role = $_SESSION['role'];
