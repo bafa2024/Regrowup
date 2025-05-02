@@ -229,6 +229,18 @@ class Autowork extends Controller{
                     $type = $project->type;
                     $wproject= $resp;
 
+                        if(!$this->bid_checkup($pid)){
+                        continue;
+                        }
+                        if (!$this->filterCountry($country)) {
+                            continue;
+                        }
+        
+                        //filtering the project budget
+                        if (!$this->filterBudget($min_bg, $type)) {
+                            continue;
+                        }
+
                    //$this->storeProjects($pid, $client_id, $status, $link, $max_bg, $min_bg, $type,$wproject);
                    $tag = $this->elites($pid);
                    if($tag=='Normal'){
@@ -398,18 +410,19 @@ class Autowork extends Controller{
 
     }
 
-    public function bid_checkup(){
-        $sql = "SELECT * FROM allprojects ORDER BY id DESC";
+    public function bid_checkup($pid){
+       
+        $sql = "SELECT * FROM external_projects_bidden WHERE project_id='$pid' ORDER BY id DESC";
         $result = $this->run_query($sql);
-        $res=$this->mysqli_rows($result);
-        //check if the project is already stored in the database
-        if ($res) {
-            // $status=$result['status'];
-            // $this->bidding_result($projectId, $status);
-            echo "Hey, you already bidded on this project: ".$pid."<br>";
+        
+        $proid = $result['project_id'];
+        
+        $status = $result['status'];
+       
+        if ($status == 'success') {
+            return true;
         } else {
-          // $this->storenewProjects($wpproject);
-          echo "No, this is a new project: ".$pid."<br>";
+            return false;
         }
 
       
