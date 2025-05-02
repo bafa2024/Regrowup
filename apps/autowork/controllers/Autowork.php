@@ -232,6 +232,7 @@ class Autowork extends Controller{
                         if(!$this->bid_checkup($pid)){
                         continue;
                         }
+                        
                         if (!$this->filterCountry($country)) {
                             continue;
                         }
