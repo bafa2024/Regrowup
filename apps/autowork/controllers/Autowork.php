@@ -229,10 +229,10 @@ class Autowork extends Controller{
                     $type = $project->type;
                     $wproject= $resp;
 
-                        if(!$this->bid_checkup($pid)){
+                        if(!$this->proposed_checkup($pid)){
                         continue;
                         }
-                        
+
                         if (!$this->filterCountry($country)) {
                             continue;
                         }
