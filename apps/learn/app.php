@@ -85,7 +85,7 @@ $note = new AppController();
                         
                             <label for="query">Ask your question:</label>
                             <textarea  name="query"  rows="5" cols="153"><?php echo $_POST['query'] ?? null; ?></textarea>
-                            <br>
+                            <hr></br>
                            
                             <button type="submit" class="btn btn-dark" name="ask">Ask</button>
                             &nbsp;
