@@ -684,8 +684,8 @@ $blog->store_website_traffic($ip, $country, $city, $latitude, $longitude, $timez
 
 
             </main>
-            <div class="col-md-3 col-lg-3 d-none d-md-block ">
-                <div class="position-sticky pt-3 sidebar-sticky">
+            <div class="col-md-3 col-lg-3 px-md-4"> 
+                <div class="">
 
                     <div class="toc" id="dynamicSectionList">
                     <?php
