@@ -17,6 +17,19 @@ class BlogController extends Controller
         return $blog;
     }
 
+    public function check_auth()
+    {
+        // Check if the session is not set
+        if (!isset($_SESSION['user_id'])) {
+            // Store the current page URL in a session variable
+            $_SESSION['redirect_url'] = $_SERVER['REQUEST_URI'];
+
+            // Redirect the user to the login page or any other desired page
+            header('Location: /index.php'); // Replace "login.php" with the desired URL
+            exit;
+        }
+    }
+
     public function titles()
     {
         $sql = "SELECT question FROM questions ORDER BY id DESC";
