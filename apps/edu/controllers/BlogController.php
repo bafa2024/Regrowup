@@ -129,6 +129,8 @@ class BlogController extends Controller
     //get image from the database by title
     public function get_image($title)
     {
+        $title = $this->connectDb()->real_escape_string($title);
+        
         $sql = "SELECT * FROM questions WHERE question = '$title'";
         $stmt = $this->run_query($sql);
         while ($row = $stmt->fetch_assoc()) {
