@@ -86,10 +86,18 @@
                 $content = trim($formattedAnswer);
                 //$category= $_GET['category'];
                 //$title= $_GET['title'];
+                $option="chat";
+                $deep_answer="level 1";
+                $unf_answer= $answer;
+                $question= $q;
+                $answer= $formattedAnswer;
+
             
                 //make the $formattedAnswer a string don't include it here the tags, just the text without losing the format
                 //$note->insert_data($title, $image, $category, $content, $status);
                 //$note->storeData( $q,$content,$image);
+               // insert($question,$unf_answer,$answer,$deep_answer,$options,$filepath)
+                $note->insert($question,$unf_answer,$answer,$deep_answer,$option,$image );
                 
                 echo '<div class="col-md-6 ">
         <div class="content" id="answerDiv" class="content draggable" draggable="true"> 
