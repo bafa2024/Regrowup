@@ -10,11 +10,11 @@ if($_GET['key']=="createdb") {
     //$db->profiles_table();
     $db->books();
     $db->questions();
-    $db->notes($table = "notes");
-    $db->notes_data($table = "notes_data");
+    $db->notes();
+    $db->notes_data();
     $db->notes_suggested();
-    $db->blogs($table = "blogs");
-    $db->website_traffic($table = "website_traffic");
+    $db->blogs();
+    $db->website_traffic();
 
 }
 
