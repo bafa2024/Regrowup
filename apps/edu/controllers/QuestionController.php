@@ -1,8 +1,8 @@
 <?php
 $path = $_SERVER['DOCUMENT_ROOT'];
-include $path . '/pool/libs/controllers/Controller.php';
+include $path . '/apps/edu/controllers/Controller.php';
 
-class BlogController extends Controller
+class QuestionController extends Controller
 {
     public function __construct()
     {
@@ -19,22 +19,22 @@ class BlogController extends Controller
 
     public function titles()
     {
-        $sql = "SELECT title FROM feeds ORDER BY id DESC";
+        $sql = "SELECT title FROM blogs ORDER BY id DESC";
         $stmt = $this->run_query($sql);
         while ($row = $stmt->fetch_array()) {
             $titles[] = $row;
-
+            
             $title = $row["title"];
             //make to lower case and use _ inplace of + to
             $title = str_replace(" ", "_", strtolower($title));
             //encode the url and
-
-            if ($row["title"] != "Home") {
+            
+            if ($row["title"] != "Home" ) {
                 //convert the title to short encrpted code 
                 echo
                     '<div class="toc">
                 <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="?t=' . urldecode($title) . '">
+                <a class="nav-link active" aria-current="page" href="?t=' .urldecode($title) . '">
                     <span data-feather="home" class="align-text-bottom"></span>' .
                     $row["title"] . '
                 </a>
@@ -125,12 +125,12 @@ class BlogController extends Controller
         $stmt = $this->run_query($sql);
         return $stmt;
     }
-
+    
     public function insert($title, $content)
     {
         $content = $this->connectDb()->real_escape_string($content);
         $title = $this->connectDb()->real_escape_string($title);
-        $sql = "INSERT INTO blogs (title, content) VALUES ('$title', '$content')";
+        $sql = "INSERT INTO questions (title, content) VALUES ('$title', '$content')";
         $stmt = $this->run_query($sql);
         if ($stmt) {
             return true;
@@ -138,7 +138,27 @@ class BlogController extends Controller
             return false;
         }
     }
-
+    
+    /*
+    public function insert($title, $category, $content) {
+        // Create a prepared statement
+        $stmt = $this->connectDb()->prepare("INSERT INTO notes (title, category, content) VALUES (?, ?, ?)");
+        
+        if ($stmt) {
+            // Bind parameters to the placeholders
+            $stmt->bind_param("sss", $title, $category, $content);
+    
+            // Execute the statement
+            if ($stmt->execute()) {
+                $stmt->close();
+                return true;
+            }
+            $stmt->close();
+        }
+        return false;
+    }
+    */
+    
 
     public function update($id, $title, $content)
     {

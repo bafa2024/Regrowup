@@ -80,11 +80,11 @@ class Db extends Database
             $table,
             '
             id INT AUTO_INCREMENT PRIMARY KEY,
-            question VARCHAR(255) NOT NULL,
+            questionLONGTEXT NULL,
             answer LONGTEXT NULL,
             deep_answer LONGTEXT NULL,
             options JSON NULL,
-            filepath TEXT NULL,
+            filepath LONGTEXT NULL,
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'
         );
     }
