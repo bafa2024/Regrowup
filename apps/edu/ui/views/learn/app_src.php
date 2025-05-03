@@ -138,13 +138,13 @@
         ;
 
         }else if (isset($_POST['deeper1'])) {
-            $q = $_POST['deeper1'];
+            $mainq = $_POST['query'];
 
-            $answer= $note->generateResponse($q);
+            $answer= $note->generateResponse($mainq);
 
             //$qm= $_GET['img'];
 
-           $level= "Here I already asked this question before:".$q."and the provided answer is,".$answer."Make this answer one level more deeper beside keeping this answser.";
+           $level= "Here I already asked this question before:".$mainq."and the provided answer is,".$answer."Make this answer one level more deeper beside keeping this answser.";
            // $level= "Here I already asked this question before:".$q."Make this answer one level more deeper.";
             $q=$level." ".$q;
 
@@ -225,7 +225,7 @@
             $option="chat";
                 $deep_answer=$formattedAnswer;
                 $unf_answer= $answer;
-                $question= $q;
+                $question= $mainq;
                 $ans= $answer;
 
             

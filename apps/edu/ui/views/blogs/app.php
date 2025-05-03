@@ -684,6 +684,8 @@ $blog->store_website_traffic($ip, $country, $city, $latitude, $longitude, $timez
 
 
             </main>
+
+            
         
         </div>
     </div>

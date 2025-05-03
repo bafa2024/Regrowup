@@ -25,7 +25,7 @@ class BlogController extends Controller
             $_SESSION['redirect_url'] = $_SERVER['REQUEST_URI'];
 
             // Redirect the user to the login page or any other desired page
-            header('Location: /index.php'); // Replace "login.php" with the desired URL
+            header('Location: /'); // Replace "login.php" with the desired URL
             exit;
         }
     }
