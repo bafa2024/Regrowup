@@ -79,10 +79,12 @@ $note = new AppController();
 
     </header>
     <div class="container mt-2">
-        <div id="loadingScreen">
-            <!-- You can add a loading spinner or text here -->
-            Just Answering...
-        </div>
+       
+        <div class="row mt-1">
+            <div class="col-md-12 ">
+                <h2>Ask your question</h2>
+                <hr>
+            </div>
 
         <div class="row">
       
@@ -93,7 +95,7 @@ $note = new AppController();
 
                     <form action="" method="post">
                         
-                            <label for="query">Ask your question:</label>
+                           
                             <textarea  name="query"  rows="5" cols="153"><?php echo $_POST['query'] ?? null; ?></textarea>
                             <hr></br>
                            
