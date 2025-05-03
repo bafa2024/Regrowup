@@ -146,7 +146,7 @@
 
            $level= "Here I already asked this question before:".$mainq."and the provided answer is,".$answer."Make this answer one level more deeper beside keeping this answser.";
            // $level= "Here I already asked this question before:".$q."Make this answer one level more deeper.";
-            $q=$level." ".$q;
+            $q=$level." ".$mainq;
 
 
         
