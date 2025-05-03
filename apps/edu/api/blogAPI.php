@@ -84,9 +84,9 @@ if (isset($_POST['action']) && $_POST['action'] === 'update') {
     $content = $_POST['content'] ?? '';
     $res=$blog->update($id, $title, $content);
     if($res){
-        $blog->alert_redirect('Blog updated successfully.', '/lab/cms');
+        $blog->alert_redirect('Blog updated successfully.', '/blog/cms');
     }else{
-        $blog->alert_redirect('Blog updated failed.', '/lab/cms');
+        $blog->alert_redirect('Blog updated failed.', '/blog/cms');
     }
 
 }
