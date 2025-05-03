@@ -31,7 +31,7 @@ class QuestionController extends Controller
     public function generateResponse($userInput)
     {
         $data = [
-            'model' => 'gpt-4o',
+            'model' => 'gpt-4.1',
             'messages' => [
                 [
                     'role' => 'user',
@@ -86,7 +86,7 @@ class QuestionController extends Controller
 
         // Set the data as an array
         $data = array(
-            "model"=>"dall-e-3",
+            "model"=>"gpt-4.1-mini",
             "prompt" => $prompt,
             "n" => 1,
             "size" => "1024x1024"
