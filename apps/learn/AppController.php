@@ -1,6 +1,6 @@
 <?php
 $path = $_SERVER['DOCUMENT_ROOT'];
-//include $path . 'Controller.php';
+include $path . '/pool/libs/controllers/Controller.php';
 define('OPENAI_API_ENDPOINT', 'https://api.openai.com/v1/chat/completions');
 define('OPENAI_API_KEY', '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'); // Replace 'YOUR_OPENAI_API_KEY' with your actual API key
 
@@ -8,7 +8,7 @@ define('OPENAI_API_KEY', 'sk-proj-cmahMDaSglIhs4qutZSw8PoAhGHEbcBwA1qLYpArZivbYJ
 
 
 
-class AppController 
+class AppController extends Controller
 {
     private $open_ai = "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";
 
@@ -121,6 +121,13 @@ class AppController
             return "No image URL found in the response.";
         }
     }
+
+    //store data in the MySQL database in questions table 
+    
+
+
+
+
 
     function storeData($questions, $answers, $images) {
         try {

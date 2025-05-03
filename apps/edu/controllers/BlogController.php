@@ -1,6 +1,6 @@
 <?php
 $path = $_SERVER['DOCUMENT_ROOT'];
-include $path . '/pool/libs/controllers/Controller.php';
+include $path . '/apps/edu/controllers/Controller.php';
 
 class BlogController extends Controller
 {
