@@ -94,7 +94,7 @@ class BlogController extends Controller
     public function getBlog($title)
     {
         $title = $this->connectDb()->real_escape_string($title);
-        
+
         //return back the title to original form
         $title = str_replace("_", " ", $title);
         //camel case the title
@@ -105,6 +105,7 @@ class BlogController extends Controller
         while ($row = $stmt->fetch_assoc()) {
             $blog[] = $row;
             $content = $row['answer'];
+            $content = preg_replace('/(\S+\s*){10}/', '$0<br/>', $content);
 
             echo "<div class='content' id='contentDiv'>";
             echo "<h4>{$row['question']}</h4><br>";
