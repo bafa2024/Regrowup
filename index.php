@@ -174,13 +174,11 @@ $router->route('/verification', function() {
 
 
 // --- LAB and Blog sections ---
-$router->route('/lab', function() {
-    require 'apps/edu/ui/views/blogs/app.php';
+$router->route('/learn', function() {
+    require 'apps/edu/ui/views/learn/app.php';
 });
 
-$router->route('/learn', function() {
-    require 'apps/learn/app.php';
-});
+
 
 $router->route('/blog', function() {
     require 'apps/edu/ui/views/blogs/app.php';
