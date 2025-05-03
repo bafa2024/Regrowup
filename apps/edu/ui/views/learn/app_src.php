@@ -89,7 +89,7 @@
             
                 //make the $formattedAnswer a string don't include it here the tags, just the text without losing the format
                 //$note->insert_data($title, $image, $category, $content, $status);
-                $note->storeData( $q,$content,$image);
+                //$note->storeData( $q,$content,$image);
                 
                 echo '<div class="col-md-6 ">
         <div class="content" id="answerDiv" class="content draggable" draggable="true"> 
