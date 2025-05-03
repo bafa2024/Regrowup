@@ -85,7 +85,7 @@ class Db extends Database
             unf_answer LONGTEXT NULL,
             answer LONGTEXT NULL,
             deep_answer LONGTEXT NULL,
-            options JSON NULL,
+            options TEXT NULL,
             filepath LONGTEXT NULL,
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'
         );
