@@ -109,6 +109,10 @@ class BlogController extends Controller
             $content=str_replace("`", "", $content);
             $content=str_replace("~", "", $content);
             $content=str_replace("#", "", $content);
+            $content=str_replace("---", "", $content);
+            $content=str_replace("`", "", $content);
+            $content=str_replace("**", "", $content);
+            $content=str_replace("Certainly!", "", $content);
             $image = $row['filepath'];
             $content = trim($content);
 
@@ -119,6 +123,17 @@ class BlogController extends Controller
             //echo "<img src='$image' alt='Image' style='width: 100%; height: auto;'>";
             echo "<br>";
             echo "</div>";
+        }
+    }
+
+    //get image from the database by title
+    public function get_image($title)
+    {
+        $sql = "SELECT * FROM questions WHERE question = '$title'";
+        $stmt = $this->run_query($sql);
+        while ($row = $stmt->fetch_assoc()) {
+            $image = $row['filepath'];
+            echo "<img src='$image' alt='Image' style='width: 100%; height: auto;'>";
         }
     }
 

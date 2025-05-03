@@ -660,7 +660,7 @@ $blog->store_website_traffic($ip, $country, $city, $latitude, $longitude, $timez
 
             </nav>
 
-            <main class="col-md-10 ms-sm-auto col-lg-10 px-md-4">
+            <main class="col-md-7 ms-sm-auto col-lg-7 px-md-4">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 ">
 
 
@@ -684,6 +684,23 @@ $blog->store_website_traffic($ip, $country, $city, $latitude, $longitude, $timez
 
 
             </main>
+            <div class="col-md-3 col-lg-3 d-none d-md-block ">
+                <div class="position-sticky pt-3 sidebar-sticky">
+
+                    <div class="toc" id="dynamicSectionList">
+                    <?php
+                    $title = $_GET['t'] ?? Null;
+                    if ($title) {
+
+                        $blog->get_image($title);
+                    } 
+
+
+                    ?>
+                    </div>
+
+
+                </div>
 
             
         
