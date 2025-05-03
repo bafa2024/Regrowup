@@ -1,6 +1,6 @@
 <?php
 $path = $_SERVER['DOCUMENT_ROOT'];
-include $path . '/pool/config/database.php';
+include $path . '/apps/edu/models/database.php';
 
 class Db extends Database
 {
@@ -70,6 +70,21 @@ class Db extends Database
             title VARCHAR(255) NOT NULL,
             filepath TEXT NULL,
             content TEXT NULL,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'
+        );
+    }
+
+    public function questions($table = "questions")
+    {
+        $this->createTable(
+            $table,
+            '
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            question VARCHAR(255) NOT NULL,
+            answer LONGTEXT NULL,
+            deep_answer LONGTEXT NULL,
+            options JSON NULL,
+            filepath TEXT NULL,
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'
         );
     }
