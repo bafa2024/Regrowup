@@ -126,7 +126,7 @@ class QuestionController extends Controller
         return $stmt;
     }
     
-    public function insert($title, $content)
+    public function insert($question, $content)
     {
         $content = $this->connectDb()->real_escape_string($content);
         $title = $this->connectDb()->real_escape_string($title);

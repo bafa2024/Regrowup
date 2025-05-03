@@ -81,6 +81,7 @@ class Db extends Database
             '
             id INT AUTO_INCREMENT PRIMARY KEY,
             question LONGTEXT NULL,
+            unf_answer LONGTEXT NULL,
             answer LONGTEXT NULL,
             deep_answer LONGTEXT NULL,
             options JSON NULL,
