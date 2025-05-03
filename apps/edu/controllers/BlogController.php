@@ -105,7 +105,11 @@ class BlogController extends Controller
         while ($row = $stmt->fetch_assoc()) {
             $blog[] = $row;
             $content = $row['answer'];
-            $content = preg_replace('/(\S+\s*){10}/', '$0<br/>', $content);
+            $content=str_replace("*", " ", $content);
+            $content=str_replace("`", " ", $content);
+            $content=str_replace("~", " ", $content);
+            $content=str_replace("#", " ", $content);
+            $content = trim($content);
 
             echo "<div class='content' id='contentDiv'>";
             echo "<h4>{$row['question']}</h4><br>";
