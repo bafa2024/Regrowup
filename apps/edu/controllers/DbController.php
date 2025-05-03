@@ -80,7 +80,7 @@ class Db extends Database
             $table,
             '
             id INT AUTO_INCREMENT PRIMARY KEY,
-            questionLONGTEXT NULL,
+            question LONGTEXT NULL,
             answer LONGTEXT NULL,
             deep_answer LONGTEXT NULL,
             options JSON NULL,
