@@ -596,7 +596,7 @@ class Autowork extends Controller{
       }
     }
 
-    public function fetch_new_projects()
+    public function fetch_all_new_projects()
     {
       $sql = "SELECT * FROM allprojects ORDER BY id DESC";
       //$result = mysqli_query($this->db, $sql);

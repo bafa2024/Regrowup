@@ -79,7 +79,7 @@ $at = new Autowork();
 
 
   <?php
-  $at->fetch_new_projects();
+  $at->fetch_all_new_projects();
 
 
 include $path.'/apps/autowork/ui/layouts/footer.php';
