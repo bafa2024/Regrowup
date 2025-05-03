@@ -86,7 +86,7 @@ class QuestionController extends Controller
 
         // Set the data as an array
         $data = array(
-            "model"=>"gpt-4.1-mini",
+            "model"=>"dall-e-3",
             "prompt" => $prompt,
             "n" => 1,
             "size" => "1024x1024"
