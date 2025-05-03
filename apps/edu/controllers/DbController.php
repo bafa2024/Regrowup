@@ -76,6 +76,7 @@ class Db extends Database
 
     public function questions($table = "questions")
     {
+        $this->deleteTable($table);
         $this->createTable(
             $table,
             '
