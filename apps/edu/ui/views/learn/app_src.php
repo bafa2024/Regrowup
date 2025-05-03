@@ -224,7 +224,7 @@
             $content = trim($formattedAnswer);
             $option="chat";
                 $deep_answer=$formattedAnswer;
-                $unf_answer= null;
+                $unf_answer= $answer;
                 $question= $q;
                 $ans= $answer;
 
