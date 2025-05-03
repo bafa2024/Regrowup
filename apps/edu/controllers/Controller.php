@@ -7,7 +7,7 @@ require $path . '/apps/edu/models/database.php';
 class Controller extends Database
 {
 
-    use StripeController, CrudController, Metadata;
+    
 
     public function __construct()
     {
