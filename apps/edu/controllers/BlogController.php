@@ -109,11 +109,15 @@ class BlogController extends Controller
             $content=str_replace("`", "", $content);
             $content=str_replace("~", "", $content);
             $content=str_replace("#", "", $content);
+            $image = $row['filepath'];
             $content = trim($content);
 
             echo "<div class='content' id='contentDiv'>";
             echo "<h4>{$row['question']}</h4><br>";
             echo "{$content}";
+            echo "&nbsp;";
+            echo "<img src='$image' alt='Image' style='width: 100%; height: auto;'>";
+            echo "<br>";
             echo "</div>";
         }
     }
