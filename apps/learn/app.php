@@ -1,4 +1,14 @@
 <?php
+//check if the user is logged in
+
+
+if (!isset($_SESSION['user_id'])) {
+    // User is not logged in, redirect to login page
+    header('Location: /');
+    exit;
+}
+
+
 $path = $_SERVER['DOCUMENT_ROOT'];
 include 'AppController.php';
 
