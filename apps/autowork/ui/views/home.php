@@ -83,7 +83,7 @@ include $path.'/apps/work/ui/layouts/nav.php';
           <a href="#" class="nav-link active">Home</a>
         </li>
         <li class="nav-item">
-          <a href="#" class="nav-link">Projects</a>
+          <a href="/work/projects" class="nav-link">Projects</a>
         </li>
         <li class="nav-item">
           <a href="/elite" class="nav-link">Elite Projects</a>

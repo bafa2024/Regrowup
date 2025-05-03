@@ -123,6 +123,10 @@ $router->route('/work', function() {
     require 'apps/autowork/ui/views/home.php';
 });
 
+$router->route('/work/projects', function() {
+    require 'apps/autowork/ui/views/projects.php';
+});
+
 $router->route('/topics', function() {
     require 'pool/auth/topics.php';
 });
