@@ -103,6 +103,14 @@ class Autowork extends Controller{
      {
          $sql = "SELECT * FROM allprojects ORDER BY id DESC";
          $result = $this->run_query($sql);
+
+         //add error handling for the query, try and catch block
+
+            if (!$result) {
+                echo "Error: " . mysqli_error($this->db);
+                return;
+            }
+            
  
          while ($res = mysqli_fetch_array($result)) {
              //check if the project is already bidded by calling proposed_checkup function
