@@ -91,7 +91,7 @@ class Db extends Database
 
     public function notes($table = "notes")
     {
-        $this->copyTable($table, $table . "2");
+        //$this->copyTable($table, $table . "2");
         $this->deleteTable($table);
         $this->createTable(
             $table,
@@ -146,8 +146,8 @@ class Db extends Database
 
     public function blogs($table = "blogs")
     {
-        $this->copyTable($table, $table . "2");
-        //$this->deleteTable($table);
+        //$this->copyTable($table, $table . "2");
+        $this->deleteTable($table);
         $this->createTable(
             $table,
             '

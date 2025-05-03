@@ -7,7 +7,7 @@ $db = new Db();
 // Insert Note
 if($_GET['key']=="createdb") {
 
-    //$db->profiles_table();
+    $db->profiles_table();
     $db->books();
     $db->questions();
     $db->notes();
