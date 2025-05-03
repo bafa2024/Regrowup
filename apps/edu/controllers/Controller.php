@@ -1,7 +1,7 @@
 <?php
 //session_start();
 $path = $_SERVER['DOCUMENT_ROOT'];
-require $path . '/apps/edu/model/database.php';
+require $path . '/apps/edu/models/database.php';
 
 
 class Controller extends Database
