@@ -104,7 +104,7 @@ class Autowork extends Controller{
          $sql = "SELECT * FROM allprojects ORDER BY id DESC";
          $result = $this->run_query($sql);
  
-         while ($result && $res = mysqli_fetch_array($result)) {
+         while ($res = mysqli_fetch_array($result)) {
              //check if the project is already bidded by calling proposed_checkup function
          $pid = $res['project_id'];
          $client_id = $res['client_id'];
@@ -122,7 +122,7 @@ class Autowork extends Controller{
          } else {
              echo "No, this is a new project: ".$pid."<br>";
             $bd=$this->bidOnProject($pid);
-            if($bd==true){
+            if($bd=true){
              echo "Bid placed successfully on project: ".$pid."<br>";
                 $this->storeBidResult($pid, $client_id, 'success', 'Bid placed successfully', null, null);
                }else{
