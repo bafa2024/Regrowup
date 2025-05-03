@@ -138,7 +138,7 @@
         ;
 
         }else if (isset($_POST['deeper1'])) {
-            $mainq = $_POST['query'];
+            $mainq = $_POST['deeper1'];
 
             $answer= $note->generateResponse($mainq);
 
