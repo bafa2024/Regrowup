@@ -116,7 +116,7 @@ class BlogController extends Controller
             echo "<h4>{$row['question']}</h4><br>";
             echo "{$content}";
             echo "&nbsp;";
-            echo "<img src='$image' alt='Image' style='width: 100%; height: auto;'>";
+            //echo "<img src='$image' alt='Image' style='width: 100%; height: auto;'>";
             echo "<br>";
             echo "</div>";
         }
