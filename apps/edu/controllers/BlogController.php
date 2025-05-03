@@ -130,12 +130,12 @@ class BlogController extends Controller
     public function get_image($title)
     {
         $title = $this->connectDb()->real_escape_string($title);
-        
+
         $sql = "SELECT * FROM questions WHERE question = '$title'";
         $stmt = $this->run_query($sql);
         while ($row = $stmt->fetch_assoc()) {
             $image = $row['filepath'];
-            echo "<img src='$image' alt='Image' style='width: 100%; height: auto;'>";
+            echo "<img src='.$image.' alt='Image' style='width: 100%; height: auto;'>";
         }
     }
 
