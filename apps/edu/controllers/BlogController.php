@@ -93,6 +93,8 @@ class BlogController extends Controller
 
     public function getBlog($title)
     {
+        $title = $this->connectDb()->real_escape_string($title);
+        
         //return back the title to original form
         $title = str_replace("_", " ", $title);
         //camel case the title
