@@ -14,13 +14,38 @@ class Autowork extends Controller{
      "PHP", "Javascript", "Reactjs", "Vuejs", "Python", "Java", "Nodejs", "Expressjs", "Django", "Flask",
      "Nextjs", "Nuxtjs", "Spring", "Springboot", "Springmvc", "Graphql", "Restfulapi", "Restapi",
      "Kotlin", "Swift", "C#", "C++", "ASP.NET", "Laravel", "Symfony", "CodeIgniter",
-     "GoLang", "Ruby on Rails", "Perl",
+     "GoLang", "Ruby on Rails", "Perl","Moodle", "Rust", "Scala", "Elixir", "Haskell",
+     "Clojure", "Erlang", "F#", "Objective-C", "Dart", "Shell Scripting", "Bash Scripting",
+        "PowerShell", "TypeScript", "CoffeeScript", "HTML5", "CSS3", "SASS", "LESS",
+        "Bootstrap", "TailwindCSS", "MaterializeCSS", "Foundation", "Bulma", "UIKit",
+        "Semantic UI", "Ant Design", "Element UI", "Vuetify", "Quasar", "PrimeNG",
+        "PrimeReact", "PrimeVue", "Material UI", "Chakra UI", "Styled Components",
+        "Emotion", "JSS", "CSS Modules", "PostCSS", "Pug", "EJS", "Handlebars",
+        "Mustache", "Twig", "Smarty", "Liquid", "Nunjucks", "DotLiquid", "Jinja2",
+        "Mako", "Django Templates", "Flask Templates", "PHP Templates", "Smarty Templates",
+        "Liquid Templates", "Mustache Templates", "Handlebars Templates", "Pug Templates",
+        "EJS Templates", "Nunjucks Templates", "Jinja2 Templates", "Mako Templates",
+        "Django Templates", "Flask Templates", "PHP Templates", "Smarty Templates",
+        "Liquid Templates", "Mustache Templates", "Handlebars Templates", "Pug Templates",
+        "EJS Templates", "Nunjucks Templates", "Jinja2 Templates", "Mako Templates",
+        "Django Templates", "Flask Templates", "PHP Templates", "Smarty Templates",
  
      // Mobile App Development
      "Android", "iOS", "Flutter", "React Native", "SwiftUI", "Objective-C", "Xamarin",
+        "Ionic", "Cordova", "PhoneGap", "NativeScript", "Kotlin Multiplatform",
+        "JavaFX", "Kotlin Coroutines", "RxJava", "Dagger", "Retrofit", "OkHttp",
+        "Realm", "SQLite", "Room", "Core Data", "Firebase Realtime Database",
+        "Firebase Firestore", "Realm Database", "SQLite Database",
  
      // Cloud and DevOps
      "AWS", "Azure", "Google Cloud", "Firebase", "Docker", "Kubernetes", "CI/CD Pipelines", "Serverless",
+        "Terraform", "Ansible", "Jenkins", "GitLab CI", "GitHub Actions", "Bitbucket Pipelines",
+        "CircleCI", "Travis CI", "AWS Lambda", "Azure Functions", "Google Cloud Functions",
+        "CloudFormation", "Terraform Modules", "Kubernetes Helm Charts",
+        "Kubernetes Operators", "Kubernetes Custom Resource Definitions (CRDs)",
+        "Kubernetes Ingress Controllers", "Kubernetes Network Policies",
+        "Kubernetes RBAC (Role-Based Access Control)", "Kubernetes Service Mesh",
+        "Kubernetes Istio", "Kubernetes Linkerd",
  
      // Artificial Intelligence and Data Science
      "ChatGPT", "OpenAI", "Machine Learning", "Deep Learning", "NLP", "Tensorflow", "Pytorch", "Data Analysis",
@@ -33,17 +58,50 @@ class Autowork extends Controller{
         "Data-Driven Sales", "Data-Driven Product Development", "Data-Driven Customer Experience",
      // Blockchain and Web3
      "Blockchain", "Ethereum", "Smart Contracts", "Solidity", "NFT Development", "Web3.js",
+        "IPFS", "Decentralized Applications (DApps)", "Cryptocurrency", "Tokenomics",
+        "Decentralized Finance (DeFi)", "Decentralized Autonomous Organizations (DAOs)",
+        "Non-Fungible Tokens (NFTs)", "Initial Coin Offerings (ICOs)", "Security Tokens",
+
  
      // UI/UX and Frontend Technologies
      "TailwindCSS", "Bootstrap", "SASS", "Figma", "Adobe XD", "UI/UX Design",
+        "Wireframing", "Prototyping", "User Research", "User Testing", "Usability Testing",
+            "A/B Testing", "User Experience Design", "User Interface Design", "Interaction Design",
+            "Visual Design", "Responsive Design", "Mobile-First Design", "Design Systems",
+            "Design Thinking", "Agile UX", "Lean UX", "Service Design", "Customer Journey Mapping",
+            "Information Architecture", "Content Strategy", "Accessibility (a11y)",
+            "Inclusive Design", "Design for All", "Universal Design",
+            "Design for Diversity", "Design for Inclusion", "Design for Equity",
+            "Design for Accessibility", "Design for Usability", "Design for Experience",
+            "Design for Engagement", "Design for Conversion", "Design for Retention",
+            "Design for Loyalty", "Design for Advocacy", "Design for Community",
+            "Design for Collaboration", "Design for Co-Creation", "Design for Innovation",
+            "Design for Change", "Design for Impact", "Design for Sustainability",
+
  
      // Digital Marketing
      "Digital Marketing", "Social Media Marketing", "Facebook Marketing", "Instagram Marketing",
      "SEO", "SEM", "Content Marketing", "Email Marketing", "Affiliate Marketing",
      "YouTube Marketing", "LinkedIn Marketing", "Pinterest Marketing",
+        "Twitter Marketing", "TikTok Marketing", "Snapchat Marketing", "Reddit Marketing",
+        "Influencer Marketing", "Branding", "Online Reputation Management (ORM)",
+        "Pay-Per-Click (PPC)", "Google Ads", "Facebook Ads", "Instagram Ads",
+        "LinkedIn Ads", "Twitter Ads", "YouTube Ads", "Pinterest Ads", "Snapchat Ads",
+        "TikTok Ads", "Reddit Ads", "Influencer Marketing", "Content Creation",
  
      // Content Creation
      "Blog Writing", "Copywriting", "Technical Writing", "Video Editing", "Podcast Editing", "Graphics Design",
+     
+        "Content Strategy", "Content Marketing", "Content Management", "Content Distribution",
+        "Content Promotion", "Content Curation", "Content Optimization", "Content Analysis",
+        "Content Research", "Content Planning", "Content Development", "Content Production",
+        "Content Editing", "Content Proofreading", "Content Localization", "Content Translation",
+        "Content Transcription", "Content Summarization", "Content Repurposing",
+        "Content Syndication", "Content Aggregation", "Content Personalization",
+        "Content Recommendation", "Content Engagement", "Content Retention",
+        "Content Monetization", "Content Subscription", "Content Licensing",
+        "Content Sponsorship", "Content Partnership", "Content Collaboration",
+      
  
      // E-commerce
      "Shopify Development", "WooCommerce", "Magento", "BigCommerce","Wordpress",
@@ -75,7 +133,7 @@ class Autowork extends Controller{
         "E-commerce Website Guidance", "E-commerce Website Mentoring",
         "E-commerce Website Coaching", "E-commerce Website Training",
         "Logo Design", "Branding", "Business Card Design",
-     "Brochure Design", "Flyer Design", "Poster Design",
+        "Brochure Design", "Flyer Design", "Poster Design",
         "Banner Design", "Infographic Design", "Social Media Graphics",
         "Web Design", "UI/UX Design", "Print Design",
         "Packaging Design", "Label Design", "T-shirt Design",
@@ -206,9 +264,31 @@ class Autowork extends Controller{
     1-b-If not restricted:
          Step1-Fetch the new projects data from the API
     */
-    public function fetch_new_projects($query)
+    public function api_call_projects($query)
     {
         $limit=null;
+        $query= null;
+
+        $url = "https://www.freelancer.com/api/projects/0.1/projects/active/?compact=&limit=" . $limit . "&query=" . $query;
+        // Perform the API call
+        $resp = $this->api_call($url);
+        // Parse the API response to a JSON object
+        $obj = json_decode($resp);
+        $status = $obj->status;
+        //check if the pros is not null , else display a message system is paused
+        if ($status == "success") {
+                // Extract projects from the parsed object
+                $pros = $obj->result->projects;
+                return $pros;
+    
+        }else{
+            echo "The system is paused, please try again later";
+        } 
+    }
+    public function fetch_new_projects()
+    {
+        $limit=null;
+        $query= null;
 
         $url = "https://www.freelancer.com/api/projects/0.1/projects/active/?compact=&limit=" . $limit . "&query=" . $query;
         // Perform the API call
@@ -236,7 +316,16 @@ class Autowork extends Controller{
                     $link="https://www.freelancer.com/projects/".$pid;
                     $type = $project->type;
                     $wproject= $resp;
-
+                   $check_project=$this->check_the_project($pid);
+                     if($check_project){
+                        echo "Project already exists: ".$pid."<br>";
+                        continue;
+                        }else{
+                            $this->storeProjects($pid, $client_id, $status, $link, $max_bg, $min_bg, $type,$wproject);
+                            echo "New project: ".$pid."<br>";
+                        }
+                  
+                    /*
                         if(!$this->proposed_checkup($pid)){
                         continue;
                         }
@@ -249,6 +338,7 @@ class Autowork extends Controller{
                         if (!$this->filterBudget($min_bg, $type)) {
                             continue;
                         }
+                    
 
                    //$this->storeProjects($pid, $client_id, $status, $link, $max_bg, $min_bg, $type,$wproject);
                    $tag = $this->elites($pid);
@@ -260,6 +350,7 @@ class Autowork extends Controller{
                        //Store the elite projects in the elite table
                        $this->storeEliteProjects($pid, $client_id, $status, $link, $max_bg, $min_bg, $type, $tag);
                    }
+                 */
 
                     
                   
@@ -436,6 +527,18 @@ class Autowork extends Controller{
 
       
     }
+    //write a function to get all the project details from the database allprojects and check if the project is already bidded or not
+    public function check_the_project($pid)
+    {
+        $sql = "SELECT * FROM allprojects WHERE project_id='$pid' ORDER BY id DESC";
+        $result = $this->run_query($sql);
+        if ($result) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
 
     //write a function to get all the project details from the database allprojects and then bid on it
 
