@@ -540,7 +540,7 @@ class Autowork extends Controller{
         $row = mysqli_fetch_array($result);
         $proid = $row['project_id'];
 
-        if ($row>num_rows > 0) {
+        if ($row->num_rows > 0) {
             return true;
         } else {
             return false;
