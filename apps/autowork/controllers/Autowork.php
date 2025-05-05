@@ -324,7 +324,7 @@ class Autowork extends Controller{
                         echo "Project already exists: ".$pid."<br>";
                         
                         }else{
-                            //$this->storeProjects($pid, $client_id, $status, $link, $max_bg, $min_bg, $type,$wproject);
+                            $this->storeProjects($pid, $client_id, $status, $link, $max_bg, $min_bg, $type,$wproject);
                             echo "New project: ".$pid."<br>";
                         }
                   
@@ -538,7 +538,7 @@ class Autowork extends Controller{
         $sql = "SELECT * FROM allprojects WHERE project_id='$pid' ORDER BY id DESC";
         $result = $this->run_query($sql);
         $row = mysqli_fetch_array($result);
-        $proid = $row['project_id'];
+        //$proid = $row['project_id'];
 
         if ($row->num_rows > 0) {
             return true;
