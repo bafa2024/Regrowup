@@ -319,7 +319,7 @@ class Autowork extends Controller{
                    $check_project=$this->check_the_project($pid);
                      if($check_project){
                         echo "Project already exists: ".$pid."<br>";
-                        continue;
+                        
                         }else{
                             $this->storeProjects($pid, $client_id, $status, $link, $max_bg, $min_bg, $type,$wproject);
                             echo "New project: ".$pid."<br>";
