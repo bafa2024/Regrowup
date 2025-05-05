@@ -290,7 +290,8 @@ class Autowork extends Controller{
         $limit='';
         $query= '';
 
-        $url = "https://www.freelancer.com/api/projects/0.1/projects/active/?compact=&limit=" . $limit . "&query=" . $query;
+        //$url = "https://www.freelancer.com/api/projects/0.1/projects/active/?compact=&limit=" . $limit . "&query=" . $query;
+        $url = "https://www.freelancer.com/api/projects/0.1/projects/active/?compact=&limit=&query=";
         // Perform the API call
         $resp = $this->api_call($url);
         // Parse the API response to a JSON object
