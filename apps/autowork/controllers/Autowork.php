@@ -317,7 +317,7 @@ class Autowork extends Controller{
                     $type = $project->type;
                     $wproject= $resp;
                    $check_project=$this->check_the_project($pid);
-                     if($check_project){
+                     if($check_project==true){
                         echo "Project already exists: ".$pid."<br>";
                         
                         }else{
