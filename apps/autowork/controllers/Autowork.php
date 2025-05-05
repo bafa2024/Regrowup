@@ -291,7 +291,7 @@ class Autowork extends Controller{
         $query= '';
 
         //$url = "https://www.freelancer.com/api/projects/0.1/projects/active/?compact=&limit=" . $limit . "&query=" . $query;
-        $url = "https://www.freelancer.com/api/projects/0.1/projects/active/?compact=&limit=&query=";
+        $url = "https://www.freelancer.com/api/projects/0.1/projects/";
         // Perform the API call
         $resp = $this->api_call($url);
         // Parse the API response to a JSON object
@@ -322,7 +322,7 @@ class Autowork extends Controller{
                         echo "Project already exists: ".$pid."<br>";
                         
                         }else{
-                            $this->storeProjects($pid, $client_id, $status, $link, $max_bg, $min_bg, $type,$wproject);
+                            //$this->storeProjects($pid, $client_id, $status, $link, $max_bg, $min_bg, $type,$wproject);
                             echo "New project: ".$pid."<br>";
                         }
                   
