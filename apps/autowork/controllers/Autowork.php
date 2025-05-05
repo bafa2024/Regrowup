@@ -302,7 +302,7 @@ class Autowork extends Controller{
         if ($status == "success") {
                 // Extract projects from the parsed object
                 $pros = $obj->result->projects;
-                echo "Request ID: ".$request_id."<br>";
+               // echo "Request ID: ".$request_id."<br>";
                 // Loop through each project
                 foreach ($pros as $project) {
                     // Get the project ID
@@ -319,7 +319,7 @@ class Autowork extends Controller{
                     $link="https://www.freelancer.com/projects/".$pid;
                     $type = $project->type;
                     $wproject= $resp;
-                   $check_project=$this->check_the_project($pid);
+                    $check_project=$this->check_the_project($pid);
                      if($check_project==true){
                         echo "Project already exists: ".$pid."<br>";
                         
@@ -376,7 +376,7 @@ class Autowork extends Controller{
                 }
     
         }elseif($status == "error"){
-            echo "Request ID: ".$request_id."<br>";
+           
             echo $status."The system is paused, please try again later";
 
         } 
@@ -537,7 +537,10 @@ class Autowork extends Controller{
     {
         $sql = "SELECT * FROM allprojects WHERE project_id='$pid' ORDER BY id DESC";
         $result = $this->run_query($sql);
-        if ($result) {
+        $row = mysqli_fetch_array($result);
+        $proid = $row['project_id'];
+
+        if ($row>num_rows > 0) {
             return true;
         } else {
             return false;
