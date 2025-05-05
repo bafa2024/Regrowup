@@ -287,8 +287,8 @@ class Autowork extends Controller{
     }
     public function fetch_new_projects()
     {
-        $limit=null;
-        $query= null;
+        $limit='';
+        $query= '';
 
         $url = "https://www.freelancer.com/api/projects/0.1/projects/active/?compact=&limit=" . $limit . "&query=" . $query;
         // Perform the API call
