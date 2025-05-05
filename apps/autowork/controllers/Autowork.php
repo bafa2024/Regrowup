@@ -297,10 +297,12 @@ class Autowork extends Controller{
         // Parse the API response to a JSON object
         $obj = json_decode($resp);
         $status = $obj->status;
+        $request_id = $obj->request_id;
         //check if the pros is not null , else display a message system is paused
         if ($status == "success") {
                 // Extract projects from the parsed object
                 $pros = $obj->result->projects;
+                echo "Request ID: ".$request_id."<br>";
                 // Loop through each project
                 foreach ($pros as $project) {
                     // Get the project ID
@@ -374,6 +376,7 @@ class Autowork extends Controller{
                 }
     
         }elseif($status == "error"){
+            echo "Request ID: ".$request_id."<br>";
             echo $status."The system is paused, please try again later";
 
         } 
