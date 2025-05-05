@@ -22,7 +22,7 @@
     }
   </style>
 </head>
-<body class="bg-white text-gray-800">
+<body class="bg-white ">
 
   <!-- Hero Section -->
   <section class="relative min-h-screen flex flex-col justify-center items-center text-center px-6 bg-gray-900 overflow-hidden">
