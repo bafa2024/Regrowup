@@ -579,21 +579,10 @@ class Autowork extends Controller{
         $type = $row['type'];
         $wproject = $row['whole_project'];
         $client_id = $row['client_id'];
-        $pds=json_decode($wproject, true);
+        $pds=json_decode($wproject);
 
-        foreach($pds as $p){
-       
-            $title = $p['title'];
-            $description = $p['description'];
-            $tag = $p['tag'];
-            $country = $p['country'];
-            $currency = $p['currency'];
-            echo '<div class="card shadow" style="width: 80%;">';
-            echo '<div class="card-body">';
-            echo '<h5 class="card-title">' . $title . '</h5>';
-            echo '<p class="card-text">' . $description . '</p>';
-
-        }
+        $title = $pds->title;
+        echo $title."<br>";
 
        
     }
