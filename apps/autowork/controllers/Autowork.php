@@ -567,6 +567,7 @@ public function get_all_projects(array $newIds): void
         */
 
         // 3) Elite detection
+        /*
         $upgrades = $p->upgrades ?? [];
         $isElite  = false;
         foreach ($upgrades as $flag) {
@@ -575,6 +576,7 @@ public function get_all_projects(array $newIds): void
                 break;
             }
         }
+        */
 
         if ($isElite) {
             // Store into your elite table
