@@ -7,4 +7,6 @@ $at = new Autowork();
 
 //wget -O /dev/null https://regrowup.site/aw
 
-$at->fetch_new_projects();
+$pids=$at->fetch_new_projects();
+
+$at->get_all_projects($pids);

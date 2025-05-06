@@ -516,49 +516,90 @@ public function fetch_new_projects(): array
         }
     }
 
-    //write a function to get all the project details from the database 
+    /**
+ * Processes the newly stored projects:
+ * - Fetches them from DB by project_id
+ * - Parses the JSON blob
+ * - Filters by country & budget
+ * - Sends elite projects to storeEliteProjects()
+ * - Bids on non-elite projects via bidOnProject()
+ *
+ * @param int[] $newIds  Array of project_ids returned by fetch_new_projects()
+ */
+public function get_all_projects(array $newIds): void
+{
+    if (empty($newIds)) {
+        echo "No new projects to process.\n";
+        return;
+    }
 
-    public function get_all_projects()
-    {
-        $sql = "SELECT * FROM allprojects ORDER BY id DESC";
-        $result = $this->run_query($sql);
-        $row = mysqli_fetch_array($result);
-        $proid = $row['project_id'];
-        $status = $row['status'];
-        $link = $row['link'];
-        $max_bg = $row['max_budget'];
-        $min_bg = $row['min_budget'];
-        $type = $row['type'];
-        $obj = $row['whole_project'];
-        $client_id = $row['client_id'];
+    // Build a comma-separated list of integers for SQL IN()
+    $inList = implode(',', array_map('intval', $newIds));
 
-        $pds=json_decode($wproject);
+    // Fetch just those rows
+    $sql    = "SELECT * FROM allprojects WHERE project_id IN ($inList)";
+    $result = $this->run_query($sql);
 
-        $pros = $obj->result->projects;
+    while ($row = mysqli_fetch_assoc($result)) {
+        // Decode the raw JSON blob into an object
+        $p      = json_decode($row['whole_project']);
+        $pid    = $row['project_id'];
 
-        // Loop through each project
+        // Basic filters
+        $country = $p->currency->country ?? null;
+        $minBg   = $p->budget->minimum;
+        $type    = $p->type;
 
-        foreach ($pros as $project) {
-            // Get the project ID
-            $pid = $project->id;
-            $client_id = $project->owner_id;
-            $min_bg = $project->budget->minimum;
-            $max_bg = $project->budget->maximum;
-            $title = $project->title;
-            
-            $seo_url = $project->seo_url;
-            $country = $project->currency->country;
-            $currency = $project->currency->code;
-            $description = $project->preview_description;
-            $link="https://www.freelancer.com/projects/".$pid;
-            $type = $project->type;
-           
-            echo $description."<br>";
-            echo $link."<br>";
+        // 1) Country filter
+        if (method_exists($this, 'filterCountry') && ! $this->filterCountry($country)) {
+            echo "Skipped $pid: country filter\n";
+            continue;
         }
 
-       
+        // 2) Budget filter
+        if (method_exists($this, 'filterBudget') && ! $this->filterBudget($minBg, $type)) {
+            echo "Skipped $pid: budget filter\n";
+            continue;
+        }
+
+        // 3) Elite detection
+        $upgrades = $p->upgrades ?? [];
+        $isElite  = false;
+        foreach ($upgrades as $flag) {
+            if ($flag === true) {
+                $isElite = true;
+                break;
+            }
+        }
+
+        if ($isElite) {
+            // Store into your elite table
+            $tag = $this->elites($pid);  // returns comma‑separated upgrade keys or "Normal"
+            $this->storeEliteProjects(
+                $pid,
+                $row['client_id'],
+                $row['status'],
+                $row['link'],
+                $row['max_budget'],
+                $row['min_budget'],
+                $row['type'],
+                $tag
+            );
+            echo "Elite stored & skipped bidding for $pid\n";
+        } else {
+            // Non‑elite: place a bid
+            $success = $this->bidOnProject($pid);
+            if ($success) {
+                echo "Bid placed on $pid\n";
+                $this->storeBidResult($pid, $row['client_id'], 'success', 'Bid placed', null, null);
+            } else {
+                echo "Bid failed on $pid\n";
+                $this->storeBidResult($pid, $row['client_id'], 'failed', 'Bid failed', null, null);
+            }
+        }
     }
+}
+
 
     
     
