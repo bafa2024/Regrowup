@@ -547,8 +547,8 @@ public function get_all_projects(array $newIds): void
 
         // Basic filters
         $country = $p->currency->country ?? null;
-        $minBg   = $p->budget->minimum;
-        $type    = $p->type;
+        //$minBg   = $p->budget->minimum;
+       // $type    = $p->type;
 
         // 1) Country filter
         /*
