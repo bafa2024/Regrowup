@@ -582,7 +582,7 @@ class Autowork extends Controller{
         $pds=json_decode($wproject, true);
 
         foreach($pds as $p){
-            $pid = $p['id'];
+       
             $title = $p['title'];
             $description = $p['description'];
             $tag = $p['tag'];
