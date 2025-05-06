@@ -551,16 +551,20 @@ public function get_all_projects(array $newIds): void
         $type    = $p->type;
 
         // 1) Country filter
+        /*
         if (method_exists($this, 'filterCountry') && ! $this->filterCountry($country)) {
             echo "Skipped $pid: country filter\n";
             continue;
         }
+        */
 
         // 2) Budget filter
+        /*
         if (method_exists($this, 'filterBudget') && ! $this->filterBudget($minBg, $type)) {
             echo "Skipped $pid: budget filter\n";
             continue;
         }
+        */
 
         // 3) Elite detection
         $upgrades = $p->upgrades ?? [];
