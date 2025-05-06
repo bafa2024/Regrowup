@@ -564,6 +564,36 @@ class Autowork extends Controller{
         }
     }
 
+    //write a function to get all the project details from the database 
+
+    public function get_all_projects()
+    {
+        $sql = "SELECT * FROM allprojects ORDER BY id DESC";
+        $result = $this->run_query($sql);
+        $row = mysqli_fetch_array($result);
+        $proid = $row['project_id'];
+        $status = $row['status'];
+        $link = $row['link'];
+        $max_bg = $row['max_budget'];
+        $min_bg = $row['min_budget'];
+        $type = $row['type'];
+        $wproject = $row['whole_project'];
+        $client_id = $row['client_id'];
+        $pds=json_decode($wproject, true);
+
+        $title = $pds['title'];
+        $description = $pds['description'];
+        $tag = $pds['tag'];
+        $country = $pds['country'];
+        $currency = $pds['currency'];
+        $pid = $pds['project_id'];
+
+        echo $title."<br>";
+        echo $description."<br>";
+
+       
+    }
+
     
     
 
