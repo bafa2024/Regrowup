@@ -577,12 +577,33 @@ class Autowork extends Controller{
         $max_bg = $row['max_budget'];
         $min_bg = $row['min_budget'];
         $type = $row['type'];
-        $wproject = $row['whole_project'];
+        $obj = $row['whole_project'];
         $client_id = $row['client_id'];
+
         $pds=json_decode($wproject);
 
-        $title = $pds->title;
-        echo $title."<br>";
+        $pros = $obj->result->projects;
+
+        // Loop through each project
+
+        foreach ($pros as $project) {
+            // Get the project ID
+            $pid = $project->id;
+            $client_id = $project->owner_id;
+            $min_bg = $project->budget->minimum;
+            $max_bg = $project->budget->maximum;
+            $title = $project->title;
+            
+            $seo_url = $project->seo_url;
+            $country = $project->currency->country;
+            $currency = $project->currency->code;
+            $description = $project->preview_description;
+            $link="https://www.freelancer.com/projects/".$pid;
+            $type = $project->type;
+           
+            echo $description."<br>";
+            echo $link."<br>";
+        }
 
        
     }
