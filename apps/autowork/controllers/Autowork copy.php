@@ -285,54 +285,102 @@ class Autowork extends Controller{
             echo "The system is paused, please try again later";
         } 
     }
-    /**
- * Fetches _all_ active projects from Freelancer and stores only those
- * that do not already exist in 'allprojects'. Returns an array of
- * project IDs that were newly inserted.
- *
- * @return int[]  Array of newly stored project IDs
- * @throws Exception on API/network failure or unexpected status
- */
-public function fetch_new_projects(): array
-{
-    // 1 API call for _all_ active projects (no limit parameter)
-    $url  = "https://www.freelancer.com/api/projects/0.1/projects/active/?compact=&limit=";
-    $resp = $this->api_call($url);
+    public function fetch_new_projects()
+    {
+        $limit='';
+        $query= '';
 
-    if ($resp === false) {
-        throw new Exception("API call failed");
+        //$url = "https://www.freelancer.com/api/projects/0.1/projects/active/?compact=&limit=" . $limit . "&query=" . $query;
+        $url = "https://www.freelancer.com/api/projects/0.1/projects/active/?compact=&limit=&query=";
+        // Perform the API call
+        $resp = $this->api_call($url);
+        // Parse the API response to a JSON object
+        $obj = json_decode($resp);
+        $status = $obj->status;
+        $request_id = $obj->request_id;
+        //check if the pros is not null , else display a message system is paused
+        if ($status == "success") {
+                // Extract projects from the parsed object
+                $pros = $obj->result->projects;
+               // echo "Request ID: ".$request_id."<br>";
+                // Loop through each project
+                foreach ($pros as $project) {
+                    // Get the project ID
+                    $pid = $project->id;
+                    $client_id = $project->owner_id;
+                    $min_bg = $project->budget->minimum;
+                    $max_bg = $project->budget->maximum;
+                    $title = $project->title;
+                    
+                    $seo_url = $project->seo_url;
+                    $country = $project->currency->country;
+                    $currency = $project->currency->code;
+                    $description = $project->preview_description;
+                    $link="https://www.freelancer.com/projects/".$pid;
+                    $type = $project->type;
+                    $wproject= $resp;
+                    $check_project=$this->check_the_project($pid);
+                     if($check_project==true){
+                        echo "Project already exists: ".$pid."<br>";
+                        
+                        }else{
+                            $this->storeProjects($pid, $client_id, $status, $link, $max_bg, $min_bg, $type,$wproject);
+                            echo "New project: ".$pid."<br>";
+                        }
+                  
+                    /*
+                        if(!$this->proposed_checkup($pid)){
+                        continue;
+                        }
+
+                        if (!$this->filterCountry($country)) {
+                            continue;
+                        }
+        
+                        //filtering the project budget
+                        if (!$this->filterBudget($min_bg, $type)) {
+                            continue;
+                        }
+                    
+
+                   //$this->storeProjects($pid, $client_id, $status, $link, $max_bg, $min_bg, $type,$wproject);
+                   $tag = $this->elites($pid);
+                   if($tag=='Normal'){
+                       $this->storeProjects($pid, $client_id, $status, $link, $max_bg, $min_bg, $type,$wproject);
+                       echo "Not Elite";
+                   }else{
+                       echo "Elite";
+                       //Store the elite projects in the elite table
+                       $this->storeEliteProjects($pid, $client_id, $status, $link, $max_bg, $min_bg, $type, $tag);
+                   }
+                 */
+
+                    
+                  
+                   /*
+                   if(!$this->proposed_checkup($pid)){
+                    continue;
+                    }
+                    if (!$this->filterCountry($country)) {
+                        continue;
+                    }
+    
+                    //filtering the project budget
+                    if (!$this->filterBudget($min_bg, $type)) {
+                        continue;
+                    }
+                   */
+                 // echo $pid."<br>";
+    
+                    
+                }
+    
+        }elseif($status == "error"){
+           
+            echo $status."The system is paused, please try again later";
+
+        } 
     }
-
-    $obj = json_decode($resp);
-    if (!isset($obj->status) || $obj->status !== "success") {
-        // API returned an error or is paused
-        throw new Exception("API returned status '{$obj->status}'");
-    }
-
-    $newProjectIds = [];
-
-    foreach ($obj->result->projects as $project) {
-        $pid = $project->id;
-
-        // Only store if not already in DB
-        if (!$this->check_the_project($pid)) {
-            $this->storeProjects(
-                $pid,
-                $project->owner_id,
-                $project->status,
-                "https://www.freelancer.com/projects/{$pid}",
-                $project->budget->maximum,
-                $project->budget->minimum,
-                $project->type,
-                $resp  // raw JSON for later analysis
-            );
-            $newProjectIds[] = $pid;
-        }
-    }
-
-    return $newProjectIds;
-}
-
 
     //Filter non-bidded projects
     public function proposed_checkup($projectId)
