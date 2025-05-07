@@ -5,13 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>RegrowUp - Empower Your Growth</title>
   
-  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-  
-  <!-- AOS Library -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  
-  <!-- tsParticles -->
   <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
 
   <style>
@@ -27,7 +22,7 @@
 </head>
 <body class="bg-white text-gray-800 flex flex-col min-h-screen">
 
-  <!-- Fixed Navigation Bar -->
+  <!-- Header -->
   <header class="fixed top-0 left-0 w-full bg-white shadow z-50">
     <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
       <a href="#" class="text-2xl font-bold text-red-600">RegrowUp</a>
@@ -40,11 +35,12 @@
   </header>
 
   <!-- Main Content -->
-  <main class="flex-grow mt-20">
+  <main class="flex-grow mt-20 relative z-10">
 
-    <!-- Hero Section -->
-    <section class="relative flex flex-col justify-center items-center text-center px-6 bg-white overflow-hidden py-24">
-      <div id="tsparticles" class="absolute inset-0"></div>
+    <!-- Hero -->
+    <section class="relative min-h-[90vh] flex flex-col justify-center items-center text-center px-6 bg-white overflow-hidden">
+      <div id="tsparticles" class="absolute inset-0 z-0"></div>
+
       <h1 class="text-5xl md:text-7xl font-extrabold mb-6 leading-tight text-gray-900 z-10" data-aos="fade-up">RegrowUp</h1>
       <p class="text-xl md:text-2xl mb-8 max-w-2xl text-gray-700 z-10" data-aos="fade-up" data-aos-delay="200">
         Building scalable, intelligent software solutions that grow with your business needs.
@@ -54,7 +50,7 @@
       </a>
     </section>
 
-    <!-- Services Section -->
+    <!-- Services -->
     <section id="services" class="py-20 px-6 bg-white">
       <div class="max-w-6xl mx-auto text-center">
         <h2 class="text-4xl font-bold mb-12" data-aos="fade-up">Our Services</h2>
@@ -75,18 +71,20 @@
       </div>
     </section>
 
-    <!-- About Section -->
+    <!-- About -->
     <section id="about" class="py-20 px-6 bg-white">
       <div class="max-w-4xl mx-auto text-center">
         <h2 class="text-4xl font-bold mb-8" data-aos="fade-up">Why Choose RegrowUp?</h2>
         <p class="text-lg mb-6 leading-relaxed" data-aos="fade-up" data-aos-delay="200">
           We are a lean, passionate team focused on delivering powerful, sustainable, and elegant software solutions.  
           Whether you're starting fresh or scaling massively, RegrowUp ensures your technology evolves with you.
+          <br> We are located at #200, 997 Seymour St, Vancouver, BC V6B 3M1, Canada.
+          
         </p>
       </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- Contact -->
     <section id="contact" class="py-20 px-6 bg-white text-gray-800">
       <div class="max-w-xl mx-auto text-center">
         <h2 class="text-4xl font-bold mb-6" data-aos="fade-up">Get in Touch</h2>
@@ -106,20 +104,21 @@
           </button>
         </form>
       </div>
+        <!-- Footer -->
+  <footer class="py-8 text-center text-gray-600 bg-gray-100">
+    © 2025 RegrowUp. All rights reserved. 
+  </footer>
     </section>
 
   </main>
 
-  <!-- Footer -->
-  <footer class="py-8 text-center text-gray-600 bg-gray-100">
-    © 2025 RegrowUp. All rights reserved. | #200, 997 Seymour St, Vancouver
-  </footer>
 
-  <!-- AOS -->
+
+  <!-- Scripts -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>AOS.init({ once: true });</script>
-
-  <!-- tsParticles -->
+  <script>
+    AOS.init({ once: true });
+  </script>
   <script>
     tsParticles.load("tsparticles", {
       background: { color: { value: "#ffffff" } },
@@ -164,6 +163,5 @@
       detectRetina: true
     });
   </script>
-
 </body>
 </html>
