@@ -774,7 +774,8 @@ public function get_all_projects(array $newIds): void
             $min_bg = $project['min_budget'];
             $max_budget = $project['max_budget'];
             $title = $project['title'];
-            $tag=$project['tag'];
+           // $tag=$project['tag'];
+            $tag=null;
             $type=$project['type'];
             $description = $project['details'];
             $client_id = $project['client_id'];
