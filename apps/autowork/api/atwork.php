@@ -9,6 +9,8 @@ $at = new Autowork();
 
 //$pids=$at->fetch_new_projects();
 
-$at->fetch_new_projects();
+$pids=$at->get_projects_data();
 
-//$at->get_all_projects($pids);
+//$at->fetch_new_projects();
+
+$at->get_all_projects($pids);

@@ -152,7 +152,7 @@ class Autowork extends Controller{
          // Loop over each query
          foreach ($queries as $query) {
            if($this->fetch_new_projects($query)){
-             echo "New Projects Stored";
+             return $this->fetch_new_projects($query);
            }
          }
      }
@@ -293,10 +293,10 @@ class Autowork extends Controller{
  * @return int[]  Array of newly stored project IDs
  * @throws Exception on API/network failure or unexpected status
  */
-public function fetch_new_projects(): array
+public function fetch_new_projects($query): array
 {
     // 1 API call for _all_ active projects (no limit parameter)
-    $url  = "https://www.freelancer.com/api/projects/0.1/projects/active/?compact=&limit=";
+    $url  = "https://www.freelancer.com/api/projects/0.1/projects/active/?compact=&limit=" . null . "&query=" . $query;
     $resp = $this->api_call($url);
 
     if ($resp === false) {
@@ -551,20 +551,20 @@ public function get_all_projects(array $newIds): void
        // $type    = $p->type;
 
         // 1) Country filter
-        /*
+        
         if (method_exists($this, 'filterCountry') && ! $this->filterCountry($country)) {
             echo "Skipped $pid: country filter\n";
             continue;
         }
-        */
+        
 
         // 2) Budget filter
-        /*
+        
         if (method_exists($this, 'filterBudget') && ! $this->filterBudget($minBg, $type)) {
             echo "Skipped $pid: budget filter\n";
             continue;
         }
-        */
+        
 
         // 3) Elite detection
         

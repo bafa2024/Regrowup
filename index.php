@@ -72,7 +72,7 @@ $router->route('/mbid', function() {
 });
 
 $router->route('/atw', function() {
-    require 'apps/autowork/api/aw.php';
+    require 'apps/autowork/api/atw.php';
 });
 
 $router->route('/aw', function() {
