@@ -9,12 +9,13 @@ if($_GET['key']=="createdb") {
 
 
     //$db->projects();
-    $db->new_projects();
-    $db->external_projects_bidden();
-    $db->auto_bid();
+    //$db->new_projects();
+    $db->bidding_projects();
+    //$db->external_projects_bidden();
+    //$db->auto_bid();
     
-    $db->create_cities_table();
-    $db->external_elite_projects();
+    //$db->create_cities_table();
+    //$db->external_elite_projects();
     
     
 

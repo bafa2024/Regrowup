@@ -6,7 +6,8 @@ include 'Discovery.php';
 class Autowork extends Controller{
     use Discovery;
 
-    public function get_projects_data(){
+    public function get_projects_data():array
+    {
 
         // List of queries to search for
        $queries = [
@@ -149,12 +150,18 @@ class Autowork extends Controller{
      "Zero Trust Architecture", "Firewall Management", "Intrusion Detection and Prevention Systems (IDS/IPS)"
      ];
  
-         // Loop over each query
-         foreach ($queries as $query) {
-           if($this->fetch_new_projects($query)){
-             return $this->fetch_new_projects($query);
-           }
-         }
+     foreach ($queries as $query) {
+        // Fetch & store new projects for this single query
+        $newIds = $this->fetch_new_projects($query);
+
+        // If we got any new projects, return those IDs immediately
+        if (!empty($newIds)) {
+            return $newIds;
+        }
+    }
+
+    // No new projects found across all queries
+    return [];
      }
 
      public function bid_on_projects()
@@ -289,24 +296,28 @@ class Autowork extends Controller{
  * Fetches _all_ active projects from Freelancer and stores only those
  * that do not already exist in 'allprojects'. Returns an array of
  * project IDs that were newly inserted.
+ /**
+ * Fetches all active projects matching $query from Freelancer,
+ * stores only those not already in 'allprojects', and returns their IDs.
  *
- * @return int[]  Array of newly stored project IDs
- * @throws Exception on API/network failure or unexpected status
+ * @param string $query  Search term for the API
+ * @return int[]         Newly inserted project IDs
+ * @throws Exception     On API/network failure or non-success status
  */
-public function fetch_new_projects($query): array
+public function fetch_new_projects(string $query): array
 {
-    // 1 API call for _all_ active projects (no limit parameter)
-    $url  = "https://www.freelancer.com/api/projects/0.1/projects/active/?compact=&limit=" . null . "&query=" . $query;
-    $resp = $this->api_call($url);
+    // Build URL: no limit, but include the query
+    $url  = "https://www.freelancer.com/api/projects/0.1/projects/active/"
+          . "?compact=&limit=&query=" . urlencode($query);
 
+    $resp = $this->api_call($url);
     if ($resp === false) {
-        throw new Exception("API call failed");
+        throw new Exception("API call failed for query '{$query}'");
     }
 
     $obj = json_decode($resp);
     if (!isset($obj->status) || $obj->status !== "success") {
-        // API returned an error or is paused
-        throw new Exception("API returned status '{$obj->status}'");
+        throw new Exception("API returned status '{$obj->status}' for query '{$query}'");
     }
 
     $newProjectIds = [];
@@ -314,24 +325,31 @@ public function fetch_new_projects($query): array
     foreach ($obj->result->projects as $project) {
         $pid = $project->id;
 
-        // Only store if not already in DB
-        if (!$this->check_the_project($pid)) {
-            $this->storeProjects(
-                $pid,
-                $project->owner_id,
-                $project->status,
-                "https://www.freelancer.com/projects/{$pid}",
-                $project->budget->maximum,
-                $project->budget->minimum,
-                $project->type,
-                $resp  // raw JSON for later analysis
-            );
-            $newProjectIds[] = $pid;
+        // Skip if already stored
+        if ($this->check_the_project($pid)) {
+            continue;
         }
+
+        // Store raw per‑project JSON rather than entire response
+        $rawProject = json_encode($project);
+
+        $this->storeBiddingProjects(
+            $pid,
+            $project->owner_id,
+            $project->status,
+            "https://www.freelancer.com/projects/{$pid}",
+            $project->budget->maximum,
+            $project->budget->minimum,
+            $project->type,
+            $rawProject
+        );
+
+        $newProjectIds[] = $pid;
     }
 
     return $newProjectIds;
 }
+
 
 public function fetch_all_new_projects(): array
 {
@@ -495,6 +513,28 @@ public function fetch_all_new_projects(): array
             }
         }
     }
+
+    public function storeBiddingProjects($projectId, $client_id, $status, $link, $max_bg, $min_bg, $type,$wproject)
+    {
+        //check if the project is already stored in the database
+        if (!$this->checkStoredProjects($projectId, 'allprojects')) {
+        $status = $this->connectDb()->real_escape_string($status);
+        $link = $this->connectDb()->real_escape_string($link);
+         $max_bg = $this->connectDb()->real_escape_string($max_bg);
+        $min_bg = $this->connectDb()->real_escape_string($min_bg);
+        $type = $this->connectDb()->real_escape_string($type);
+        $wproject = $this->connectDb()->real_escape_string($wproject);
+
+            $sql = "INSERT INTO bidding_projects(project_id, client_id,status,link,max_budget,min_budget,type,whole_project) 
+                    VALUES ('$projectId','$client_id','$status', '$link','$max_bg','$min_bg','$type','$wproject')";
+            $result = $this->run_query($sql);
+            if ($result) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
     
     public function checkStoredProjects($projectId,$table)
     {
@@ -578,7 +618,7 @@ public function get_all_projects(array $newIds): void
     $inList = implode(',', array_map('intval', $newIds));
 
     // Fetch just those rows
-    $sql    = "SELECT * FROM allprojects WHERE project_id IN ($inList)";
+    $sql    = "SELECT * FROM bidding_projects WHERE project_id IN ($inList)";
     $result = $this->run_query($sql);
 
     while ($row = mysqli_fetch_assoc($result)) {
