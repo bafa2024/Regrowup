@@ -159,6 +159,7 @@ class Autowork extends Controller{
             return $newIds;
         }
     }
+}
 
     public function fetch_new_projects(string $query): array
 {
