@@ -7,4 +7,4 @@ $at = new Autowork();
 
 //wget -O /dev/null https://regrowup.site/aw
 
-$at->fetch_new_projects();
+$at->fetch_all_new_projects();

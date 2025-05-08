@@ -333,6 +333,47 @@ public function fetch_new_projects($query): array
     return $newProjectIds;
 }
 
+public function fetch_all_new_projects(): array
+{
+    // 1 API call for _all_ active projects (no limit parameter)
+    //$url  = "https://www.freelancer.com/api/projects/0.1/projects/active/?compact=&limit=" . null . "&query=" . $query;
+    $url  = "https://www.freelancer.com/api/projects/0.1/projects/active/?compact=&limit=";
+    $resp = $this->api_call($url);
+
+    if ($resp === false) {
+        throw new Exception("API call failed");
+    }
+
+    $obj = json_decode($resp);
+    if (!isset($obj->status) || $obj->status !== "success") {
+        // API returned an error or is paused
+        throw new Exception("API returned status '{$obj->status}'");
+    }
+
+    $newProjectIds = [];
+
+    foreach ($obj->result->projects as $project) {
+        $pid = $project->id;
+
+        // Only store if not already in DB
+        if (!$this->check_the_project($pid)) {
+            $this->storeProjects(
+                $pid,
+                $project->owner_id,
+                $project->status,
+                "https://www.freelancer.com/projects/{$pid}",
+                $project->budget->maximum,
+                $project->budget->minimum,
+                $project->type,
+                $resp  // raw JSON for later analysis
+            );
+            $newProjectIds[] = $pid;
+        }
+    }
+
+    return $newProjectIds;
+}
+
 
     //Filter non-bidded projects
     public function proposed_checkup($projectId)
