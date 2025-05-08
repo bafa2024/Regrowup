@@ -160,6 +160,134 @@ class Autowork extends Controller{
         }
     }
 
+    public function fetch_new_projects(string $query): array
+{
+    // Build URL: no limit, but include the query
+    $url  = "https://www.freelancer.com/api/projects/0.1/projects/active/"
+          . "?compact=&limit=&query=" . urlencode($query);
+
+    $resp = $this->api_call($url);
+    if ($resp === false) {
+        throw new Exception("API call failed for query '{$query}'");
+    }
+
+    $obj = json_decode($resp);
+    if (!isset($obj->status) || $obj->status !== "success") {
+        throw new Exception("API returned status '{$obj->status}' for query '{$query}'");
+    }
+
+    $newProjectIds = [];
+
+    foreach ($obj->result->projects as $project) {
+        $pid = $project->id;
+
+        // Skip if already stored
+        if ($this->check_the_project($pid)) {
+            continue;
+        }
+
+        // Store raw per‑project JSON rather than entire response
+        $rawProject = json_encode($project);
+
+        $this->storeBiddingProjects(
+            $pid,
+            $project->owner_id,
+            $project->status,
+            "https://www.freelancer.com/projects/{$pid}",
+            $project->budget->maximum,
+            $project->budget->minimum,
+            $project->type,
+            $rawProject
+        );
+
+        $newProjectIds[] = $pid;
+    }
+
+    return $newProjectIds;
+}
+
+
+    public function get_all_projects(array $newIds): void
+{
+    if (empty($newIds)) {
+        echo "No new projects to process.\n";
+        return;
+    }
+
+    // Build a comma-separated list of integers for SQL IN()
+    $inList = implode(',', array_map('intval', $newIds));
+
+    // Fetch just those rows
+    $sql    = "SELECT * FROM bidding_projects WHERE project_id IN ($inList)";
+    $result = $this->run_query($sql);
+
+    while ($row = mysqli_fetch_assoc($result)) {
+        // Decode the raw JSON blob into an object
+        $p      = json_decode($row['whole_project']);
+        $pid    = $row['project_id'];
+
+        // Basic filters
+        $country = $p->currency->country ?? null;
+        //$minBg   = $p->budget->minimum;
+       // $type    = $p->type;
+
+        // 1) Country filter
+        
+        if (method_exists($this, 'filterCountry') && ! $this->filterCountry($country)) {
+            echo "Skipped $pid: country filter\n";
+            continue;
+        }
+        
+
+        // 2) Budget filter
+        
+        if (method_exists($this, 'filterBudget') && ! $this->filterBudget($minBg, $type)) {
+            echo "Skipped $pid: budget filter\n";
+            continue;
+        }
+        
+
+        // 3) Elite detection
+        
+        $upgrades = $p->upgrades ?? [];
+        $isElite  = false;
+        foreach ($upgrades as $flag) {
+            if ($flag === true) {
+                $isElite = true;
+                break;
+            }
+        }
+        
+
+        if ($isElite) {
+            // Store into your elite table
+            $tag = $this->elites($pid);  // returns comma‑separated upgrade keys or "Normal"
+            $this->storeEliteProjects(
+                $pid,
+                $row['client_id'],
+                $row['status'],
+                $row['link'],
+                $row['max_budget'],
+                $row['min_budget'],
+                $row['type'],
+                $tag
+            );
+            echo "Elite stored & skipped bidding for $pid\n";
+        } else {
+            // Non‑elite: place a bid
+            $success = $this->bidOnProject($pid);
+            if ($success) {
+                echo "Bid placed on $pid\n";
+                $this->storeBidResult($pid, $row['client_id'], 'success', 'Bid placed', null, null);
+            } else {
+                echo "Bid failed on $pid\n";
+                $this->storeBidResult($pid, $row['client_id'], 'failed', 'Bid failed', null, null);
+            }
+        }
+    }
+}
+
+
     // No new projects found across all queries
     return [];
      }
@@ -304,51 +432,7 @@ class Autowork extends Controller{
  * @return int[]         Newly inserted project IDs
  * @throws Exception     On API/network failure or non-success status
  */
-public function fetch_new_projects(string $query): array
-{
-    // Build URL: no limit, but include the query
-    $url  = "https://www.freelancer.com/api/projects/0.1/projects/active/"
-          . "?compact=&limit=&query=" . urlencode($query);
 
-    $resp = $this->api_call($url);
-    if ($resp === false) {
-        throw new Exception("API call failed for query '{$query}'");
-    }
-
-    $obj = json_decode($resp);
-    if (!isset($obj->status) || $obj->status !== "success") {
-        throw new Exception("API returned status '{$obj->status}' for query '{$query}'");
-    }
-
-    $newProjectIds = [];
-
-    foreach ($obj->result->projects as $project) {
-        $pid = $project->id;
-
-        // Skip if already stored
-        if ($this->check_the_project($pid)) {
-            continue;
-        }
-
-        // Store raw per‑project JSON rather than entire response
-        $rawProject = json_encode($project);
-
-        $this->storeBiddingProjects(
-            $pid,
-            $project->owner_id,
-            $project->status,
-            "https://www.freelancer.com/projects/{$pid}",
-            $project->budget->maximum,
-            $project->budget->minimum,
-            $project->type,
-            $rawProject
-        );
-
-        $newProjectIds[] = $pid;
-    }
-
-    return $newProjectIds;
-}
 
 
 public function fetch_all_new_projects(): array
@@ -607,85 +691,6 @@ public function fetch_all_new_projects(): array
  *
  * @param int[] $newIds  Array of project_ids returned by fetch_new_projects()
  */
-public function get_all_projects(array $newIds): void
-{
-    if (empty($newIds)) {
-        echo "No new projects to process.\n";
-        return;
-    }
-
-    // Build a comma-separated list of integers for SQL IN()
-    $inList = implode(',', array_map('intval', $newIds));
-
-    // Fetch just those rows
-    $sql    = "SELECT * FROM bidding_projects WHERE project_id IN ($inList)";
-    $result = $this->run_query($sql);
-
-    while ($row = mysqli_fetch_assoc($result)) {
-        // Decode the raw JSON blob into an object
-        $p      = json_decode($row['whole_project']);
-        $pid    = $row['project_id'];
-
-        // Basic filters
-        $country = $p->currency->country ?? null;
-        //$minBg   = $p->budget->minimum;
-       // $type    = $p->type;
-
-        // 1) Country filter
-        
-        if (method_exists($this, 'filterCountry') && ! $this->filterCountry($country)) {
-            echo "Skipped $pid: country filter\n";
-            continue;
-        }
-        
-
-        // 2) Budget filter
-        
-        if (method_exists($this, 'filterBudget') && ! $this->filterBudget($minBg, $type)) {
-            echo "Skipped $pid: budget filter\n";
-            continue;
-        }
-        
-
-        // 3) Elite detection
-        
-        $upgrades = $p->upgrades ?? [];
-        $isElite  = false;
-        foreach ($upgrades as $flag) {
-            if ($flag === true) {
-                $isElite = true;
-                break;
-            }
-        }
-        
-
-        if ($isElite) {
-            // Store into your elite table
-            $tag = $this->elites($pid);  // returns comma‑separated upgrade keys or "Normal"
-            $this->storeEliteProjects(
-                $pid,
-                $row['client_id'],
-                $row['status'],
-                $row['link'],
-                $row['max_budget'],
-                $row['min_budget'],
-                $row['type'],
-                $tag
-            );
-            echo "Elite stored & skipped bidding for $pid\n";
-        } else {
-            // Non‑elite: place a bid
-            $success = $this->bidOnProject($pid);
-            if ($success) {
-                echo "Bid placed on $pid\n";
-                $this->storeBidResult($pid, $row['client_id'], 'success', 'Bid placed', null, null);
-            } else {
-                echo "Bid failed on $pid\n";
-                $this->storeBidResult($pid, $row['client_id'], 'failed', 'Bid failed', null, null);
-            }
-        }
-    }
-}
 
 
     
