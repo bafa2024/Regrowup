@@ -845,67 +845,7 @@ public function fetch_all_new_projects(): array
       }
     }
 
-    public function fetch_all_new_projects()
-    {
-      $sql = "SELECT * FROM allprojects ORDER BY id DESC";
-      //$result = mysqli_query($this->db, $sql);
-        $result = $this->run_query($sql);
-  
-      if (mysqli_num_rows($result) > 0) {
-        // output data of each row
-        $projects = array();
-        while ($row = mysqli_fetch_assoc($result)) {
-          $projects[] = $row;
-        }
-        foreach ($projects as $project) {
-            $min_bg = $project['min_budget'];
-            $max_budget = $project['max_budget'];
-            $title = $project['title'];
-           // $tag=$project['tag'];
-            $tag=null;
-            $type=$project['type'];
-            $description = $project['details'];
-            $client_id = $project['client_id'];
-            $pid = $project['project_id'];
-            
-            $purl = "https://www.freelancer.com/projects/" . $pid;
-
-            //if proposed_checkup($pid){
-            if(!$this->proposed_checkup($pid)){
-                continue;
-            }
-            if (!$this->filterCountry($country)) {
-                continue;
-
-            }
-            //filtering the project budget
-            if (!$this->filterBudget($min_bg, $type)) {
-                continue;
-            }
-                echo '
-     <div class="card shadow" style="width: 80%;">
-       <div class="card-body">
-           <h5 class="card-title">' . $title . '</h5>
-           <p class="card-text">' . $description . '</p>
-       </div>
-       <ul class="list-group list-group-flush">
-           <li class="list-group-item">Min Budget: ' . $min_bg . ' </li>
-           <li class="list-group-item">Project Type: ' . $type . '</li>
-           <li class="list-group-item">Elite: ' . $tag. '</li>
-       </ul>
-       <div class="card-body">
-           <a href="' . $purl . '" class="card-link" target="_blank">Project URL</a>
-           <button onclick="makeSingleBid(\'' . $pid . '\')">Bid</button>
-       </div>
-   </div>';
-         // }
-        }
-
-      } else {
-        echo "0 results";
-      }
-    }
-
+   
 
     /*
       B-If the system is not working and bids are not place 
