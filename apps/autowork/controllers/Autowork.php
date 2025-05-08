@@ -290,7 +290,7 @@ class Autowork extends Controller{
 
 
     // No new projects found across all queries
-    return [];
+       //return [];
      }
 
      public function bid_on_projects()
